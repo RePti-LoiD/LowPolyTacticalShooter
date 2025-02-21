@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e3e3133af659345b1ab682406feeb3, type: 3}
+  m_Name: Movement Settings
+  m_EditorClassIdentifier: 
+  groundKeyboardLerpValue: 10
+  airKeyboardLerpValue: 4
+  sensitivity: 0.05
+  defaultSpeed: 12
+  jumpForce: 7
+  additionalJumpImpuls: {x: 5, y: 0}
+  jumpCount: 1
+  dashCount: 3
+  dashTimeToRefill: 2
+  crouchSpeed: 2
+  onFlyCrouchVelocitySpeed: 35
+  wallRunSpeed: 20
+  dashSpeed: 12
+  wallRunJumpAdditionalImpuls: {x: 5, y: 0}
+  jumpLandingCameraRotationEnabled: 1
+  keyboardLerpEnabled: 1
+  zTiltCameraEnabled: 0
