@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66a4aeba0d6736f478caa5dbdb63c7f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163386
+  packageName: Sight & Scope Shader
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly/Scopes Shader/Textures/Render_TEX/optic_01_Render.renderTexture
+  uploadId: 726139

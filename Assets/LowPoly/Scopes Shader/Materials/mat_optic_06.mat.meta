@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a21ecff5da2a79d42ba306e380b757b9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163386
+  packageName: Sight & Scope Shader
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly/Scopes Shader/Materials/mat_optic_06.mat
+  uploadId: 726139

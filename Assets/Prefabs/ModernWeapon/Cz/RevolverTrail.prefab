@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8050083048064391036}
   - component: {fileID: 8874907043367078238}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RevolverTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

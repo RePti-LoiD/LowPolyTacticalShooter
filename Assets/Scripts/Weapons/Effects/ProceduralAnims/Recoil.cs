@@ -13,13 +13,18 @@ namespace WeaponBehaviour
         [SerializeField] protected float returnTime;
         [SerializeField] protected float snappines;
 
+        private float multiplier = 1f;
+
         protected Vector3 current;
         protected Vector3 target;
 
         private void Update()
         {
-            Rotate();
+            PlayMotion();
         }
+
+        public void SetMultiplier(float multiplier) => 
+            this.multiplier = multiplier;
 
         public void OnShot()
         {
@@ -28,9 +33,9 @@ namespace WeaponBehaviour
                 Random.Range(hipfireRecoil.z, targetHipfireRecoil.z));
         }
 
-        private void Rotate()
+        private void PlayMotion()
         {
-            target = Vector3.Lerp(target, Vector3.zero, returnTime * Time.deltaTime);
+            target = Vector3.Lerp(target, Vector3.zero, returnTime * Time.deltaTime) * multiplier;
             current = Vector3.Slerp(current, target, snappines * Time.fixedDeltaTime);
             gameObject.transform.localPosition = current;
         }

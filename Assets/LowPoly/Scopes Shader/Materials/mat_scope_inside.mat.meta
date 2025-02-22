@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2a4e50ec0d9adb240a213649820033c7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163386
+  packageName: Sight & Scope Shader
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly/Scopes Shader/Materials/mat_scope_inside.mat
+  uploadId: 726139

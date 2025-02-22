@@ -8,11 +8,13 @@ public class CzGun : WeaponInputLayer
     [SerializeField] private float minRicochetAngle;
     [SerializeField] private Vector3ArrayEvent OnShotTargetTransform;
 
-    private Transform raycastOrigin;
+    [Space]
+    [SerializeField] private Transform raycastOrigin;
 
     private void Start()
     {
-        raycastOrigin = Camera.main.transform;
+        if (raycastOrigin == null)
+            raycastOrigin = Camera.main.transform;
     }
 
     public override void OnShot()
