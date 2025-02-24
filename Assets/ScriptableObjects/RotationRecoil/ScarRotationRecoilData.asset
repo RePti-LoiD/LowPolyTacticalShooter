@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bc201a849489e469c84845b78bed78, type: 3}
   m_Name: ScarRotationRecoilData
   m_EditorClassIdentifier: 
-  rotation: {x: -5, y: 3, z: 5}
-  targetRotation: {x: 0, y: -3, z: -5}
+  rotation: {x: -5, y: 3, z: 2}
+  targetRotation: {x: 0, y: -3, z: -2}
   returnTime: 15
   snappines: 2

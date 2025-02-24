@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2657013632761946127}
   - component: {fileID: 1400690158170959786}
   - component: {fileID: 3788854461514554208}
-  - component: {fileID: 3312273808425316850}
   - component: {fileID: 1100706816055064132}
+  - component: {fileID: 6677534977336762849}
   m_Layer: 0
   m_Name: Mesh_Projectile
   m_TagString: Untagged
@@ -88,27 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3312273808425316850
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3428448224272530101}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 7
-  m_Center: {x: 1.0771661, y: 0.0000019073486, z: 5.56}
 --- !u!114 &1100706816055064132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +100,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df32c42f363b8a488dc4306df9befc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileRotation: {fileID: 6677534977336762849}
   ProjectileCollided:
     m_PersistentCalls:
       m_Calls: []
+  currentProjectileData:
+    Damage: 0
+    Speed: 0
+    YCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GunAPI: {fileID: 0}
+--- !u!114 &6677534977336762849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428448224272530101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5b87e9a4b3017479ea168eeacbc116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

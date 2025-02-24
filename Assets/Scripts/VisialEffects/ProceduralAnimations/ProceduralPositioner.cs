@@ -19,11 +19,6 @@ public class ProceduralPositioner : MonoBehaviour
             instanceTransform = transform;
     }
 
-    private void Start()
-    {
-        SetAnimation(0);
-    }
-
     public AnimationUnit GetAnimation(string name) => animationUnits.Find(x => x.AnimationName == name);
 
     public AnimationUnit GetAnimation(int index) => animationUnits[currentAnimationIndex];

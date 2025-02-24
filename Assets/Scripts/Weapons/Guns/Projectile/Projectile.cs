@@ -2,16 +2,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
 using System.Collections;
+using System.Linq;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private ProjectileRotation projectileRotation;
+
     public UnityEvent ProjectileCollided;
 
     private ObjectPool<Projectile> pool;
-    private ProjectileData currentProjectileData;
-
-    private void Update() =>
-        transform.position += transform.forward * currentProjectileData.Speed * Time.deltaTime;
+    public ProjectileData currentProjectileData;
 
     public void SetObjectPool(ObjectPool<Projectile> pool) =>
         this.pool = pool;
@@ -20,12 +20,31 @@ public class Projectile : MonoBehaviour
         currentProjectileData = projectileData;
 
     public void LaunchProjectile() =>
-        StartCoroutine(Destroy(currentProjectileData.Lifetime));
+        StartCoroutine(Launch());
 
-    private IEnumerator Destroy(float time)
+    private IEnumerator Launch()
     {
-        yield return new WaitForSeconds(time);
+        var maxTime = currentProjectileData.YCurve.keys.Last().time;
 
-        pool.Release(this);
+        if (projectileRotation != null) 
+            StartCoroutine(projectileRotation.RotateProjectile(-10, 5));
+
+        var currentTime = 0f;
+
+        var lastEvaluate = 0f;
+        var lastPosition = transform.position;
+
+        while (currentTime < maxTime)
+        {
+            currentTime += Time.deltaTime;
+
+            transform.position += transform.forward * currentProjectileData.Speed * Time.deltaTime + new Vector3(0, currentProjectileData.YCurve.Evaluate(currentTime) - lastEvaluate);
+            lastEvaluate = currentProjectileData.YCurve.Evaluate(currentTime);
+
+            yield return null;
+        }
+
+        StopAllCoroutines();
+        pool?.Release(this);
     }
 }

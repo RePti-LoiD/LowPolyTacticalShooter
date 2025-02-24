@@ -13,7 +13,10 @@ public class ObjectPool : MonoBehaviour
 
     private Projectile OnCreate()
     {
-        return Instantiate(projectilePrefab);
+        var instance = Instantiate(projectilePrefab);
+        instance.SetObjectPool(pool);
+
+        return instance;
     }
 
     private void OnGetFromPool(Projectile pooledObject)
