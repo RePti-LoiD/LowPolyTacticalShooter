@@ -10,12 +10,9 @@ public class ProjectileRotation : MonoBehaviour
         var startRotation = transform.localEulerAngles;
         var localTargetAngle = transform.localEulerAngles.x + targetAngle;
 
-        print(time);
-        while (currentTime < 1)
+        while (currentTime / time < 1)
         {
-            print("ass");
-
-            currentTime = (currentTime + Time.deltaTime) / time;
+            currentTime += Time.deltaTime;
 
             transform.localEulerAngles = Vector3.Lerp(
                 startRotation,
@@ -24,14 +21,14 @@ public class ProjectileRotation : MonoBehaviour
                     transform.localEulerAngles.y,
                     transform.localEulerAngles.z
                 ),
-                currentTime
+                currentTime / time
             );
 
             yield return null;
         }
     }
 
-    /*public IEnumerator RotateProjectile(AnimationCurve curve)
+    public IEnumerator RotateProjectile(AnimationCurve curve)
     {
         float maxTime = curve.keys.Last().time;
 
@@ -40,7 +37,7 @@ public class ProjectileRotation : MonoBehaviour
         float prevT = 0f;
 
         print(maxTime);
-        
+
         while (currentT + 0.01f < maxTime)
         {
             print("aSS");
@@ -58,5 +55,5 @@ public class ProjectileRotation : MonoBehaviour
 
             yield return null;
         }
-    }*/
+    }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace WeaponBehaviour
 {
-    public class Recoil : MonoBehaviour
+    public class Recoil : TransformComposable
     {        
         [Header("Target Positions")]
         [SerializeField] protected Vector3 targetHipfireRecoil;
@@ -20,7 +20,7 @@ namespace WeaponBehaviour
 
         private void Update()
         {
-            PlayMotion();
+            CalculateShotRecoil();
         }
 
         public void SetMultiplier(float multiplier) => 
@@ -33,11 +33,19 @@ namespace WeaponBehaviour
                 Random.Range(hipfireRecoil.z, targetHipfireRecoil.z));
         }
 
-        private void PlayMotion()
+        private void CalculateShotRecoil()
         {
             target = Vector3.Lerp(target, Vector3.zero, returnTime * Time.deltaTime) * multiplier;
             current = Vector3.Slerp(current, target, snappines * Time.fixedDeltaTime);
-            gameObject.transform.localPosition = current;
         }
+
+        public override Vector3 GetPosition()
+        {
+            CalculateShotRecoil();
+            return current;
+        }
+
+        public override Quaternion GetRotation() =>
+            Quaternion.identity;
     }
 }

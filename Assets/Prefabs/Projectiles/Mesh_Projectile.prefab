@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3788854461514554208}
   - component: {fileID: 1100706816055064132}
   - component: {fileID: 6677534977336762849}
+  - component: {fileID: 5711753867413576602}
   m_Layer: 0
   m_Name: Mesh_Projectile
   m_TagString: Untagged
@@ -101,12 +102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRotation: {fileID: 6677534977336762849}
+  CollisionDetection: {fileID: 5711753867413576602}
   ProjectileCollided:
     m_PersistentCalls:
       m_Calls: []
-  currentProjectileData:
+  CurrentProjectileData:
     Damage: 0
     Speed: 0
+    TargetYAngle: 0
     YCurve:
       serializedVersion: 2
       m_Curve: []
@@ -114,6 +117,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     GunAPI: {fileID: 0}
+    ProjectileThrower: {fileID: 0}
 --- !u!114 &6677534977336762849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,3 +130,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5b87e9a4b3017479ea168eeacbc116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5711753867413576602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428448224272530101}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f890a6ca5c0770c4e9413696d57d3d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1100706816055064132}

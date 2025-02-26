@@ -2,18 +2,18 @@ using UnityEngine;
 
 namespace WeaponBehaviour
 {
-    public class WeaponSway : RootPositioning
+    public class WeaponSway : TransformComposable
     {
         [Header("Input")]
         
         [Header("Position")]
-        [SerializeField] private float amount = 0.02f;
-        [SerializeField] private float maxAmount = 0.06f;
+        [SerializeField] private Vector3 amount = Vector3.zero;
+        [SerializeField] private Vector3 maxAmount = Vector3.one;
         [SerializeField] private float smoothAmount = 6f;
 
         [Header("Rotation")]
-        [SerializeField] private float rotationAmount = 2f;
-        [SerializeField] private float maxRotationAmount = 6f;
+        [SerializeField] private Vector3 rotationAmount = Vector3.zero;
+        [SerializeField] private Vector3 maxRotationAmount = Vector3.one;
 
         [SerializeField] private float smoothRotation = 12f;
 
@@ -23,42 +23,37 @@ namespace WeaponBehaviour
         [SerializeField] private bool AxisZ = true;
 
         private Vector2 mouseInputs;
-        
+
         public void OnMouseInput(Vector2 newMouseVector)
         {
             mouseInputs = newMouseVector;
         }
 
-
-        private void Update()
+        public void ApplyTransform()
         {
-            MoveSway();
-
-            RotationSway(rotationAmount, maxRotationAmount);
+            transform.localRotation = GetRotation();
+            transform.localPosition = GetPosition();
         }
 
-        private void MoveSway()
-        {
-            transform.localPosition = Vector3.Lerp (
-                transform.localPosition,
-                (Vector3)(mouseInputs * amount).Clamp(new Vector3(maxAmount, maxAmount)) + rootPosition, 
-                Time.deltaTime * smoothAmount
-            );
-        }
+        public override Vector3 GetPosition() => Vector3.Lerp(
+            transform.localPosition,
+            (Vector3)(mouseInputs * amount).Clamp(maxAmount),
+            Time.deltaTime * smoothAmount
+        );
 
-        private void RotationSway(float rotationAmount, float maxRotationAmount)
+        public override Quaternion GetRotation()
         {
-            Vector3 targetRotation = (mouseInputs * rotationAmount).Clamp(new Vector2(maxRotationAmount, maxRotationAmount));
+            Vector3 targetRotation = (mouseInputs * rotationAmount).Clamp(maxRotationAmount);
 
-            transform.localRotation = Quaternion.Slerp (
+            return Quaternion.Slerp(
                 transform.localRotation,
-                Quaternion.Euler (
+                Quaternion.Euler(
                     new Vector3(
                         AxisX ? -targetRotation.y : 0,
                         AxisY ? targetRotation.x : 0,
                         AxisZ ? -targetRotation.x : 0
                     )
-                ) * rootRotation,
+                ),
                 Time.deltaTime * smoothRotation
             );
         }

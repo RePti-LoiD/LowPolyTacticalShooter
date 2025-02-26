@@ -11,4 +11,5 @@ public class ProjectileData
     [Space]
     public AnimationCurve YCurve;
     public GunAPI GunAPI;
+    public ProjectileThrower ProjectileThrower;
 }

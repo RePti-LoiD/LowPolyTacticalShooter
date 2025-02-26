@@ -159,7 +159,7 @@ public class Movement : MovementControllable
 
     public override void OnMove(Vector2 inputs)
     {
-        var transformedInput = transform.TransformDirection(new Vector3(inputs.x, 0, inputs.y)) * CurrentSpeed;
+        var transformedInput = transform.TransformDirection(new Vector3(inputs.x, 0, inputs.y).normalized) * CurrentSpeed;
         
         if (movementSettings.KeyboardLerpEnabled)
             moveVector = Vector3.Lerp(moveVector, transformedInput, Time.deltaTime * currentLerpValue);

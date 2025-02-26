@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: pool
       value: 
       objectReference: {fileID: 1292658156}
+    - target: {fileID: 3060169120991592872, guid: 75139180ca14b3147a5511361862b34b, type: 3}
+      propertyPath: shotPerMinute
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4206809986755905427, guid: 75139180ca14b3147a5511361862b34b, type: 3}
       propertyPath: m_Name
       value: Player

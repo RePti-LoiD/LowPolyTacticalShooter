@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.11, y: 0.11, z: 0.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2855205645274195741}
@@ -231,15 +231,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a716266cbde28e74ebcf8bcd022b2e04, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a716266cbde28e74ebcf8bcd022b2e04, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a716266cbde28e74ebcf8bcd022b2e04, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a716266cbde28e74ebcf8bcd022b2e04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,6 +529,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  raycastOrigin: {fileID: 0}
 --- !u!114 &1385906409545949637
 MonoBehaviour:
   m_ObjectHideFlags: 0

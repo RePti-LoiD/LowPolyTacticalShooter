@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RecoilRotationReceiver : MonoBehaviour
+public class RecoilRotationReceiver : TransformComposable
 {
     [SerializeField] protected float returnTime;
     [SerializeField] protected float snappines;
@@ -8,20 +8,24 @@ public class RecoilRotationReceiver : MonoBehaviour
     protected Vector3 current;
     protected Vector3 target;
 
-    private void Update()
-    {
-        Rotate();
-    }
-
     public void RotateObject(Vector3 vector)
     {
         target += vector;
     }
 
-    private void Rotate()
+    private void CalculateRotation()
     {
         target = Vector3.Lerp(target, Vector3.zero, returnTime * Time.deltaTime);
         current = Vector3.Lerp(current, target, snappines * Time.fixedDeltaTime);
-        gameObject.transform.localEulerAngles = current;
+    }
+
+    public override Vector3 GetPosition() => 
+        Vector3.zero;
+
+    public override Quaternion GetRotation()
+    {
+        CalculateRotation();
+
+        return Quaternion.Euler(current);
     }
 }

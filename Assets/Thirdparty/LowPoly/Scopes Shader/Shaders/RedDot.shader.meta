@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 79973772ad1e6034cb0b2c8f6b25bdd2
+timeCreated: 1521111732
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163386
+  packageName: Sight & Scope Shader
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly/Scopes Shader/Shaders/RedDot.shader
+  uploadId: 726139

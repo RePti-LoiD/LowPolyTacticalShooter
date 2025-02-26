@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bfa592c04fca42c4287a82d9a5095bf2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163386
+  packageName: Sight & Scope Shader
+  packageVersion: 1.1
+  assetPath: Assets/LowPoly/Scopes Shader/Sample_SceneSettings.lighting
+  uploadId: 726139

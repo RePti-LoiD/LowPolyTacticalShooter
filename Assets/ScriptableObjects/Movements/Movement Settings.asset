@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e3e3133af659345b1ab682406feeb3, type: 3}
   m_Name: Movement Settings
   m_EditorClassIdentifier: 
-  groundKeyboardLerpValue: 10
-  airKeyboardLerpValue: 4
+  groundKeyboardLerpValue: 15
+  airKeyboardLerpValue: 2
   sensitivity: 0.05
-  defaultSpeed: 12
-  jumpForce: 7
-  additionalJumpImpuls: {x: 5, y: 0}
+  defaultSpeed: 8
+  jumpForce: 5
+  additionalJumpImpuls: {x: 0, y: 0}
   jumpCount: 1
   dashCount: 3
   dashTimeToRefill: 2
@@ -28,4 +28,4 @@ MonoBehaviour:
   wallRunJumpAdditionalImpuls: {x: 5, y: 0}
   jumpLandingCameraRotationEnabled: 1
   keyboardLerpEnabled: 1
-  zTiltCameraEnabled: 0
+  zTiltCameraEnabled: 1

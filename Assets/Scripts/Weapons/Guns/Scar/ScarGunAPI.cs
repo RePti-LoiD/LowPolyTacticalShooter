@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ScarGunAPI : BaseGunAPI
 {
-    [SerializeField] private LinearInterpolationAnim lerpAnim;
     [SerializeField] private RecoilRotationSender cameraRecoil;
 
     [SerializeField] private ProceduralPositioner proceduralPositioner;
