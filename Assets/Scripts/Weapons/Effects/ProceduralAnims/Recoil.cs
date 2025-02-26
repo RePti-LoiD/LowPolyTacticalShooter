@@ -36,16 +36,16 @@ namespace WeaponBehaviour
         private void CalculateShotRecoil()
         {
             target = Vector3.Lerp(target, Vector3.zero, returnTime * Time.deltaTime) * multiplier;
-            current = Vector3.Slerp(current, target, snappines * Time.fixedDeltaTime);
+            current = Vector3.Slerp(current, target, snappines * Time.deltaTime);
         }
 
-        public override Vector3 GetPosition()
+        public override Vector3 GetPosition(Vector3 prevPosition)
         {
             CalculateShotRecoil();
             return current;
         }
 
-        public override Quaternion GetRotation() =>
+        public override Quaternion GetRotation(Quaternion prevRotation) =>
             Quaternion.identity;
     }
 }

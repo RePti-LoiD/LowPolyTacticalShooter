@@ -24,31 +24,45 @@ namespace WeaponBehaviour
 
         private Vector2 mouseInputs;
 
+        private Vector3 currentPosition;
+        private Quaternion currentRotation;
+
         public void OnMouseInput(Vector2 newMouseVector)
         {
             mouseInputs = newMouseVector;
         }
 
+        //private void Update()
+        //{
+        //    ApplyTransform();
+        //}
+
         public void ApplyTransform()
         {
-            transform.localRotation = GetRotation();
-            transform.localPosition = GetPosition();
+            CalcPositionSway();
+            CalcRotationSway();
+
+            transform.localPosition = currentPosition;
+            transform.localRotation = currentRotation;
         }
 
-        public override Vector3 GetPosition() => Vector3.Lerp(
-            transform.localPosition,
-            (Vector3)(mouseInputs * amount).Clamp(maxAmount),
-            Time.deltaTime * smoothAmount
-        );
+        private void CalcPositionSway()
+        {
+            currentPosition = Vector3.Lerp (
+                currentPosition,
+                (Vector3)(mouseInputs * amount).Clamp(maxAmount),
+                Time.deltaTime * smoothAmount
+            );
+        }
 
-        public override Quaternion GetRotation()
+        private void CalcRotationSway()
         {
             Vector3 targetRotation = (mouseInputs * rotationAmount).Clamp(maxRotationAmount);
 
-            return Quaternion.Slerp(
-                transform.localRotation,
-                Quaternion.Euler(
-                    new Vector3(
+            currentRotation = Quaternion.Slerp (
+                currentRotation,
+                Quaternion.Euler (
+                    new Vector3 (
                         AxisX ? -targetRotation.y : 0,
                         AxisY ? targetRotation.x : 0,
                         AxisZ ? -targetRotation.x : 0
@@ -56,6 +70,18 @@ namespace WeaponBehaviour
                 ),
                 Time.deltaTime * smoothRotation
             );
+        }
+
+        public override Vector3 GetPosition(Vector3 prevPosition)
+        {
+            CalcPositionSway();
+            return currentPosition;
+        }
+
+        public override Quaternion GetRotation(Quaternion prevRotation)
+        {
+            CalcRotationSway();
+            return currentRotation;
         }
     }
 }

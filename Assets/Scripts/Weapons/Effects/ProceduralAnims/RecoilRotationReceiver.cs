@@ -19,10 +19,10 @@ public class RecoilRotationReceiver : TransformComposable
         current = Vector3.Lerp(current, target, snappines * Time.fixedDeltaTime);
     }
 
-    public override Vector3 GetPosition() => 
+    public override Vector3 GetPosition(Vector3 prevPosition) => 
         Vector3.zero;
 
-    public override Quaternion GetRotation()
+    public override Quaternion GetRotation(Quaternion prevRotation)
     {
         CalculateRotation();
 

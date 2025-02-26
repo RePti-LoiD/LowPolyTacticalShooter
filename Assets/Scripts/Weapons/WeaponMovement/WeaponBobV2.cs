@@ -2,16 +2,6 @@ using UnityEngine;
 
 public class WeaponBobV2 : MonoBehaviour
 {
-    [Header("Sway")]
-    [SerializeField] private float step = 0.01f;
-    [SerializeField] private float maxStepDistance = 0.06f;
-    private Vector3 swayPos;
-
-    [Header("Sway Rotation")]
-    [SerializeField] private float rotationStep = 4f;
-    [SerializeField] private float maxRotationStep = 5f;
-    private Vector3 swayEulerRot;
-
     [SerializeField] private float smooth = 10f;
     [SerializeField] private float smoothRot = 12f;
 
@@ -28,16 +18,13 @@ public class WeaponBobV2 : MonoBehaviour
     [SerializeField] private Vector3 multiplier;
     private Vector3 bobEulerRotation;
 
-    private Vector3 startPosition;
-    private Quaternion startRotation;
-
-    Vector2 walkInput;
+    private Vector2 walkInput;
 
     private float currentSpeed;
     private bool isGrounded;
     
-    private float curveSin { get => Mathf.Sin(speedCurve); }
-    private float curveCos { get => Mathf.Cos(speedCurve); }
+    private float CurveSin { get => Mathf.Sin(speedCurve); }
+    private float CurveCos { get => Mathf.Cos(speedCurve); }
 
 
     public void OnMove(Vector2 input) =>
@@ -48,12 +35,6 @@ public class WeaponBobV2 : MonoBehaviour
 
     public void OnMovementSpeedChange(float speed) =>
         currentSpeed = speed;
-
-    private void Start()
-    {
-        startPosition = transform.localPosition;
-        startRotation = transform.localRotation;
-    }
 
     private void Update()
     {
@@ -74,15 +55,15 @@ public class WeaponBobV2 : MonoBehaviour
     {
         speedCurve += (isGrounded ? (Mathf.Clamp(Mathf.Abs(walkInput.x) + Mathf.Abs(walkInput.y), -1, 1)) * bobExaggeration : 1f) * currentSpeed * Time.deltaTime;
 
-        bobPosition.x = (curveCos * bobLimit.x) - (Mathf.Abs(walkInput.x) * travelLimit.x);
-        bobPosition.y = (Mathf.Abs(curveSin) * bobLimit.y) - (Mathf.Abs(walkInput.y) * travelLimit.y);
+        bobPosition.x = (CurveCos * bobLimit.x) - (-walkInput.x * travelLimit.x);
+        bobPosition.y = (Mathf.Abs(CurveSin) * bobLimit.y) - (Mathf.Abs(walkInput.y) * travelLimit.y);
         bobPosition.z = -(walkInput.y * travelLimit.z);
     }
 
     private void BobRotation()
     {
         bobEulerRotation.x = (walkInput != Vector2.zero ? multiplier.x * (Mathf.Sin(2 * speedCurve)) : 0);
-        bobEulerRotation.y = (walkInput != Vector2.zero ? multiplier.y * curveCos : 0);
-        bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * curveCos * walkInput.x : 0);
+        bobEulerRotation.y = (walkInput != Vector2.zero ? multiplier.y * CurveCos : 0);
+        bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * CurveCos * walkInput.x : 0);
     }
 }

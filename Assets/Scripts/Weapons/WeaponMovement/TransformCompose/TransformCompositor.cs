@@ -16,7 +16,7 @@ public class TransformCompositor : RootPositioning
         CompositeTransform();
 
         ApplyTransform();
-
+        
         if (dropTransformAfterCompose)
             DropTransform();
     }
@@ -25,11 +25,13 @@ public class TransformCompositor : RootPositioning
     {
         foreach (var composableData in composablesData)
         {
-            if (composableData.ComposePosition) 
-                additionalPosition += composableData.Composable.GetPosition() * composableData.Weight;
+            if (composableData.ComposePosition)
+                additionalPosition += Vector3.Lerp(Vector3.zero, composableData.Composable.GetPosition(additionalPosition), composableData.Weight);
+                //transform.localPosition += Vector3.Lerp(Vector3.zero, composableData.Composable.GetPosition(), composableData.Weight);
 
             if (composableData.ComposeRotation)
-                additionalRotation *= Quaternion.Slerp(Quaternion.identity, composableData.Composable.GetRotation(), composableData.Weight);
+                additionalRotation *= Quaternion.Slerp(Quaternion.identity, composableData.Composable.GetRotation(additionalRotation), composableData.Weight);
+                //transform.localRotation *= Quaternion.Slerp(Quaternion.identity, composableData.Composable.GetRotation(), composableData.Weight);
         }
     }
 
