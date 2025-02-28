@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WeaponBob : MonoBehaviour
+public class WeaponBob : TransformComposable
 {
     [SerializeField] private float smooth = 10f;
     [SerializeField] private float smoothRot = 12f;
@@ -79,5 +79,15 @@ public class WeaponBob : MonoBehaviour
         bobEulerRotation.x = (walkInput != Vector2.zero ? multiplier.x * (Mathf.Sin(2 * speedCurve)) : 0);
         bobEulerRotation.y = (walkInput != Vector2.zero ? multiplier.y * CurveCos : 0);
         bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * CurveCos * walkInput.x : 0);
+    }
+
+    public override Vector3 GetPosition(Vector3 prevPosition)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override Quaternion GetRotation(Quaternion prevRotation)
+    {
+        throw new System.NotImplementedException();
     }
 }

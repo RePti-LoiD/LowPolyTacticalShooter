@@ -431,7 +431,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - AnimationName: Sprint
-    AnimationIndex: 1
+    AnimationIndex: 2
     TargetTransform: {fileID: 4903320189796601101}
     TimeCurve:
       serializedVersion: 2
@@ -458,7 +458,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - AnimationName: Aim
-    AnimationIndex: 1
+    AnimationIndex: 3
     TargetTransform: {fileID: 8477621829632491583}
     TimeCurve:
       serializedVersion: 2
