@@ -16,9 +16,12 @@ public class WeaponBob : TransformComposable
 
     [Header("Bob Rotation")]
     [SerializeField] private Vector3 multiplier;
-    private Vector3 bobEulerRotation;
 
+    private Vector3 bobEulerRotation;
     private Vector2 walkInput;
+
+    private Vector3 currentPosition;
+    private Quaternion currentRotation;
 
     private float bobWeight = 1f;
     private float currentSpeed;
@@ -57,9 +60,6 @@ public class WeaponBob : TransformComposable
 
     private void CompositePositionRotation()
     {
-
-        print(BobWeight);
-
         transform.localPosition = (Vector3.Lerp(transform.localPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
 
         transform.localRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(transform.localRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
@@ -83,11 +83,19 @@ public class WeaponBob : TransformComposable
 
     public override Vector3 GetPosition(Vector3 prevPosition)
     {
-        throw new System.NotImplementedException();
+        BobOffset();
+
+        currentPosition = (Vector3.Lerp(currentPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
+        
+        return currentPosition;
     }
 
     public override Quaternion GetRotation(Quaternion prevRotation)
     {
-        throw new System.NotImplementedException();
+        BobRotation();
+
+        currentRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(currentRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
+
+        return currentRotation;
     }
 }
