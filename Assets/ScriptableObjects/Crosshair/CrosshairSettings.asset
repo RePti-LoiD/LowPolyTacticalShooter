@@ -15,7 +15,7 @@ MonoBehaviour:
   Length: 5
   Width: 1
   Gap: 6
-  DotInCenter: 0
+  DotInCenter: 1
   Color: {r: 1, g: 1, b: 1, a: 1}
-  TShaped: 1
-  LineCount: 3
+  TShaped: 0
+  LineCount: 4

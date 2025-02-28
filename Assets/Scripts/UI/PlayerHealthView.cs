@@ -7,13 +7,14 @@ public class PlayerHealthView : MonoBehaviour
     [SerializeField] private float fillAmountSpeed;
     [SerializeField] private float alphaFadingTime;
     [SerializeField] private float maxShowTime;
+    [SerializeField] private bool fading;
 
     private float lastDataReceiveTime = 0;
     private float targetFillAmount = 0f;
 
     private void Update()
     {
-        if (Time.time - lastDataReceiveTime > maxShowTime)
+        if (Time.time - lastDataReceiveTime > maxShowTime && fading)
             healthImage.CrossFadeAlpha(0, alphaFadingTime, false);
 
         healthImage.fillAmount = Mathf.Lerp(healthImage.fillAmount, targetFillAmount, fillAmountSpeed * Time.deltaTime);

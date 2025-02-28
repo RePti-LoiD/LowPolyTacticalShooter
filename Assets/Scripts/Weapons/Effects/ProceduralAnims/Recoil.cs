@@ -18,11 +18,6 @@ namespace WeaponBehaviour
         protected Vector3 current;
         protected Vector3 target;
 
-        private void Update()
-        {
-            CalculateShotRecoil();
-        }
-
         public void SetMultiplier(float multiplier) => 
             this.multiplier = multiplier;
 

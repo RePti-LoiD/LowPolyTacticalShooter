@@ -9,6 +9,8 @@ class MovementSettings : ScriptableObject
     
     [Header("Camera movement")]
     [SerializeField] private float sensitivity = 1f;
+    [SerializeField] private float zTiltCenterSpeed;
+    [SerializeField] private int maxZTilt;
 
     [Space]
     [Space]
@@ -39,8 +41,9 @@ class MovementSettings : ScriptableObject
     
     
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
+    public float ZTiltCenterSpeed { get => zTiltCenterSpeed; set => zTiltCenterSpeed = value; }
+    public int MaxZTilt { get => maxZTilt; set => maxZTilt = value; }
 
-    
     public float DefaultSpeed { get => defaultSpeed; set => defaultSpeed = value; }
     public float DashSpeed { get => dashSpeed; set => dashSpeed = value; }
     public float JumpForce { get => jumpForce; set => jumpForce = value; }

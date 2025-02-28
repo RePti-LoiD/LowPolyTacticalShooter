@@ -8,6 +8,7 @@ public class DashView : MonoBehaviour
     [SerializeField] private float fillAmountSpeed;
     [SerializeField] private float alphaFadingTime;
     [SerializeField] private float maxShowTime;
+    [SerializeField] private bool fading;
 
     private float segmentSizeValue;
 
@@ -21,7 +22,7 @@ public class DashView : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time - lastDataReceiveTime > maxShowTime)
+        if (Time.time - lastDataReceiveTime > maxShowTime && fading)
             dashImage.CrossFadeAlpha(0, alphaFadingTime, false);
 
         dashImage.fillAmount = Mathf.Lerp(dashImage.fillAmount, targetFillAmount, fillAmountSpeed * Time.deltaTime);

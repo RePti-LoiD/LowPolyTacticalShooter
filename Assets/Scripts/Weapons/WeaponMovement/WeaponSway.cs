@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace WeaponBehaviour
@@ -27,15 +28,15 @@ namespace WeaponBehaviour
         private Vector3 currentPosition;
         private Quaternion currentRotation;
 
+        private float globalSwayAmount = 1f;
+
+        public void SetGlobalSwayAmount(float amount) =>
+            globalSwayAmount = amount;
+
         public void OnMouseInput(Vector2 newMouseVector)
         {
             mouseInputs = newMouseVector;
         }
-
-        //private void Update()
-        //{
-        //    ApplyTransform();
-        //}
 
         public void ApplyTransform()
         {
@@ -50,7 +51,7 @@ namespace WeaponBehaviour
         {
             currentPosition = Vector3.Lerp (
                 currentPosition,
-                (Vector3)(mouseInputs * amount).Clamp(maxAmount),
+                (Vector3)(mouseInputs * amount).Clamp(maxAmount) * globalSwayAmount,
                 Time.deltaTime * smoothAmount
             );
         }
@@ -66,7 +67,7 @@ namespace WeaponBehaviour
                         AxisX ? -targetRotation.y : 0,
                         AxisY ? targetRotation.x : 0,
                         AxisZ ? -targetRotation.x : 0
-                    )
+                    ) * globalSwayAmount
                 ),
                 Time.deltaTime * smoothRotation
             );

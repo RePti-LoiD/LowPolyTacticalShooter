@@ -5,8 +5,6 @@ public class CameraMove : MouseMovementControllable
     [SerializeField] private MovementSettings movementSettings;
     [SerializeField] private Rigidbody playerRb;
     [SerializeField] [Range(0, 180)] private int maxVerticalCameraAngle = 90;
-    [SerializeField] private float zTiltCenterSpeed;
-    [SerializeField] private int maxZTilt;
 
     [SerializeField] private Transform cameraTransform;
     private Vector2 currentRotation;
@@ -35,7 +33,7 @@ public class CameraMove : MouseMovementControllable
 
     private void CalculateZTilt(Vector2 mouseInputs)
     {
-        zTilt = Mathf.Clamp(zTilt - mouseInputs.x, -maxZTilt, maxZTilt);
-        zTilt = Mathf.Lerp(zTilt, 0, Time.deltaTime * zTiltCenterSpeed);
+        zTilt = Mathf.Clamp(zTilt - mouseInputs.x, -movementSettings.MaxZTilt, movementSettings.MaxZTilt);
+        zTilt = Mathf.Lerp(zTilt, 0, Time.deltaTime * movementSettings.ZTiltCenterSpeed);
     }
 }

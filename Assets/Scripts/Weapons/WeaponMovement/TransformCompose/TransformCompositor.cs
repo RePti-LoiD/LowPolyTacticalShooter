@@ -27,11 +27,9 @@ public class TransformCompositor : RootPositioning
         {
             if (composableData.ComposePosition)
                 additionalPosition += Vector3.Lerp(Vector3.zero, composableData.Composable.GetPosition(additionalPosition), composableData.Weight);
-                //transform.localPosition += Vector3.Lerp(Vector3.zero, composableData.Composable.GetPosition(), composableData.Weight);
 
             if (composableData.ComposeRotation)
                 additionalRotation *= Quaternion.Slerp(Quaternion.identity, composableData.Composable.GetRotation(additionalRotation), composableData.Weight);
-                //transform.localRotation *= Quaternion.Slerp(Quaternion.identity, composableData.Composable.GetRotation(), composableData.Weight);
         }
     }
 

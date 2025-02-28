@@ -8,6 +8,10 @@ public class CrosshairSettings : ScriptableObject
     public float Gap;   
 
     public bool DotInCenter;
+    public float DotRadius;
+
+    public float CrosshairOffestX;
+    public float CrosshairOffestY;
 
     public Color Color;
 

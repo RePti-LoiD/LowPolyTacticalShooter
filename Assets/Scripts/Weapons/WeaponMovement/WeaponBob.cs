@@ -2,98 +2,82 @@ using UnityEngine;
 
 public class WeaponBob : MonoBehaviour
 {
-    [Header("Sway")]
-    public float step = 0.01f;
-    public float maxStepDistance = 0.06f;
-    Vector3 swayPos;
-
-    [Header("Sway Rotation")]
-    public float rotationStep = 4f;
-    public float maxRotationStep = 5f;
-    Vector3 swayEulerRot;
-
-    public float smooth = 10f;
-    float smoothRot = 12f;
-
+    [SerializeField] private float smooth = 10f;
+    [SerializeField] private float smoothRot = 12f;
 
     [Header("Bobbing")]
-    public float speedCurve;
-    float curveSin { get => Mathf.Sin(speedCurve); }
-    float curveCos { get => Mathf.Cos(speedCurve); }
+    [SerializeField] private float speedCurve;
 
-
-    public Vector3 travelLimit = Vector3.one * 0.025f;
-    public Vector3 bobLimit = Vector3.one * 0.01f;
-
-    Vector3 bobPosition;
-    public float bobExaggeration;
+    [SerializeField] private Vector3 travelLimit = Vector3.one * 0.025f;
+    [SerializeField] private Vector3 bobLimit = Vector3.one * 0.01f;
+    [SerializeField] private float bobExaggeration;
+    
+    private Vector3 bobPosition;
 
     [Header("Bob Rotation")]
-    public Vector3 multiplier;
-    Vector3 bobEulerRotation;
+    [SerializeField] private Vector3 multiplier;
+    private Vector3 bobEulerRotation;
 
+    private Vector2 walkInput;
+
+    private float bobWeight = 1f;
+    private float currentSpeed;
     private bool isGrounded;
-
-    public void OnHorizontalSpeedChanged(float newSpeedValue)
-    {
-        currentSpeed = newSpeedValue;
+    
+    private float CurveSin { get => Mathf.Sin(speedCurve); }
+    private float CurveCos { get => Mathf.Cos(speedCurve); }
+    public float BobWeight 
+    { 
+        get => bobWeight; 
+        set
+        {
+            bobWeight = Mathf.Clamp(value, 0, 1);
+        }
     }
 
-    public void OnIsGroundedChanged(bool newIsGroundedValue)
-    {
-        isGrounded = newIsGroundedValue;
-    }
+    public void SetBobWeight(float weight) =>
+        BobWeight = weight;
 
-    void Update()
-    {
-        GetInput();
+    public void OnMove(Vector2 input) =>
+        walkInput = input.normalized;
 
+    public void OnGroundedChanged(bool isGrounded) =>
+        this.isGrounded = isGrounded;
+
+    public void OnMovementSpeedChange(float speed) =>
+        currentSpeed = speed;
+
+    private void Update()
+    {
         BobOffset();
         BobRotation();
 
-        if (currentSpeed == 0)
-        {
-            currentSpeed = 1;
-            bobPosition = Vector3.zero;
-            swayEulerRot = Vector3.zero;
-        }
         CompositePositionRotation();
     }
 
-    Vector2 walkInput;
-    Vector2 lookInput;
-    private float currentSpeed;
-
-    void GetInput()
+    private void CompositePositionRotation()
     {
-        walkInput.x = Input.GetAxis("Horizontal");
-        walkInput.y = Input.GetAxis("Vertical");
-        walkInput = walkInput.normalized;
 
-        lookInput.x = Input.GetAxis("Mouse X");
-        lookInput.y = Input.GetAxis("Mouse Y");
+        print(BobWeight);
+
+        transform.localPosition = (Vector3.Lerp(transform.localPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
+
+        transform.localRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(transform.localRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
     }
 
-    void CompositePositionRotation()
+    private void BobOffset()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, swayPos + bobPosition, Time.deltaTime * smooth);
+        speedCurve += (isGrounded ? (Mathf.Clamp(Mathf.Abs(walkInput.x) + Mathf.Abs(walkInput.y), -1, 1)) * bobExaggeration : 1f) * currentSpeed * Time.deltaTime;
 
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(swayEulerRot) * Quaternion.Euler(bobEulerRotation), Time.deltaTime * smoothRot);
-    }
-
-    void BobOffset()
-    {
-        speedCurve += (Time.deltaTime * (isGrounded ? (Input.GetAxis("Horizontal") + Input.GetAxis("Vertical")) * bobExaggeration : 1f) + 0.001f) * currentSpeed;
-
-        bobPosition.x = (curveCos * bobLimit.x * (isGrounded ? 1 : 0)) - (walkInput.x * travelLimit.x);
-        bobPosition.y = (Mathf.Abs(curveSin) * bobLimit.y) - (Input.GetAxis("Vertical") * travelLimit.y);
+        bobPosition.x = (CurveCos * bobLimit.x) - (-walkInput.x * travelLimit.x);
+        bobPosition.y = (Mathf.Abs(CurveSin) * bobLimit.y) - (Mathf.Abs(walkInput.y) * travelLimit.y);
         bobPosition.z = -(walkInput.y * travelLimit.z);
     }
 
-    void BobRotation()
+    private void BobRotation()
     {
-        bobEulerRotation.x = (walkInput != Vector2.zero ? multiplier.x * (Mathf.Sin(2 * speedCurve)) : multiplier.x * (Mathf.Sin(2 * speedCurve) / 2));
-        bobEulerRotation.y = (walkInput != Vector2.zero ? multiplier.y * curveCos : 0);
-        bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * curveCos * walkInput.x : 0);
+        bobEulerRotation.x = (walkInput != Vector2.zero ? multiplier.x * (Mathf.Sin(2 * speedCurve)) : 0);
+        bobEulerRotation.y = (walkInput != Vector2.zero ? multiplier.y * CurveCos : 0);
+        bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * CurveCos * walkInput.x : 0);
     }
 }

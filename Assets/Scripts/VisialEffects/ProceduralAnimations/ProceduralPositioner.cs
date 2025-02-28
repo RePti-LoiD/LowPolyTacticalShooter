@@ -53,13 +53,13 @@ public class ProceduralPositioner : MonoBehaviour
         {
             currentTime += Time.deltaTime;
 
-            transform.localPosition = Vector3.Lerp (
+            transform.localPosition = Vector3.LerpUnclamped (
                 startPosition,
                 unit.TargetTransform.localPosition,
                 unit.TimeCurve.Evaluate(currentTime)
             );
 
-            transform.localRotation = Quaternion.Lerp (
+            transform.localRotation = Quaternion.SlerpUnclamped (
                 startRotation,
                 unit.TargetTransform.localRotation,
                 unit.TimeCurve.Evaluate(currentTime)
