@@ -15,7 +15,7 @@ MonoBehaviour:
   groundKeyboardLerpValue: 15
   airKeyboardLerpValue: 2
   sensitivity: 0.05
-  zTiltCenterSpeed: 25
+  zTiltCenterSpeed: 50
   maxZTilt: 15
   defaultSpeed: 8
   jumpForce: 5

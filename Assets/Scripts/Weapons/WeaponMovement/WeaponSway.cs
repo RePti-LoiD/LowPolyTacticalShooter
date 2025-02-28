@@ -11,6 +11,7 @@ namespace WeaponBehaviour
         [SerializeField] private Vector3 amount = Vector3.zero;
         [SerializeField] private Vector3 maxAmount = Vector3.one;
         [SerializeField] private float smoothAmount = 6f;
+        [SerializeField] private float walkInputWeigth = 2f;
 
         [Header("Rotation")]
         [SerializeField] private Vector3 rotationAmount = Vector3.zero;
@@ -24,6 +25,7 @@ namespace WeaponBehaviour
         [SerializeField] private bool AxisZ = true;
 
         private Vector2 mouseInputs;
+        private Vector2 walkInputs;
 
         private Vector3 currentPosition;
         private Quaternion currentRotation;
@@ -32,6 +34,11 @@ namespace WeaponBehaviour
 
         public void SetGlobalSwayAmount(float amount) =>
             globalSwayAmount = amount;
+
+        public void OnMove(Vector2 walkInputs)
+        {
+            this.walkInputs = walkInputs;
+        }
 
         public void OnMouseInput(Vector2 newMouseVector)
         {
@@ -66,7 +73,7 @@ namespace WeaponBehaviour
                     new Vector3 (
                         AxisX ? -targetRotation.y : 0,
                         AxisY ? targetRotation.x : 0,
-                        AxisZ ? -targetRotation.x : 0
+                        AxisZ ? -targetRotation.x + walkInputs.x * walkInputWeigth : 0
                     ) * globalSwayAmount
                 ),
                 Time.deltaTime * smoothRotation

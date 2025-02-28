@@ -50,19 +50,22 @@ public class WeaponBob : TransformComposable
     public void OnMovementSpeedChange(float speed) =>
         currentSpeed = speed;
 
-    private void Update()
+    public override Vector3 GetPosition(Vector3 prevPosition)
     {
         BobOffset();
-        BobRotation();
 
-        CompositePositionRotation();
+        currentPosition = (Vector3.Lerp(currentPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
+        
+        return currentPosition;
     }
 
-    private void CompositePositionRotation()
+    public override Quaternion GetRotation(Quaternion prevRotation)
     {
-        transform.localPosition = (Vector3.Lerp(transform.localPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
+        BobRotation();
 
-        transform.localRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(transform.localRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
+        currentRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(currentRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
+
+        return currentRotation;
     }
 
     private void BobOffset()
@@ -81,21 +84,4 @@ public class WeaponBob : TransformComposable
         bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * CurveCos * walkInput.x : 0);
     }
 
-    public override Vector3 GetPosition(Vector3 prevPosition)
-    {
-        BobOffset();
-
-        currentPosition = (Vector3.Lerp(currentPosition, bobPosition * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0), Time.deltaTime * smooth)) * BobWeight;
-        
-        return currentPosition;
-    }
-
-    public override Quaternion GetRotation(Quaternion prevRotation)
-    {
-        BobRotation();
-
-        currentRotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Slerp(currentRotation, Quaternion.Euler(bobEulerRotation * (isGrounded ? 1 : 0) * (walkInput != Vector2.zero ? 1f : 0)), Time.deltaTime * smoothRot), BobWeight);
-
-        return currentRotation;
-    }
 }
