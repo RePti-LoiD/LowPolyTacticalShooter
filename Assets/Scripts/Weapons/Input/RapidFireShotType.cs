@@ -18,6 +18,7 @@ public class RapidFireShotType : ShotType
     {
         if (!currentlyShot) return;
         if (Time.time - lastShotTime < shotDelay) return;
+        if (!RuntimeGunData.TryTakeAmmo()) return;
 
         OnShot?.Invoke();
 

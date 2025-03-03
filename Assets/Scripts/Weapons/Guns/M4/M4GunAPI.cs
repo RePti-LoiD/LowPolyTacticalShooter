@@ -5,8 +5,6 @@ public class M4GunAPI : BaseGunAPI
 {
     [SerializeField] private RecoilRotationSender cameraRecoil;
 
-    [SerializeField] private ProceduralPositioner proceduralPositioner;
-
     public override void EnableGun(ExternalDataForGun data)
     {
         base.EnableGun(data);

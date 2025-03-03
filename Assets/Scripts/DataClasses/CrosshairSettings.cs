@@ -5,11 +5,14 @@ public class CrosshairSettings : ScriptableObject
 {
     public float Length;
     public float Width;
-    public float Gap;   
+    public float Gap;
 
+    [Space]
     public bool DotInCenter;
     public float DotRadius;
+    public Sprite DotSprite;
 
+    [Space]
     public float CrosshairOffestX;
     public float CrosshairOffestY;
 

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace WeaponBehaviour
@@ -11,7 +10,7 @@ namespace WeaponBehaviour
         [SerializeField] private Vector3 amount = Vector3.zero;
         [SerializeField] private Vector3 maxAmount = Vector3.one;
         [SerializeField] private float smoothAmount = 6f;
-        [SerializeField] private float walkInputWeigth = 2f;
+        [SerializeField] private float walkInputWeigth = -2f;
 
         [Header("Rotation")]
         [SerializeField] private Vector3 rotationAmount = Vector3.zero;

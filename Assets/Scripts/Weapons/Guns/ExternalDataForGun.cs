@@ -7,4 +7,5 @@ public class ExternalDataForGun
     public Transform GunTransform;
     public RecoilRotationReceiver CameraRecoilRotationReceiver;
     public AudioSource AudioSource;
+    public ObjectPool ProjectilePool;
 }

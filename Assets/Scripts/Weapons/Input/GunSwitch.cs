@@ -2,12 +2,14 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunSwitch : MonoBehaviour
 {
     [Header("Guns/events")]
     [SerializeField] private List<GunAPI> guns = new List<GunAPI>();
     [SerializeField] private GunAPIEvent GunSelected;
+    [SerializeField] private UnityEvent<RuntimeGunData> GunDataChanged;
 
     [Space]
     [SerializeField] private float gunSwitchDelay;
@@ -18,6 +20,7 @@ public class GunSwitch : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform gunTransform;
     [SerializeField] private RecoilRotationReceiver cameraRecoilRotationReceiver;
+    [SerializeField] private ObjectPool projectilePool;
 
     private GunAPI currentGun;
     private GunAPI prevGun;
@@ -36,7 +39,27 @@ public class GunSwitch : MonoBehaviour
 
     private void Start()
     {
+        if (projectilePool == null)
+            projectilePool = FindAnyObjectByType<ObjectPool>();
+
         SelectGun(guns.First());
+    }
+
+    public GunAPI RemoveCurrentGun()
+    {
+        var gun = currentGun;
+        guns.Remove(gun);
+
+        SelectGun(guns.First());
+        
+        prevGun = null;
+
+        return gun;
+    }
+
+    public void AddGun(GunAPI gun)
+    {
+        guns.Add(gun);
     }
 
     public void SwitchToPrevious()
@@ -74,23 +97,33 @@ public class GunSwitch : MonoBehaviour
 
     private void ActivateGun(GunAPI gun)
     {
+        if (currentGun != null)
+            currentGun.GunDataChanged -= OnGunDataChanged;
+
         gun.EnableGun(new ExternalDataForGun
         {
             Movement = movement,
             CoroutineRunner = coroutineRunner,
             AudioSource = audioSource,
             GunTransform = gunTransform,
-            CameraRecoilRotationReceiver = cameraRecoilRotationReceiver
+            CameraRecoilRotationReceiver = cameraRecoilRotationReceiver,
+            ProjectilePool = projectilePool
         });
 
         prevGun = currentGun;
         currentGun = gun;
 
+        currentGun.GunDataChanged += OnGunDataChanged;
+
         GunSelected?.Invoke(gun);
+        GunDataChanged?.Invoke(gun.GunData);
 
         canSwitchGun = false;
         StartCoroutine(GunSwitchDelay(gunSwitchDelay));
     }
+
+    private void OnGunDataChanged(RuntimeGunData data) =>
+        GunDataChanged?.Invoke(data);
 
     private IEnumerator GunSwitchDelay(float time)
     {

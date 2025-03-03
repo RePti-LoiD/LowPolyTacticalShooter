@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System;
 using System.Collections;
 using System.Linq;
+using UnityEngine.Events;
 
 public class ProceduralPositioner : MonoBehaviour
 {
     [SerializeField] private List<AnimationUnit> animationUnits = new List<AnimationUnit>();
     [SerializeField] public Transform instanceTransform;
 
+    public UnityEvent<AnimationUnit> AnimationEnded;
+
     private int currentAnimationIndex;
 
     private AnimationUnit currentUnit;
+    private IEnumerator currentAnim;
 
     private void Awake()
     {
@@ -38,7 +42,8 @@ public class ProceduralPositioner : MonoBehaviour
         currentAnimationIndex = index;
         currentUnit = animationUnits[currentAnimationIndex];
 
-        StartCoroutine(MoveToPosition(currentUnit));
+        currentAnim = MoveToPosition(currentUnit);
+        StartCoroutine(currentAnim);
     }
 
     private IEnumerator MoveToPosition(AnimationUnit unit)
@@ -67,5 +72,9 @@ public class ProceduralPositioner : MonoBehaviour
 
             yield return null;
         }
+
+        AnimationEnded?.Invoke(unit);
+        currentAnim = null;
+        currentUnit = null;
     }
 }

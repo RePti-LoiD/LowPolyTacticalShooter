@@ -5,6 +5,9 @@ public class BaseGunAPI : GunAPI
 {
     [SerializeField] private GameObject children;
 
+    [SerializeField] public ProceduralPositioner proceduralPositioner;
+    [SerializeField] protected TransformCompositor transformCompositor;
+
     [Header("Events")]
     [SerializeField] private UnityEvent shotStart;
     [SerializeField] private UnityEvent shotStop;
@@ -21,18 +24,40 @@ public class BaseGunAPI : GunAPI
 
     public override void DisableGun()
     {
-        gunDisabled?.Invoke();
-        children.SetActive(false);
+        if (proceduralPositioner != null)
+            proceduralPositioner.enabled = false;
+        
+        if (transformCompositor != null)
+            transformCompositor.enabled = false;
 
         base.DisableGun();
     }
 
     public override void EnableGun(ExternalDataForGun data)
     {
+        if (proceduralPositioner != null)
+            proceduralPositioner.enabled = true;
+
+        if (transformCompositor != null)
+            transformCompositor.enabled = true;
+
         LastData = data;
         gunEnabled?.Invoke();
+        
+        //children.SetActive(true);
+    }
 
-        children.SetActive(true);
+    public override void ForceStop()
+    {
+        gunDisabled?.Invoke();
+
+        if (proceduralPositioner != null)
+            proceduralPositioner.enabled = false;
+
+        if (transformCompositor != null)
+            transformCompositor.enabled = false;
+
+        Disabled?.Invoke(this);
     }
 
     public override void ShotStart() =>

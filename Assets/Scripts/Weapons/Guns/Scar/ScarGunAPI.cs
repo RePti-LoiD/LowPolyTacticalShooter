@@ -5,11 +5,12 @@ public class ScarGunAPI : BaseGunAPI
 {
     [SerializeField] private RecoilRotationSender cameraRecoil;
 
-    [SerializeField] private ProceduralPositioner proceduralPositioner;
+    [SerializeField] private ProjectileThrower projectileThrower;
 
     public override void EnableGun(ExternalDataForGun data)
     {
         base.EnableGun(data);
+        projectileThrower.SetPool(data.ProjectilePool);
 
         cameraRecoil.OnRecoil.AddListener(LastData.CameraRecoilRotationReceiver.RotateObject);
     }
@@ -17,15 +18,19 @@ public class ScarGunAPI : BaseGunAPI
     public override void DisableGun()
     {
         cameraRecoil.OnRecoil.RemoveListener(LastData.CameraRecoilRotationReceiver.RotateObject);
+        
         gunDisabled?.Invoke();
+        StopAllCoroutines();
 
-        StartCoroutine(Wait(.15f));
+        if (proceduralPositioner != null)
+            proceduralPositioner.enabled = false;
     }
 
-    private IEnumerator Wait(float time)
+    public void OnAnimationEnded(AnimationUnit animationUnit)
     {
-        yield return new WaitForSeconds(time);
+        print("jopa");
 
-        base.DisableGun();
+        if (animationUnit.AnimationName == "HoldDown")
+            Disabled?.Invoke(this);
     }
 }

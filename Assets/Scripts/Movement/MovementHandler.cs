@@ -24,6 +24,10 @@ public class MovementHandler : MonoBehaviour
     [SerializeField] public UnityEvent OnInspect;
 
     [Space]
+    [SerializeField] public UnityEvent Drop;
+    [SerializeField] public UnityEvent Interact;
+
+    [Space]
     [SerializeField] public UnityEvent LastSelect;
     [SerializeField] public UnityEvent<int> IndexSelected;
 
@@ -55,6 +59,8 @@ public class MovementHandler : MonoBehaviour
         inputs.PlayerMap.PrevSelection.performed += OnPrevSelection;
 
         inputs.PlayerMap.WeaponSelection.performed += OnWeaponSelection;
+        inputs.PlayerMap.Drop.performed += OnDrop;
+        inputs.PlayerMap.Interact.performed += OnInteract;
 
         isInputEnabled = true;
     }
@@ -81,7 +87,8 @@ public class MovementHandler : MonoBehaviour
         inputs.PlayerMap.PrevSelection.performed -= OnPrevSelection;
 
         inputs.PlayerMap.WeaponSelection.performed -= OnWeaponSelection;
-
+        inputs.PlayerMap.Drop.performed -= OnDrop;
+        inputs.PlayerMap.Interact.performed -= OnInteract;
         isInputEnabled = false;
     }
 
@@ -137,5 +144,11 @@ public class MovementHandler : MonoBehaviour
 
     private void OnPrevSelection(InputAction.CallbackContext obj) =>
         LastSelect?.Invoke();
+
+    private void OnInteract(InputAction.CallbackContext obj) =>
+        Interact?.Invoke();
+
+    private void OnDrop(InputAction.CallbackContext obj) =>
+        Drop?.Invoke();
     #endregion
 }

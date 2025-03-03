@@ -3,15 +3,18 @@ using UnityEngine.Events;
 
 public class ProjectileThrower : MonoBehaviour
 {
-    [SerializeField] private ObjectPool pool;
     [SerializeField] private Transform muzzle;
 
     [Space]
     [SerializeField] private UnityEvent<Projectile, RaycastHit> Collided;
 
-
     [Space]
     [SerializeField] private ProjectileData projectileData;
+
+    private ObjectPool pool;
+
+    public void SetPool(ObjectPool pool) =>
+        this.pool = pool;
 
     public void SendProjectile()
     {

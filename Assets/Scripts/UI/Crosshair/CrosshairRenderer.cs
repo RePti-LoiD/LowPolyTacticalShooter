@@ -7,11 +7,30 @@ public class CrosshairRenderer : MonoBehaviour
 {
     [SerializeField] private CrosshairSettings crosshairSettings;
 
+    [SerializeField] private Transform dotTransform;
+    [SerializeField] private Transform crosshairTransform;
+
     private Dictionary<RectTransform, float> crosshair = new();
+    private RectTransform dot;
 
     private void Start()
     {
         InitializeCrosshair();
+    }
+
+    public void EnableCrosshair() =>
+        CrosshairSetActive(true);
+
+    public void DisableCrosshair() =>
+        CrosshairSetActive(false);
+
+    private void CrosshairSetActive(bool state)
+    {
+        foreach (Transform t in dotTransform)
+            t.gameObject.SetActive(state);
+
+        if (dot != null)
+            dot.gameObject.SetActive(state);
     }
 
     public void InitializeCrosshair()
@@ -24,16 +43,17 @@ public class CrosshairRenderer : MonoBehaviour
 
     private void DrawCrosshairPoint()
     {
-        CreateCrosshairPart (
+        dot = CreateCrosshairPart(
             name: "point",
-            parent: transform,
+            parent: dotTransform,
             localPosition: Vector3.zero,
             localRotation: Vector3.zero,
             localScale: Vector3.one,
             component: typeof(Image),
             length: crosshairSettings.DotRadius,
             width: crosshairSettings.DotRadius,
-            color: Color.white
+            color: crosshairSettings.Color,
+            sprite: crosshairSettings.DotSprite
         );
     }
 
@@ -51,7 +71,7 @@ public class CrosshairRenderer : MonoBehaviour
         {
             var crosshairRect = CreateCrosshairPart(
                 name: $"line {i}",
-                parent: transform,
+                parent: crosshairTransform,
                 localPosition: new Vector2(
                     Mathf.Cos(currentAngle),
                     Mathf.Sin(currentAngle)

@@ -33,4 +33,10 @@ public static class TransformExtensions
         a.localPosition = Vector3.SlerpUnclamped(a.localPosition, b.localPosition, amount);
         a.localRotation = Quaternion.SlerpUnclamped(a.localRotation, b.localRotation, amount);
     }
+
+    public static void SetAllChildrenLayer(this Transform root, int layerNumber)
+    {
+        foreach (var child in root.GetComponentsInChildren<Transform>(true))
+            child.gameObject.layer = layerNumber;
+    }
 }
