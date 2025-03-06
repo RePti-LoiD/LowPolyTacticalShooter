@@ -7,6 +7,7 @@ public class BaseGunAPI : GunAPI
 
     [SerializeField] public ProceduralPositioner proceduralPositioner;
     [SerializeField] protected TransformCompositor transformCompositor;
+    [SerializeField] private RecoilRotationSender cameraRecoil;
 
     [Header("Events")]
     [SerializeField] private UnityEvent shotStart;
@@ -24,13 +25,27 @@ public class BaseGunAPI : GunAPI
 
     public override void DisableGun()
     {
+        DisableComponents();
+    }
+
+    public void DisableComponents()
+    {
+        gunDisabled?.Invoke();
+        StopAllCoroutines();
+
         if (proceduralPositioner != null)
             proceduralPositioner.enabled = false;
-        
+
         if (transformCompositor != null)
             transformCompositor.enabled = false;
 
-        base.DisableGun();
+        if (cameraRecoil != null)
+        {
+            cameraRecoil.OnRecoil.RemoveListener(LastData.CameraRecoilRotationReceiver.RotateObject);
+            print($"Removed: {name}");
+        }
+
+        print($"Disabled: {name}");
     }
 
     public override void EnableGun(ExternalDataForGun data)
@@ -43,8 +58,9 @@ public class BaseGunAPI : GunAPI
 
         LastData = data;
         gunEnabled?.Invoke();
-        
-        //children.SetActive(true);
+
+        if (cameraRecoil != null)
+            cameraRecoil.OnRecoil.AddListener(LastData.CameraRecoilRotationReceiver.RotateObject);
     }
 
     public override void ForceStop()
@@ -58,6 +74,15 @@ public class BaseGunAPI : GunAPI
             transformCompositor.enabled = false;
 
         Disabled?.Invoke(this);
+    }
+
+    public void OnAnimationEnded(AnimationUnit animationUnit)
+    {
+        if (animationUnit.AnimationName == "HoldDown")
+        {
+            print($"Animation end on {name}");
+            Disabled?.Invoke(this);
+        }
     }
 
     public override void ShotStart() =>

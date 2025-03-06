@@ -12,7 +12,12 @@ public class FistsAPI : BaseGunAPI
         leftHitRotationSender.OnRecoil.RemoveListener(LastData.CameraRecoilRotationReceiver.RotateObject);
         rightHitRotationSender.OnRecoil.RemoveListener(LastData.CameraRecoilRotationReceiver.RotateObject);
 
-        lerpAnim.AnimateGunDisabling(() => base.DisableGun());
+        lerpAnim.AnimateGunDisabling(() =>
+        {
+            base.DisableGun();
+
+            Disabled?.Invoke(this);
+        });
     }
 
     public override void EnableGun(ExternalDataForGun data)

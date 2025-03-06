@@ -17,6 +17,8 @@ public class WeaponDrop : MonoBehaviour
 
         if (removedGun.TryGetComponent(out Rigidbody rb))
         {
+            print("ASSS");
+
             removedGun.Disabled += (x) =>
             {
                 rb.position = (Vector3.forward * 2);

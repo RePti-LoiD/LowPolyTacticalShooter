@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4069841445510084089}
   - component: {fileID: 3551852533823630198}
   - component: {fileID: 8245097828700499651}
+  - component: {fileID: 2558997151527378144}
   m_Layer: 8
   m_Name: GunWorldUi
   m_TagString: Untagged
@@ -28,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 483780134437890719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.0015, y: 0.0015, z: 0.0015}
+  m_LocalScale: {x: -0.002, y: 0.002, z: 0.002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2109141277223544332}
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8245097828700499651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +103,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2558997151527378144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483780134437890719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b445285def62d342a88be1e5613aea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunNameText: {fileID: 4751570008830592244}
+  gunDescriptionText: {fileID: 3863471370845137373}
+  gunAmmoText: {fileID: 6573763848799253000}
+  gunAmmoRemainText: {fileID: 1786798486733326626}
+  gunCaliberText: {fileID: 1269087139879655056}
+  gunIcon: {fileID: 7641482839088940582}
+  gunAmmoFillAmount: {fileID: 3983191590186214482}
+  divider: {fileID: 4946092380375628198}
 --- !u!1 &1070028606103452804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,7 +1649,7 @@ MonoBehaviour:
   m_fontSizeMin: 16
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 16
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2775,8 +2796,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -95}
-  m_SizeDelta: {x: 0, y: -290}
+  m_AnchoredPosition: {x: 0, y: -105.0025}
+  m_SizeDelta: {x: 0, y: -270.005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5505804969950404441
 MonoBehaviour:

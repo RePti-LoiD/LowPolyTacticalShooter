@@ -46,8 +46,6 @@ public class Projectile : MonoBehaviour
 
             transform.position += transform.forward * CurrentProjectileData.Speed * Time.deltaTime + new Vector3(0, CurrentProjectileData.YCurve.Evaluate(currentTime) - lastEvaluate);
             lastEvaluate = CurrentProjectileData.YCurve.Evaluate(currentTime);
-            
-            CheckCollision();
 
             yield return null;
         }
@@ -57,22 +55,12 @@ public class Projectile : MonoBehaviour
         ReleaseProjectileToPool();
     }
 
-    private void CheckCollision()
+    public void OnProjectileCollide(Projectile projectile, RaycastHit hitInfo)
     {
-        lastPosition = currentPosition;
-        currentPosition = transform.position;
+        print(hitInfo.collider.gameObject);
 
-        var direction = currentPosition - lastPosition;
-
-        Debug.DrawRay(lastPosition, direction, Color.red);
-
-        if (Physics.Raycast(lastPosition, direction, out RaycastHit hit, direction.magnitude))
-        {
-            print(hit.collider.gameObject);
-
-            CurrentProjectileData.ProjectileThrower.OnProjectileHit(this, hit);
-            ReleaseProjectileToPool();
-        }
+        CurrentProjectileData.ProjectileThrower.OnProjectileHit(this, hitInfo);
+        ReleaseProjectileToPool();
     }
 
     public void ReleaseProjectileToPool() =>

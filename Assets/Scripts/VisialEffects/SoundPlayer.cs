@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] clips;
+    [SerializeField] public AudioClip[] clips;
     [SerializeField] public AudioSource Source;
 
     public void PlaySound()

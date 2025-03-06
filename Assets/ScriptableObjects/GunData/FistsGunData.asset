@@ -16,5 +16,6 @@ MonoBehaviour:
   description: 
   caliberName: BIGDICK
   gunSprite: {fileID: 21300000, guid: 3afc24a351f9b9c4b926000f5e70eb31, type: 3}
-  ammoCount: 0
-  remainAmmo: 0
+  gunColor: {r: 0, g: 0.7195444, b: 1, a: 1}
+  ammoCount: 1
+  remainAmmo: 1

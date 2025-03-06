@@ -21,6 +21,12 @@ public class RuntimeGunData : MonoBehaviour
         }
     }
     
+    public void SetGunDataIfEmpty(GunData gunData)
+    {
+        if (gunData == null)
+            this.gunData = gunData;
+    }
+
     public int RemainAmmoCount 
     { 
         get => remainAmmoCount; 

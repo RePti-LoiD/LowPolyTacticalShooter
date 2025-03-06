@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8331509556208980800}
   - component: {fileID: 8343140595701094206}
   - component: {fileID: 7706483887433625613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7402575098424964786}
   - component: {fileID: 2207072162616664959}
   - component: {fileID: 3683306508750651097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 2950332828383525374}
   - component: {fileID: 1893670867651459969}
   - component: {fileID: 611929409661990645}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 6044106984336508200}
   - component: {fileID: 461031626710174573}
   - component: {fileID: 7583216897788435045}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2939591940835352794}
-  m_Layer: 0
+  - component: {fileID: 2621112401087733747}
+  - component: {fileID: 4996427149286299800}
+  - component: {fileID: 7996337193552999268}
+  - component: {fileID: 3754929571176602962}
+  - component: {fileID: 2676979267027468903}
+  - component: {fileID: 8511262536299428466}
+  m_Layer: 6
   m_Name: AR_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,6 +390,141 @@ Transform:
   - {fileID: 6935891892124060706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2621112401087733747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb7ba4cb05a3ad45b1d330b9c430fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RuntimeGunData: {fileID: 0}
+  OnShot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4996427149286299800}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8511262536299428466}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4996427149286299800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilRotationData: {fileID: 11400000, guid: 43071d49979321940a968f3bf71ff5ae, type: 2}
+  OnRecoil:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2676979267027468903}
+        m_TargetAssemblyTypeName: RecoilRotationReceiver, Assembly-CSharp
+        m_MethodName: RotateObject
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7996337193552999268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39cd8dc6deb4c240aa43601be2a984d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantPosition: {x: 0, y: 0, z: 0}
+  instantRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &3754929571176602962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a6ca715a8005f4d8d6d977e5b45926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantTransform: {fileID: 7996337193552999268}
+  composablesData:
+  - Composable: {fileID: 2676979267027468903}
+    Weight: 0
+    ComposePosition: 0
+    ComposeRotation: 1
+  - Composable: {fileID: 8511262536299428466}
+    Weight: 0
+    ComposePosition: 1
+    ComposeRotation: 0
+  dropTransformAfterCompose: 1
+--- !u!114 &2676979267027468903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed4de22375347d245b78c99905651549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  returnTime: 7
+  snappines: 15
+--- !u!114 &8511262536299428466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7368e29884d639d49b71c850f406e0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetHipfireRecoil: {x: 0, y: 0, z: 0}
+  hipfireRecoil: {x: 0, y: 0, z: 0}
+  returnTime: 15
+  snappines: 10
 --- !u!1 &2651670557470964910
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +536,7 @@ GameObject:
   - component: {fileID: 6747906716947528747}
   - component: {fileID: 3841656728912890475}
   - component: {fileID: 6305741427357233449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +622,7 @@ GameObject:
   - component: {fileID: 6124413846938024624}
   - component: {fileID: 6228976442345482143}
   - component: {fileID: 7940040734337784883}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +641,8 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.045778647, z: 0.16761732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8458031567312766519}
   m_Father: {fileID: 2939591940835352794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6228976442345482143
@@ -556,6 +698,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4406299652028410386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8458031567312766519}
+  m_Layer: 0
+  m_Name: TargetL(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8458031567312766519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4406299652028410386}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.23264097, y: -0.45900172, z: -0.85638773, w: 0.04237506}
+  m_LocalPosition: {x: -0.083, y: 0.015, z: 0.036}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6124413846938024624}
+  m_LocalEulerAnglesHint: {x: -50.036, y: -42.916, z: -153.545}
 --- !u!1 &5079521814632665102
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +740,7 @@ GameObject:
   - component: {fileID: 5723921521078052652}
   - component: {fileID: 6173076887165839318}
   - component: {fileID: 7410485544265817284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +759,8 @@ Transform:
   m_LocalPosition: {x: -0, y: -0.047363177, z: -0.03988272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7710289654250709166}
   m_Father: {fileID: 2939591940835352794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6173076887165839318
@@ -653,7 +827,7 @@ GameObject:
   - component: {fileID: 6935891892124060706}
   - component: {fileID: 3112477629860692364}
   - component: {fileID: 2648913930222158661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -728,6 +902,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5806038194604062059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7710289654250709166}
+  m_Layer: 0
+  m_Name: TargetR(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7710289654250709166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5806038194604062059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5534111, y: -0.4228849, z: 0.60394233, w: 0.38750255}
+  m_LocalPosition: {x: 0.07, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5723921521078052652}
+  m_LocalEulerAnglesHint: {x: 70, y: 85, z: 180}
 --- !u!1 &7746647501067317166
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,7 +944,7 @@ GameObject:
   - component: {fileID: 6450390871749498222}
   - component: {fileID: 3737257088384226950}
   - component: {fileID: 7923046870729840536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AR_B_BarrelGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

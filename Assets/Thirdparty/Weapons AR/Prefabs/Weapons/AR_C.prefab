@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 46813100545992166}
   - component: {fileID: 4608125345393012781}
   - component: {fileID: 6040722958201172774}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 380665005897939227}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LeftArmTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 1945506973931202054}
   - component: {fileID: 6869690088716220790}
   - component: {fileID: 7969177431004635184}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 943673366811678324}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: RightArmTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036268592921319693}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Anchors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7251484243971468174}
   - component: {fileID: 3521642959750639894}
   - component: {fileID: 7565874662471540177}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 7568155625000540872}
   - component: {fileID: 2023349649600573551}
   - component: {fileID: 3165209450653838787}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Receiver_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 8336364741557241720}
   - component: {fileID: 8617973506056941288}
   - component: {fileID: 7645376400243859698}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 360208123767424283}
   - component: {fileID: 5725216485988156812}
   - component: {fileID: 5633360275561690246}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Stock_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 779455748050266518}
   - component: {fileID: 631380293810052372}
   - component: {fileID: 5230505525074086235}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb7ba4cb05a3ad45b1d330b9c430fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RuntimeGunData: {fileID: 0}
   OnShot:
     m_PersistentCalls:
       m_Calls:
@@ -729,18 +730,6 @@ MonoBehaviour:
           m_StringArgument: BoltAnimation
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1495941117997269225}
-        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
-        m_MethodName: AnimateGunEnabling
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: BoltAnimation
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 453331000422401831}
         m_TargetAssemblyTypeName: ProjectileThrower, Assembly-CSharp
         m_MethodName: SendProjectile
@@ -777,7 +766,6 @@ MonoBehaviour:
           m_StringArgument: BoltAnimation
           m_BoolArgument: 0
         m_CallState: 2
-  shotPerMinute: 600
 --- !u!114 &1934972372853046973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +906,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4118874998455669609}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21a6ca715a8005f4d8d6d977e5b45926, type: 3}
   m_Name: 
@@ -964,6 +952,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnTime: 7
   snappines: 7
+--- !u!1 &4260181883938941119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7902939289221722041}
+  - component: {fileID: 3887376644623860647}
+  - component: {fileID: 4672911472883748796}
+  m_Layer: 0
+  m_Name: reticle Lens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7902939289221722041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260181883938941119}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00061, y: 0.06046, z: -0.0248}
+  m_LocalScale: {x: 1.9711398, y: 1.4964373, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7878057570255364486}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3887376644623860647
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260181883938941119}
+  m_Mesh: {fileID: -2124705421725058983, guid: 9112725621d8181418502d8634131bd7, type: 3}
+--- !u!23 &4672911472883748796
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260181883938941119}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e68d0fbc4f3df054382947c54b6a22a8, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &4455523962174935483
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +1049,7 @@ GameObject:
   - component: {fileID: 350670893016133224}
   - component: {fileID: 1303099418658413085}
   - component: {fileID: 1447355845521815075}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1061,7 +1135,7 @@ GameObject:
   - component: {fileID: 9005349352475478061}
   - component: {fileID: 8105889889689189970}
   - component: {fileID: 4899163469964000164}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Receiver_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1147,7 +1221,7 @@ GameObject:
   - component: {fileID: 3048760874364938086}
   - component: {fileID: 982060021096853505}
   - component: {fileID: 105311568200743311}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1275,7 +1349,7 @@ GameObject:
   - component: {fileID: 7886945957790370708}
   - component: {fileID: 3058152807717213532}
   - component: {fileID: 5880708526602328179}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 1st focal plane Lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1363,7 +1437,7 @@ GameObject:
   - component: {fileID: 8269659571996021498}
   - component: {fileID: 7994455462527729345}
   - component: {fileID: 1495941117997269225}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1539,7 @@ GameObject:
   - component: {fileID: 2789895838866707234}
   - component: {fileID: 2827274835909081081}
   - component: {fileID: 2035735182049031100}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Sight_Back_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1549,7 +1623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4068623622787833807}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BoltTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1656,7 @@ GameObject:
   - component: {fileID: 1395365661665479587}
   - component: {fileID: 3735817744148341231}
   - component: {fileID: 8002318331769243166}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Sight_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1669,7 +1743,7 @@ GameObject:
   - component: {fileID: 7887777562518108845}
   - component: {fileID: 3172686777568034363}
   - component: {fileID: 8317821013511540440}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1754,7 +1828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8227615634356373972}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1788,7 +1862,7 @@ GameObject:
   - component: {fileID: 8347578666792086424}
   - component: {fileID: 370989462005693224}
   - component: {fileID: 5308662189047614528}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_C_Sight_Forward
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1871,6 +1945,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3630743876135832019}
     m_Modifications:
+    - target: {fileID: 4303527774293775382, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0581
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303527774293775382, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0315
+      objectReference: {fileID: 0}
     - target: {fileID: 4860482390270145029, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1921,15 +2003,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047190626878846271, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8849462937474238594, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849462937474238594, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7270654305974562693, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7902939289221722041}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39cfb423ca4d4954c9d08367a47376fc, type: 3}
 --- !u!4 &7878057570255364486 stripped
@@ -1947,7 +2036,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 993043269474285435, guid: 49c2a148458160f41947bec094667411, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3879099938591404278, guid: 49c2a148458160f41947bec094667411, type: 3}
       propertyPath: m_LocalScale.x
@@ -2011,7 +2100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4512189544334535244, guid: 49c2a148458160f41947bec094667411, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4512189544334535244, guid: 49c2a148458160f41947bec094667411, type: 3}
       propertyPath: m_IsActive

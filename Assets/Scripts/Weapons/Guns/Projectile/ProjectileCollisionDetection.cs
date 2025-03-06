@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ProjectileCollisionDetection : MonoBehaviour
 {
     [SerializeField] private Projectile projectile;
-
-    public event Action<Projectile, RaycastHit> Collided;
+    [SerializeField] public UnityEvent<Projectile, RaycastHit> Collided;
 
     private Vector3 lastPosition;
     private Vector3 currentPosition;
@@ -31,11 +31,7 @@ public class ProjectileCollisionDetection : MonoBehaviour
         {
             print(hit.collider.gameObject);
             
-            Collided?.Invoke(projectile, hit);
-            projectile.CurrentProjectileData.ProjectileThrower.OnProjectileHit(projectile, hit);
-
-            projectile.ReleaseProjectileToPool();
-            
+            Collided?.Invoke(projectile, hit);            
         }
     }
 }

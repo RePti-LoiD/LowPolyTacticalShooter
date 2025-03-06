@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class RapidFireShotType : ShotType
 {
-    [SerializeField] private int shotPerMinute;
-
     private float shotDelay;
     private float lastShotTime = 0;
 
@@ -11,7 +9,7 @@ public class RapidFireShotType : ShotType
 
     private void Start()
     {
-        shotDelay = 60 / (float)shotPerMinute;
+        shotDelay = 60 / (float)RuntimeGunData.GunData.ShotPerMinute;
     }
 
     private void Update()

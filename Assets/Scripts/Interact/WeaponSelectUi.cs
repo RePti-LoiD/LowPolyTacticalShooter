@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class WeaponSelectUi : MonoBehaviour
 {
-    [SerializeField] private GameObject weaponWorldUi;
+    [SerializeField] private GunDataView weaponWorldUi;
     [SerializeField] private Transform targetLookAtTransform;
 
     private GunAPI currentGunApi;
-    private GameObject currentWeaponUi;
+    private GunDataView currentWeaponUi;
 
     private void Start()
     {
@@ -27,6 +27,8 @@ public class WeaponSelectUi : MonoBehaviour
     {
         currentGunApi = gun;
         currentWeaponUi = Instantiate(weaponWorldUi, gun.transform.position, Quaternion.identity, null);
+
+        currentWeaponUi.OnGunDataChange(gun.GunData);
     }
 
     public void OnGunDeselected()

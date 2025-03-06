@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1100706816055064132}
   - component: {fileID: 6677534977336762849}
   - component: {fileID: 5711753867413576602}
+  - component: {fileID: -7547236429561251705}
   m_Layer: 0
   m_Name: Mesh_Projectile
   m_TagString: Untagged
@@ -105,7 +106,19 @@ MonoBehaviour:
   CollisionDetection: {fileID: 5711753867413576602}
   ProjectileCollided:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -7547236429561251705}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   CurrentProjectileData:
     Damage: 0
     Speed: 0
@@ -137,9 +150,53 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3428448224272530101}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f890a6ca5c0770c4e9413696d57d3d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1100706816055064132}
+  Collided:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7547236429561251705}
+        m_TargetAssemblyTypeName: ProjectileImpactParticles, Assembly-CSharp
+        m_MethodName: OnProjectileHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1100706816055064132}
+        m_TargetAssemblyTypeName: Projectile, Assembly-CSharp
+        m_MethodName: OnProjectileCollide
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-7547236429561251705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3428448224272530101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007842667d3d24844997eec7fd8b866d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystemsPrefabs:
+  - {fileID: 198689267340774794, guid: dc1d5ca3304bfa943859960d5d1bb9b3, type: 3}
+  - {fileID: 198635777028098840, guid: 6fb79962b5722fb4a9958b904d7b53df, type: 3}
+  particlesLifetime: 2
+  debugRayLength: 0
