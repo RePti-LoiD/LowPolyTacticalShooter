@@ -26,4 +26,10 @@ public class GunInputHandler : MonoBehaviour
 
     public void OnReload() =>
         currentGun?.Reload();
+
+    public void Modify() =>
+        currentGun?.Modify();
+
+    public void ModifyCanceled() =>
+        currentGun?.ModifyCanceled();
 }

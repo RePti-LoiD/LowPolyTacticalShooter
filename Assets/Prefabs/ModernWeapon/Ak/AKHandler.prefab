@@ -73,6 +73,7 @@ Transform:
   - {fileID: 4977242039831530122}
   - {fileID: 6832796847597105421}
   - {fileID: 6456797895101157918}
+  - {fileID: 3291277190316200175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &857511672467879136
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 676bb78026226924292ee1b853d2d656, type: 2}
-  gunAmmo: {fileID: 0}
+  gunAmmo: {fileID: 2919968359019665217}
   gunMuzzle: {fileID: 0}
   gunScope: {fileID: 0}
   gunGrip: {fileID: 0}
@@ -239,8 +240,8 @@ MonoBehaviour:
   reload:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 857511672467879136}
-        m_TargetAssemblyTypeName: RuntimeGunData, Assembly-CSharp
+      - m_Target: {fileID: 2919968359019665217}
+        m_TargetAssemblyTypeName: GunAmmo, Assembly-CSharp
         m_MethodName: RefillAmmo
         m_Mode: 1
         m_Arguments:
@@ -249,6 +250,60 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  modify:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 275859423213919461}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Modify
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3349949297126371294}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunEnabling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Modify
+          m_BoolArgument: 0
+        m_CallState: 2
+  modifyCanceled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 275859423213919461}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3349949297126371294}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunDisabling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
           m_BoolArgument: 0
         m_CallState: 2
   gunEnabled:
@@ -379,6 +434,33 @@ MonoBehaviour:
   - AnimationName: Aim
     AnimationIndex: 3
     TargetTransform: {fileID: 6456797895101157918}
+    TimeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.06733586
+        outSlope: 0.06733586
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.085171044
+      - serializedVersion: 3
+        time: 0.25
+        value: 1
+        inSlope: 0.1401928
+        outSlope: 0.1401928
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.092533946
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - AnimationName: Modify
+    AnimationIndex: 4
+    TargetTransform: {fileID: 3291277190316200175}
     TimeCurve:
       serializedVersion: 2
       m_Curve:
@@ -685,6 +767,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1571303642210068066}
   m_LocalEulerAnglesHint: {x: -48.589, y: 14.748, z: -11.698}
+--- !u!1 &8783611206745606172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3291277190316200175}
+  m_Layer: 0
+  m_Name: Modify
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3291277190316200175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783611206745606172}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.020547006, y: -0.12019655, z: -0.16724336, w: 0.9783457}
+  m_LocalPosition: {x: 0.00400009, y: 0.034999996, z: -0.0069999695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1571303642210068066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7681301050632209387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -693,6 +806,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1571303642210068066}
     m_Modifications:
+    - target: {fileID: 2231928833710685772, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2558141238811818592, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
       propertyPath: m_Name
       value: AR_B
@@ -742,13 +859,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: runtimeGunData
+      value: 
+      objectReference: {fileID: 857511672467879136}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
       propertyPath: projectileData.GunAPI
       value: 
       objectReference: {fileID: 2721257951882803655}
+    - target: {fileID: 6044106984336508200, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0562
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4406299652028410386, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3349949297126371294}
   m_SourcePrefab: {fileID: 100100000, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
 --- !u!4 &115128819995583301 stripped
 Transform:
@@ -771,6 +899,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8458031567312766519, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
   m_PrefabInstance: {fileID: 7681301050632209387}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2919968359019665217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4763886309791749290, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+  m_PrefabInstance: {fileID: 7681301050632209387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c102e5d9c5dca43a991cbc345a773d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3110050923268081201 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
@@ -814,6 +953,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb7ba4cb05a3ad45b1d330b9c430fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6322812721575242233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4406299652028410386, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+  m_PrefabInstance: {fileID: 7681301050632209387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3349949297126371294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322812721575242233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6ffdaa7ce2d74787e80dc4958fd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: -0.083, y: 0.015, z: 0.036}
+  targetPosition: {x: -0.323, y: -0.891, z: 0.032}
+  animTime: 0.2
 --- !u!114 &6810927077564604089 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3754929571176602962, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}

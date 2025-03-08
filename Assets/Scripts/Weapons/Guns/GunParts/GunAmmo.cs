@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GunAmmo : MonoBehaviour
 {
-    [SerializeField] public readonly GunAmmoData GunAmmoData;
+    [SerializeField] private GunAmmoData gunAmmoData;
+    public GunAmmoData GunAmmoData { get => gunAmmoData; }
     
     public Action<GunAmmo> GunAmmoDataChanged;
 
@@ -32,6 +33,7 @@ public class GunAmmo : MonoBehaviour
         }
     }
 
+
     private void Start()
     {
         currentAmmoCount = GunAmmoData.MaxAmmoCount;
@@ -55,7 +57,7 @@ public class GunAmmo : MonoBehaviour
     }
 }
 
-[CreateAssetMenu(fileName = "GunAmmoData", menuName = "Scriptable Objects/GunParts/GunAmmoData")]
+[CreateAssetMenu(fileName = "gunAmmoData", menuName = "Scriptable Objects/GunParts/gunAmmoData")]
 public class GunAmmoData : ScriptableObject
 {
     [SerializeField] private int maxAmmoCount;

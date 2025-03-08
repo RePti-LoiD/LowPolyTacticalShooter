@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: AkGunAmmoData
+  m_Name: ScarGunAmmoData
   m_EditorClassIdentifier: Assembly-CSharp::GunAmmoData
-  maxAmmoCount: 30
-  maxRemainAmmoCount: 120
-  shotPerMinute: 600
-  bulletDamage: 34
-  bulletSpeed: 400
+  maxAmmoCount: 21
+  maxRemainAmmoCount: 84
+  shotPerMinute: 650
+  bulletDamage: 29
+  bulletSpeed: 350

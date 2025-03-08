@@ -21,6 +21,15 @@ public class RuntimeGunData : MonoBehaviour
 
     private void Start()
     {
+        if (gunAmmo == null)
+            gunAmmo = GetComponentInChildren<GunAmmo>();
+        if (gunMuzzle == null)
+            gunMuzzle = GetComponentInChildren<GunMuzzle>();
+        if (gunScope == null)
+            gunScope = GetComponentInChildren<GunScope>();
+        if (gunMuzzle == null)
+            gunScope = GetComponentInChildren<GunScope>();
+
         gunAmmo.GunAmmoDataChanged += (gunAmmo) => GunDataChanged?.Invoke(this);
     }
 }

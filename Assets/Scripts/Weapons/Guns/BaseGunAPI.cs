@@ -16,6 +16,8 @@ public class BaseGunAPI : GunAPI
     [SerializeField] private UnityEvent additionalActionStop;
     [SerializeField] private UnityEvent inspect;
     [SerializeField] private UnityEvent reload;
+    [SerializeField] private UnityEvent modify;
+    [SerializeField] private UnityEvent modifyCanceled;
     
     [Space]
     [SerializeField] public UnityEvent gunEnabled;
@@ -102,4 +104,10 @@ public class BaseGunAPI : GunAPI
 
     public override void AdditionalActionStop() =>
         additionalActionStop?.Invoke();
+
+    public override void Modify() =>
+        modify?.Invoke();
+
+    public override void ModifyCanceled() =>
+        modifyCanceled?.Invoke();
 }

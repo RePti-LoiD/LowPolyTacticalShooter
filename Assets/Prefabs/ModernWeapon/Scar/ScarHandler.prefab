@@ -133,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184332315631593028}
+  - component: {fileID: 1002322127448274401}
   - component: {fileID: 7438601303271351090}
   - component: {fileID: 5769960606248371323}
   - component: {fileID: 3022742234327375417}
@@ -141,7 +142,6 @@ GameObject:
   - component: {fileID: 4803763394606977203}
   - component: {fileID: 4517687555344140530}
   - component: {fileID: 8027365882329537317}
-  - component: {fileID: 1002322127448274401}
   m_Layer: 0
   m_Name: ScarHandler
   m_TagString: Untagged
@@ -169,6 +169,38 @@ Transform:
   - {fileID: 8477621829632491583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002322127448274401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345390659980859331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b7bf9c3e4f34d46be7875f2f90b015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 49f5ec09ee670c6469083f684ffe74da, type: 2}
+  gunAmmo: {fileID: 124774614882042725}
+  gunMuzzle: {fileID: 0}
+  gunScope: {fileID: 0}
+  gunGrip: {fileID: 0}
+  GunDataChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7438601303271351090}
+        m_TargetAssemblyTypeName: GunAPI, Assembly-CSharp
+        m_MethodName: OnGunDataChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7438601303271351090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,8 +345,8 @@ MonoBehaviour:
           m_StringArgument: Reload
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1002322127448274401}
-        m_TargetAssemblyTypeName: RuntimeGunData, Assembly-CSharp
+      - m_Target: {fileID: 124774614882042725}
+        m_TargetAssemblyTypeName: GunAmmo, Assembly-CSharp
         m_MethodName: RefillAmmo
         m_Mode: 1
         m_Arguments:
@@ -325,6 +357,12 @@ MonoBehaviour:
           m_StringArgument: Reload
           m_BoolArgument: 0
         m_CallState: 2
+  modify:
+    m_PersistentCalls:
+      m_Calls: []
+  modifyCanceled:
+    m_PersistentCalls:
+      m_Calls: []
   gunEnabled:
     m_PersistentCalls:
       m_Calls:
@@ -689,34 +727,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 0.36, z: 1}
   m_Center: {x: 0, y: 0.026, z: 0.12}
---- !u!114 &1002322127448274401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8345390659980859331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b7bf9c3e4f34d46be7875f2f90b015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 49f5ec09ee670c6469083f684ffe74da, type: 2}
-  GunDataChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7438601303271351090}
-        m_TargetAssemblyTypeName: GunAPI, Assembly-CSharp
-        m_MethodName: OnGunDataChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &4239026256773787003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -726,9 +736,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 6184332315631593028}
     m_Modifications:
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: runtimeGunData
+      value: 
+      objectReference: {fileID: 1002322127448274401}
+    - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: projectileData.GunAPI
       value: 
       objectReference: {fileID: 7438601303271351090}
+    - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -789,7 +807,10 @@ PrefabInstance:
     - {fileID: 5548876902583293302, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 613444212601763668, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 124774614882042725}
   m_SourcePrefab: {fileID: 100100000, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
 --- !u!1 &287426731159993874 stripped
 GameObject:
@@ -845,6 +866,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7368e29884d639d49b71c850f406e0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3627490796664232495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 613444212601763668, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+  m_PrefabInstance: {fileID: 4239026256773787003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &124774614882042725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627490796664232495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c102e5d9c5dca43a991cbc345a773d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunAmmoData: {fileID: 11400000, guid: 9c5a75edb528217449b542247d7918e0, type: 2}
 --- !u!4 &4020749124759501583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 943673366811678324, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}

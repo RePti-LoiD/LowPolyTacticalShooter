@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class ProjectileThrower : MonoBehaviour
 {
+    [SerializeField] private RuntimeGunData runtimeGunData;
     [SerializeField] private Transform muzzle;
 
     [Space]
@@ -19,7 +20,15 @@ public class ProjectileThrower : MonoBehaviour
     public void SendProjectile()
     {
         var projectile = pool.Get();
-        projectile.SetProjectileData(projectileData);
+        projectile.SetProjectileData(new ProjectileData
+        {
+            Damage = runtimeGunData.GunAmmo.GunAmmoData.BulletDamage,
+            Speed = runtimeGunData.GunAmmo.GunAmmoData.BulletSpeed,
+            GunAPI = projectileData.GunAPI,
+            ProjectileThrower = this,
+            TargetYAngle = projectileData.TargetYAngle,
+            YCurve = projectileData.YCurve
+        });
         
         projectile.transform.position = muzzle.transform.position;
         projectile.transform.rotation = muzzle.rotation;

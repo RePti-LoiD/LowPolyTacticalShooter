@@ -1512,6 +1512,12 @@ MonoBehaviour:
   Interact:
     m_PersistentCalls:
       m_Calls: []
+  Modify:
+    m_PersistentCalls:
+      m_Calls: []
+  ModifyCanceled:
+    m_PersistentCalls:
+      m_Calls: []
   LastSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -1542,6 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b74e610c59c484c9af4e256e13b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeGunData: {fileID: 0}
   muzzle: {fileID: 2068968219}
   Collided:
     m_PersistentCalls:
@@ -15339,19 +15346,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.01683
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.067
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.086475
+      value: -23.248
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -15363,7 +15370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.70710677
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15375,7 +15382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571303642210068066, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15421,12 +15428,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825634698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1b7bf9c3e4f34d46be7875f2f90b015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 11400000, guid: 676bb78026226924292ee1b853d2d656, type: 2}
+  gunAmmo: {fileID: 0}
+  gunMuzzle: {fileID: 0}
+  gunScope: {fileID: 0}
+  gunGrip: {fileID: 0}
   GunDataChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -16211,6 +16222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScarHandler_2
       objectReference: {fileID: 0}
+    - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16224,14 +16239,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4368075813931166300, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
-      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368075813931166300, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
-      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6184332315631593028, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.344
@@ -16500,27 +16507,31 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: OnInspect.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 242686203}
     - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnInteraction
       objectReference: {fileID: 0}
     - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: WeaponPickup, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 371916209878493406, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      propertyPath: Interact.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1967211489276419418, guid: 75139180ca14b3147a5511361862b34b, type: 3}
@@ -16529,6 +16540,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967211489276419418, guid: 75139180ca14b3147a5511361862b34b, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204215218224942280, guid: 75139180ca14b3147a5511361862b34b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4206809986755905427, guid: 75139180ca14b3147a5511361862b34b, type: 3}
@@ -18277,6 +18292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScarHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18820,6 +18839,10 @@ PrefabInstance:
     - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
       propertyPath: m_Name
       value: ScarHandler_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20477,10 +20500,10 @@ SceneRoots:
   - {fileID: 1104317296}
   - {fileID: 1658766044}
   - {fileID: 1617680161}
+  - {fileID: 804735994}
   - {fileID: 107185467}
   - {fileID: 1921001331}
   - {fileID: 769523828}
   - {fileID: 1061958993}
   - {fileID: 828281502}
-  - {fileID: 804735994}
   - {fileID: 825634699}

@@ -16,6 +16,9 @@ public abstract class GunAPI : MonoBehaviour
     public abstract void AdditionalActionStop();
     public abstract void Inspect();
 
+    public abstract void Modify();
+    public abstract void ModifyCanceled();
+
     public abstract void EnableGun(ExternalDataForGun data);
 
     public virtual void DisableGun() =>

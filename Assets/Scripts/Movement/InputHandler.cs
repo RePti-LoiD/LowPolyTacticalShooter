@@ -28,6 +28,10 @@ public class InputHandler : MonoBehaviour
     [SerializeField] public UnityEvent Interact;
 
     [Space]
+    [SerializeField] public UnityEvent Modify;
+    [SerializeField] public UnityEvent ModifyCanceled;
+
+    [Space]
     [SerializeField] public UnityEvent LastSelect;
     [SerializeField] public UnityEvent<int> IndexSelected;
 
@@ -61,6 +65,9 @@ public class InputHandler : MonoBehaviour
         inputs.PlayerMap.WeaponSelection.performed += OnWeaponSelection;
         inputs.PlayerMap.Drop.performed += OnDrop;
         inputs.PlayerMap.Interact.performed += OnInteract;
+
+        inputs.PlayerMap.ModifyKey.performed += OnModify;
+        inputs.PlayerMap.ModifyKey.canceled += OnModifyCanceled;
 
         isInputEnabled = true;
     }
@@ -150,5 +157,11 @@ public class InputHandler : MonoBehaviour
 
     private void OnDrop(InputAction.CallbackContext obj) =>
         Drop?.Invoke();
+
+    private void OnModify(InputAction.CallbackContext obj) =>
+        Modify?.Invoke();
+
+    private void OnModifyCanceled(InputAction.CallbackContext obj) =>
+        ModifyCanceled?.Invoke();
     #endregion
 }

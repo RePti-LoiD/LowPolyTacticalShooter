@@ -27,6 +27,16 @@ public class PlaceholderGunAPI : GunAPI
 
     }
 
+    public override void Modify()
+    {
+
+    }
+
+    public override void ModifyCanceled()
+    {
+
+    }
+
     public override void Reload()
     {
 

@@ -18,6 +18,8 @@ public class CameraMove : MouseMovementControllable
 
     public override void OnCameraMove(Vector2 mouseInputs)
     {
+        if (!enabled) return;
+
         mouseInputs *= movementSettings.Sensitivity;
 
         currentRotation.x += mouseInputs.x;

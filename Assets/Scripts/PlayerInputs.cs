@@ -200,9 +200,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""WeaponPickup"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""b0a96b78-cc39-410f-b0dd-423a2158031b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ModifyKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d793cd7-33bc-469c-9946-e72296cf2f20"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -503,7 +512,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""WeaponPickup"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61929263-267b-4a2d-8b53-a1c9976c2d22"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ModifyKey"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -554,7 +574,8 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_PlayerMap_PrevSelection = m_PlayerMap.FindAction("PrevSelection", throwIfNotFound: true);
         m_PlayerMap_WeaponSelection = m_PlayerMap.FindAction("WeaponSelection", throwIfNotFound: true);
         m_PlayerMap_Drop = m_PlayerMap.FindAction("Drop", throwIfNotFound: true);
-        m_PlayerMap_Interact = m_PlayerMap.FindAction("WeaponPickup", throwIfNotFound: true);
+        m_PlayerMap_Interact = m_PlayerMap.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerMap_ModifyKey = m_PlayerMap.FindAction("ModifyKey", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -648,6 +669,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMap_WeaponSelection;
     private readonly InputAction m_PlayerMap_Drop;
     private readonly InputAction m_PlayerMap_Interact;
+    private readonly InputAction m_PlayerMap_ModifyKey;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerMap".
     /// </summary>
@@ -708,9 +730,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Drop => m_Wrapper.m_PlayerMap_Drop;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerMap/WeaponPickup".
+        /// Provides access to the underlying input action "PlayerMap/Interact".
         /// </summary>
         public InputAction @Interact => m_Wrapper.m_PlayerMap_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerMap/ModifyKey".
+        /// </summary>
+        public InputAction @ModifyKey => m_Wrapper.m_PlayerMap_ModifyKey;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -776,6 +802,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ModifyKey.started += instance.OnModifyKey;
+            @ModifyKey.performed += instance.OnModifyKey;
+            @ModifyKey.canceled += instance.OnModifyKey;
         }
 
         /// <summary>
@@ -826,6 +855,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ModifyKey.started -= instance.OnModifyKey;
+            @ModifyKey.performed -= instance.OnModifyKey;
+            @ModifyKey.canceled -= instance.OnModifyKey;
         }
 
         /// <summary>
@@ -977,11 +1009,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDrop(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "WeaponPickup" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ModifyKey" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnModifyKey(InputAction.CallbackContext context);
     }
 }

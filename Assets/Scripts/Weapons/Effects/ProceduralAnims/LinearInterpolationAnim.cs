@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LinearInterpolationAnim : MonoBehaviour
@@ -11,6 +12,11 @@ public class LinearInterpolationAnim : MonoBehaviour
     public void AnimateGunEnabling()
     {
         StartCoroutine(MoveObject(startPosition, targetPosition, animTime));
+    }
+
+    public void AnimateGunDisabling()
+    {
+        StartCoroutine(MoveObject(targetPosition, startPosition, animTime, () => { }));
     }
 
     public void AnimateGunDisabling(Action onDisabled = null)

@@ -9,7 +9,7 @@ public class RapidFireShotType : ShotType
 
     private void Start()
     {
-        shotDelay = 60 / (float)RuntimeGunData.GunAmmo.GunAmmoData.MaxAmmoCount;
+        shotDelay = 60 / (float)RuntimeGunData.GunAmmo.GunAmmoData.ShotPerMinute;
     }
 
     private void Update()
