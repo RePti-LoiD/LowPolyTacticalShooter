@@ -11,9 +11,9 @@ public class ProjectileThrower : MonoBehaviour
     [Space]
     [SerializeField] private ProjectileData projectileData;
 
-    private ObjectPool pool;
+    private ProjectileObjectPool pool;
 
-    public void SetPool(ObjectPool pool) =>
+    public void SetPool(ProjectileObjectPool pool) =>
         this.pool = pool;
 
     public void SendProjectile()

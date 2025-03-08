@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19189005238104981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34624413, y: -0.44532084, z: 0.1919974, w: 0.80308247}
-  m_LocalPosition: {x: 0.080999754, y: -0.31099996, z: -0.063999176}
+  m_LocalRotation: {x: 0.6030557, y: 0.10836831, z: 0.08315398, w: 0.78591704}
+  m_LocalPosition: {x: 0.051477812, y: -0.44035664, z: -0.22783852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,15 +40,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571303642210068066}
-  - component: {fileID: 5023325621084159469}
-  - component: {fileID: 275859423213919461}
   - component: {fileID: 857511672467879136}
+  - component: {fileID: 2721257951882803655}
+  - component: {fileID: 275859423213919461}
   - component: {fileID: 1424792823007350782}
   - component: {fileID: 3840995431239353155}
   - component: {fileID: 8757752097678063174}
   - component: {fileID: 4223967196982144411}
   - component: {fileID: 7292740124752638719}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AKHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ Transform:
   - {fileID: 6456797895101157918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5023325621084159469
+--- !u!114 &857511672467879136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 474643492571905088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2d2885921cea5d4ea2844f1e3042774, type: 3}
+  m_Script: {fileID: 11500000, guid: d1b7bf9c3e4f34d46be7875f2f90b015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 676bb78026226924292ee1b853d2d656, type: 2}
+  gunAmmo: {fileID: 0}
+  gunMuzzle: {fileID: 0}
+  gunScope: {fileID: 0}
+  gunGrip: {fileID: 0}
+  GunDataChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2721257951882803655}
+        m_TargetAssemblyTypeName: GunAPI, Assembly-CSharp
+        m_MethodName: OnGunDataChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2721257951882803655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474643492571905088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0447595e3ebb9ef478091d02f778303c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ArmsIkAPI: {fileID: 1424792823007350782}
@@ -92,7 +124,7 @@ MonoBehaviour:
   children: {fileID: 5267278057917610379}
   proceduralPositioner: {fileID: 275859423213919461}
   transformCompositor: {fileID: 6810927077564604089}
-  cameraRecoil: {fileID: 9090019884076658107}
+  cameraRecoil: {fileID: 8695404231355191605}
   shotStart:
     m_PersistentCalls:
       m_Calls:
@@ -138,18 +170,6 @@ MonoBehaviour:
           m_StringArgument: Aim
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2055720284814784921}
-        m_TargetAssemblyTypeName: WeaponBehaviour.Recoil, Assembly-CSharp
-        m_MethodName: SetMultiplier
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.3
-          m_StringArgument: Aim
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3445137847803665267}
         m_TargetAssemblyTypeName: RecoilRotationSender, Assembly-CSharp
         m_MethodName: SetMultiplier
@@ -158,7 +178,19 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.1
+          m_FloatArgument: 0.25
+          m_StringArgument: Aim
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2055720284814784921}
+        m_TargetAssemblyTypeName: WeaponBehaviour.Recoil, Assembly-CSharp
+        m_MethodName: SetMultiplier
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.35
           m_StringArgument: Aim
           m_BoolArgument: 0
         m_CallState: 2
@@ -249,6 +281,7 @@ MonoBehaviour:
           m_StringArgument: HoldDown
           m_BoolArgument: 0
         m_CallState: 2
+  projectileThrower: {fileID: 3110050923268081201}
 --- !u!114 &275859423213919461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,37 +407,9 @@ MonoBehaviour:
   AnimationEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5023325621084159469}
+      - m_Target: {fileID: 2721257951882803655}
         m_TargetAssemblyTypeName: BaseGunAPI, Assembly-CSharp
         m_MethodName: OnAnimationEnded
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &857511672467879136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474643492571905088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1b7bf9c3e4f34d46be7875f2f90b015, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 676bb78026226924292ee1b853d2d656, type: 2}
-  GunDataChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5023325621084159469}
-        m_TargetAssemblyTypeName: GunAPI, Assembly-CSharp
-        m_MethodName: OnGunDataChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -618,37 +623,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1571303642210068066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10}
---- !u!1 &4489765950620666009
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7812919918768977094}
-  m_Layer: 6
-  m_Name: Muzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7812919918768977094
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4489765950620666009}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.2497}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3980082505530589120}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5314998726727885622
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 5314998726727885622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.000000014901161, w: 1}
-  m_LocalPosition: {x: -0.1, y: -0.02000007, z: -0.055999756}
+  m_LocalPosition: {x: -0.1, y: 0.048000008, z: -0.09399986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -727,90 +701,6 @@ PrefabInstance:
       propertyPath: RuntimeGunData
       value: 
       objectReference: {fileID: 857511672467879136}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 9090019884076658107}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 5231180133133487191}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SendRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnShot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SendRotation
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
-      value: SendProjectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: RecoilRotationSender, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: WeaponBehaviour.Recoil, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: RecoilRotationSender, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
-      value: ProjectileThrower, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: OnShot.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 2939591940835352794, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -851,31 +741,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3754929571176602962, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754929571176602962, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: composablesData.Array.data[0].Weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3754929571176602962, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      propertyPath: composablesData.Array.data[1].Weight
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: projectileData.GunAPI
+      value: 
+      objectReference: {fileID: 2721257951882803655}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6747906716947528747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7812919918768977094}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2558141238811818592, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9090019884076658107}
-    - targetCorrespondingSourceObject: {fileID: 2558141238811818592, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5231180133133487191}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
 --- !u!4 &115128819995583301 stripped
 Transform:
@@ -898,6 +771,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8458031567312766519, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
   m_PrefabInstance: {fileID: 7681301050632209387}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3110050923268081201 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+  m_PrefabInstance: {fileID: 7681301050632209387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267278057917610379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b74e610c59c484c9af4e256e13b147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3445137847803665267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4996427149286299800, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
@@ -909,11 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3980082505530589120 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6747906716947528747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
-  m_PrefabInstance: {fileID: 7681301050632209387}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4779148030749385521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2939591940835352794, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
@@ -924,68 +803,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2558141238811818592, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
   m_PrefabInstance: {fileID: 7681301050632209387}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9090019884076658107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267278057917610379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recoilRotationData: {fileID: 11400000, guid: 3eb614eee2044bf44a7ff820e5123bce, type: 2}
-  OnRecoil:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5231180133133487191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267278057917610379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b74e610c59c484c9af4e256e13b147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzle: {fileID: 7812919918768977094}
-  Collided:
-    m_PersistentCalls:
-      m_Calls: []
-  projectileData:
-    Damage: 31
-    Speed: 150
-    TargetYAngle: 50
-    YCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 34
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    GunAPI: {fileID: 5023325621084159469}
-    ProjectileThrower: {fileID: 5231180133133487191}
 --- !u!114 &5690712975123422232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2621112401087733747, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
@@ -1006,5 +823,16 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21a6ca715a8005f4d8d6d977e5b45926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8695404231355191605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1312023653363110622, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+  m_PrefabInstance: {fileID: 7681301050632209387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267278057917610379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

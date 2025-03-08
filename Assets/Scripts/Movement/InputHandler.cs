@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class MovementHandler : MonoBehaviour
+public class InputHandler : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] public UnityEvent OnJump;

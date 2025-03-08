@@ -20,7 +20,7 @@ public class GunSwitch : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform gunTransform;
     [SerializeField] private RecoilRotationReceiver cameraRecoilRotationReceiver;
-    [SerializeField] private ObjectPool projectilePool;
+    [SerializeField] private ProjectileObjectPool projectilePool;
 
     private GunAPI currentGun;
     private GunAPI prevGun;
@@ -40,7 +40,7 @@ public class GunSwitch : MonoBehaviour
     private void Start()
     {
         if (projectilePool == null)
-            projectilePool = FindAnyObjectByType<ObjectPool>();
+            projectilePool = FindAnyObjectByType<ProjectileObjectPool>();
 
         SelectGun(guns.First());
     }

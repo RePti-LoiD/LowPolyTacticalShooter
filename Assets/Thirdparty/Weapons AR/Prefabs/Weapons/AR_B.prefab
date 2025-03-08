@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8331509556208980800}
   - component: {fileID: 8343140595701094206}
   - component: {fileID: 7706483887433625613}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7402575098424964786}
   - component: {fileID: 2207072162616664959}
   - component: {fileID: 3683306508750651097}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 2950332828383525374}
   - component: {fileID: 1893670867651459969}
   - component: {fileID: 611929409661990645}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,13 +269,13 @@ GameObject:
   - component: {fileID: 6044106984336508200}
   - component: {fileID: 461031626710174573}
   - component: {fileID: 7583216897788435045}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Rail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6044106984336508200
 Transform:
   m_ObjectHideFlags: 0
@@ -359,7 +359,9 @@ GameObject:
   - component: {fileID: 3754929571176602962}
   - component: {fileID: 2676979267027468903}
   - component: {fileID: 8511262536299428466}
-  m_Layer: 6
+  - component: {fileID: 1312023653363110622}
+  - component: {fileID: 4733397892398679514}
+  m_Layer: 0
   m_Name: AR_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,24 +409,48 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4996427149286299800}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: RecoilRotationSender, Assembly-CSharp
+        m_MethodName: SendRotation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8511262536299428466}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+        m_TargetAssemblyTypeName: WeaponBehaviour.Recoil, Assembly-CSharp
+        m_MethodName: OnShot
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1312023653363110622}
+        m_TargetAssemblyTypeName: RecoilRotationSender, Assembly-CSharp
+        m_MethodName: SendRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4733397892398679514}
+        m_TargetAssemblyTypeName: ProjectileThrower, Assembly-CSharp
+        m_MethodName: SendProjectile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -479,7 +505,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2558141238811818592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21a6ca715a8005f4d8d6d977e5b45926, type: 3}
   m_Name: 
@@ -487,11 +513,11 @@ MonoBehaviour:
   instantTransform: {fileID: 7996337193552999268}
   composablesData:
   - Composable: {fileID: 2676979267027468903}
-    Weight: 0
+    Weight: 1
     ComposePosition: 0
     ComposeRotation: 1
   - Composable: {fileID: 8511262536299428466}
-    Weight: 0
+    Weight: 1
     ComposePosition: 1
     ComposeRotation: 0
   dropTransformAfterCompose: 1
@@ -521,10 +547,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7368e29884d639d49b71c850f406e0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetHipfireRecoil: {x: 0, y: 0, z: 0}
-  hipfireRecoil: {x: 0, y: 0, z: 0}
+  targetHipfireRecoil: {x: 0.02, y: -0.01, z: -0.25}
+  hipfireRecoil: {x: -0.02, y: -0.025, z: -0.2}
   returnTime: 15
-  snappines: 10
+  snappines: 20
+--- !u!114 &1312023653363110622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilRotationData: {fileID: 11400000, guid: 3eb614eee2044bf44a7ff820e5123bce, type: 2}
+  OnRecoil:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4733397892398679514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2558141238811818592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b74e610c59c484c9af4e256e13b147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzle: {fileID: 5549081989083312004}
+  Collided:
+    m_PersistentCalls:
+      m_Calls: []
+  projectileData:
+    Damage: 31
+    Speed: 400
+    TargetYAngle: 0
+    YCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GunAPI: {fileID: 0}
+    ProjectileThrower: {fileID: 4733397892398679514}
 --- !u!1 &2651670557470964910
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +624,7 @@ GameObject:
   - component: {fileID: 6747906716947528747}
   - component: {fileID: 3841656728912890475}
   - component: {fileID: 6305741427357233449}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,7 +643,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0.04675001, z: 0.53050005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5549081989083312004}
   m_Father: {fileID: 2939591940835352794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3841656728912890475
@@ -622,7 +711,7 @@ GameObject:
   - component: {fileID: 6124413846938024624}
   - component: {fileID: 6228976442345482143}
   - component: {fileID: 7940040734337784883}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +829,7 @@ GameObject:
   - component: {fileID: 5723921521078052652}
   - component: {fileID: 6173076887165839318}
   - component: {fileID: 7410485544265817284}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,6 +905,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5691174111648329488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5549081989083312004}
+  m_Layer: 0
+  m_Name: BulletOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5549081989083312004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691174111648329488}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.061, z: 0.273}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6747906716947528747}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5695568471803341311
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +947,7 @@ GameObject:
   - component: {fileID: 6935891892124060706}
   - component: {fileID: 3112477629860692364}
   - component: {fileID: 2648913930222158661}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +1064,7 @@ GameObject:
   - component: {fileID: 6450390871749498222}
   - component: {fileID: 3737257088384226950}
   - component: {fileID: 7923046870729840536}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AR_B_BarrelGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

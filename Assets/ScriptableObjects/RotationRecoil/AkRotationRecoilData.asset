@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bc201a849489e469c84845b78bed78, type: 3}
   m_Name: AkRotationRecoilData
   m_EditorClassIdentifier: 
-  rotation: {x: 1, y: 3, z: 5}
-  targetRotation: {x: 2, y: 4, z: 3}
+  rotation: {x: -2, y: -3, z: -2}
+  targetRotation: {x: -2, y: 3, z: 2}
   returnTime: 0
   snappines: 0

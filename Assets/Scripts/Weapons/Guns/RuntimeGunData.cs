@@ -1,62 +1,64 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
+
 
 public class RuntimeGunData : MonoBehaviour
 {
     [SerializeField] private GunData gunData;
+    [SerializeField] private GunAmmo gunAmmo;
+    [SerializeField] private GunMuzzle gunMuzzle;
+    [SerializeField] private GunScope gunScope;
+    [SerializeField] private GunGrip gunGrip;
+
     [SerializeField] private UnityEvent<RuntimeGunData> GunDataChanged;
 
-    private int currentAmmoCount;
-    private int remainAmmoCount;
-
     public GunData GunData { get => gunData; }
-    public int CurrentAmmoCount 
-    { 
-        get => currentAmmoCount; 
-        private set 
-        {
-            currentAmmoCount = value;
-            
-            GunDataChanged?.Invoke(this);
-        }
-    }
-    
-    public void SetGunDataIfEmpty(GunData gunData)
-    {
-        if (gunData == null)
-            this.gunData = gunData;
-    }
-
-    public int RemainAmmoCount 
-    { 
-        get => remainAmmoCount; 
-        private set
-        {
-            remainAmmoCount = value; 
-            
-            GunDataChanged?.Invoke(this);
-        }
-    }
+    public GunAmmo GunAmmo { get => gunAmmo; }
+    public GunMuzzle GunMuzzle { get => gunMuzzle; }
+    public GunScope GunScope { get => gunScope; }
+    public GunGrip GunGrip { get => gunGrip; }
 
     private void Start()
     {
-        currentAmmoCount = gunData.MaxAmmoCount;
-        remainAmmoCount = gunData.MaxRemainAmmo;
-    }
-
-    public bool TryTakeAmmo()
-    {
-        if (CurrentAmmoCount <= 0) return false;
-
-        CurrentAmmoCount--;
-        return true;
-    }
-
-    public void RefillAmmo()
-    {
-        if (currentAmmoCount == gunData.MaxAmmoCount) return;
-
-        RemainAmmoCount -= Mathf.Abs(gunData.MaxAmmoCount - currentAmmoCount);
-        CurrentAmmoCount = gunData.MaxAmmoCount;
+        gunAmmo.GunAmmoDataChanged += (gunAmmo) => GunDataChanged?.Invoke(this);
     }
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(RuntimeGunData))]
+public class RutimeGunDataEditorScript : Editor
+{
+    private RuntimeGunData gunData;
+    private GUISkin customGuiSkin;
+
+    private void OnEnable()
+    {
+        gunData = (RuntimeGunData)target;
+
+        customGuiSkin = Resources.Load<GUISkin>("GuiSkins/RuntimeGunDataSkin");
+        Debug.Log(customGuiSkin);
+    }
+
+    public override void OnInspectorGUI()
+    {
+        if (gunData.GunData != null)
+        {
+            GUI.skin = customGuiSkin;
+            
+            GUILayout.Label (
+                gunData.GunData.GunName, 
+                GUILayout.MinWidth(50), 
+                GUILayout.MinHeight(50),
+                GUILayout.ExpandHeight(true)
+            );
+            
+            GUI.skin = null;
+        }
+
+        base.OnInspectorGUI();
+    }
+}
+
+#endif

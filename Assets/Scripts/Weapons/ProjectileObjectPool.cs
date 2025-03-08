@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ObjectPool : MonoBehaviour
+public class ProjectileObjectPool : MonoBehaviour
 {
     [SerializeField] private Projectile projectilePrefab; 
     private ObjectPool<Projectile> pool;

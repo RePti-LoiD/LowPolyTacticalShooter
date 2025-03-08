@@ -22,7 +22,7 @@ MonoBehaviour:
     \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u0442\u0441\u044F \u043A\u0430\u043B\u0438\u0431\u0440
     7.62x51 \u043C\u043C \u041D\u0410\u0422\u041E"
   caliberName: 7.62x51 mm NATO
-  gunSprite: {fileID: 21300000, guid: d2d919e8cc0110c41b687ac342b0eb5d, type: 3}
+  gunSprite: {fileID: 21300000, guid: 0adbf1fa5c1b86c4cac9e1756a1c5b91, type: 3}
   gunColor: {r: 1, g: 0.7529412, b: 0, a: 1}
   ammoCount: 25
   remainAmmo: 100

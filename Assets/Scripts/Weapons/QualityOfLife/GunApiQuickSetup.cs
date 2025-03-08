@@ -77,7 +77,6 @@ public class GunApiCreator : Editor
     private void SetupGunData(BaseGunAPI gunAPI)
     {
         var runtimeGunData = targetGunApi.AddComponent<RuntimeGunData>();
-        runtimeGunData.SetGunDataIfEmpty(targetGunApi.GunData);
         
         gunAPI.GunData = runtimeGunData;
     }

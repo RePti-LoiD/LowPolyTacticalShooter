@@ -22,8 +22,8 @@ public class GunDataView : MonoBehaviour
     public void OnGunDataChange(RuntimeGunData runtimeGunData)
     {    
         gunNameText.text = runtimeGunData.GunData.GunName;
-        gunAmmoText.text = runtimeGunData.CurrentAmmoCount.ToString();
-        gunAmmoRemainText.text = runtimeGunData.RemainAmmoCount.ToString();
+        gunAmmoText.text = runtimeGunData.GunAmmo.CurrentAmmoCount.ToString();
+        gunAmmoRemainText.text = runtimeGunData.GunAmmo.RemainAmmoCount.ToString();
 
         divider.color = runtimeGunData.GunData.GunColor;
 
@@ -35,7 +35,7 @@ public class GunDataView : MonoBehaviour
         
         if (gunAmmoFillAmount != null)
         {
-            gunAmmoFillAmount.fillAmount = (float) runtimeGunData.CurrentAmmoCount / runtimeGunData.GunData.MaxAmmoCount;
+            gunAmmoFillAmount.fillAmount = (float) runtimeGunData.GunAmmo.CurrentAmmoCount / runtimeGunData.GunAmmo.GunAmmoData.MaxAmmoCount;
             gunAmmoFillAmount.color = new Color(runtimeGunData.GunData.GunColor.r, runtimeGunData.GunData.GunColor.g, runtimeGunData.GunData.GunColor.b, 0.28f);
         }
 
