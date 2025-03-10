@@ -122,9 +122,13 @@ MonoBehaviour:
   gunCaliberText: {fileID: 1269087139879655056}
   gunIcon: {fileID: 7641482839088940582}
   gunAmmoFillAmount: {fileID: 3983191590186214482}
-  divider: {fileID: 4946092380375628198}
   animator: {fileID: 0}
   animatorParameterName: 
+  gunColorElements:
+  - TargetSprite: {fileID: 4946092380375628198}
+    Alpha: 1
+  - TargetSprite: {fileID: 3983191590186214482}
+    Alpha: 0.11
 --- !u!1 &1070028606103452804
 GameObject:
   m_ObjectHideFlags: 0

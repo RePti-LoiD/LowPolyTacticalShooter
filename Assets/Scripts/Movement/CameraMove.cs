@@ -11,9 +11,14 @@ public class CameraMove : MouseMovementControllable
 
     private float zTilt;
 
-    private void Start()
+    private void OnEnable()
     {    
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnDisable()
+    {
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public override void OnCameraMove(Vector2 mouseInputs)

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,20 +13,23 @@ public class GunDataView : MonoBehaviour
 
     [SerializeField] private Image gunIcon;
     [SerializeField] private Image gunAmmoFillAmount;
-    [SerializeField] private Image divider;
 
     [Space]
     [SerializeField] private Animator animator;
     [SerializeField] private string animatorParameterName;
 
+    [Space]
+    [SerializeField] private GunColorElement[] gunColorElements;
+
 
     public void OnGunDataChange(RuntimeGunData runtimeGunData)
     {    
-        gunNameText.text = runtimeGunData.GunData.GunName;
-        gunAmmoText.text = runtimeGunData.GunAmmo.CurrentAmmoCount.ToString();
-        gunAmmoRemainText.text = runtimeGunData.GunAmmo.RemainAmmoCount.ToString();
-
-        divider.color = runtimeGunData.GunData.GunColor;
+        if (gunNameText != null)
+            gunNameText.text = runtimeGunData.GunData.GunName;
+        if (gunAmmoText != null)
+            gunAmmoText.text = runtimeGunData.GunAmmo.CurrentAmmoCount.ToString();
+        if (gunAmmoRemainText != null)
+            gunAmmoRemainText.text = runtimeGunData.GunAmmo.RemainAmmoCount.ToString();
 
         if (gunCaliberText != null)
             gunCaliberText.text = runtimeGunData.GunData.CaliberName;
@@ -34,15 +38,28 @@ public class GunDataView : MonoBehaviour
             gunDescriptionText.text = runtimeGunData.GunData.Description;  
         
         if (gunAmmoFillAmount != null)
-        {
             gunAmmoFillAmount.fillAmount = (float) runtimeGunData.GunAmmo.CurrentAmmoCount / runtimeGunData.GunAmmo.GunAmmoData.MaxAmmoCount;
-            gunAmmoFillAmount.color = new Color(runtimeGunData.GunData.GunColor.r, runtimeGunData.GunData.GunColor.g, runtimeGunData.GunData.GunColor.b, 0.28f);
-        }
+
 
         if (gunIcon != null)
             gunIcon.sprite = runtimeGunData.GunData.GunSprite;
 
         if (animator != null)
             animator.SetTrigger(animatorParameterName);
+
+        SetGunColorToElements(runtimeGunData.GunData.GunColor, gunColorElements);
     }
+
+    public void SetGunColorToElements(Color gunColor, GunColorElement[] elements)
+    {
+        foreach (var element in elements)
+            element.TargetSprite.color = new Color(gunColor.r, gunColor.g, gunColor.b, element.Alpha);
+    }
+}
+
+[Serializable]
+public class GunColorElement
+{
+    public Image TargetSprite;
+    public float Alpha;
 }

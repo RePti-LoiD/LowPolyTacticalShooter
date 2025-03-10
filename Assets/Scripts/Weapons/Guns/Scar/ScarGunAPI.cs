@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ScarGunAPI : BaseGunAPI
 {
-
     [SerializeField] private ProjectileThrower projectileThrower;
 
     public override void EnableGun(ExternalDataForGun data)
