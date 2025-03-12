@@ -20,6 +20,7 @@ public class ProjectileThrower : MonoBehaviour
     public void SendProjectile()
     {
         var projectile = pool.Get();
+
         projectile.SetProjectileData(new ProjectileData
         {
             Damage = runtimeGunData.GunAmmo.GunAmmoData.BulletDamage,

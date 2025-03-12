@@ -23,6 +23,9 @@ public class BaseGunAPI : GunAPI
     [SerializeField] public UnityEvent gunEnabled;
     [SerializeField] public UnityEvent gunDisabled;
 
+    [SerializeField] private ProjectileThrower projectileThrower;
+
+
     protected ExternalDataForGun LastData;
 
     public override void DisableGun()
@@ -63,6 +66,9 @@ public class BaseGunAPI : GunAPI
 
         if (cameraRecoil != null)
             cameraRecoil.OnRecoil.AddListener(LastData.CameraRecoilRotationReceiver.RotateObject);
+
+        if (projectileThrower != null)
+            projectileThrower.SetPool(data.ProjectilePool);
     }
 
     public override void ForceStop()
@@ -78,7 +84,7 @@ public class BaseGunAPI : GunAPI
         Disabled?.Invoke(this);
     }
 
-    public void OnAnimationEnded(AnimationUnit animationUnit)
+    public virtual void OnAnimationEnded(AnimationUnit animationUnit)
     {
         if (animationUnit.AnimationName == "HoldDown")
         {

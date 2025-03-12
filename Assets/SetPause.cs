@@ -1,10 +1,9 @@
-using UnityEditor;
 using UnityEngine;
 
 public class SetPause : MonoBehaviour
 {
-    public void Pause()
+    public void Gay(string message)
     {
-        //EditorApplication.isPaused = true;
+        Debug.Log($"Я посылаю людям message: {message}");
     }
 }

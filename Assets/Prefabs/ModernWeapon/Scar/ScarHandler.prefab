@@ -124,6 +124,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6184332315631593028}
   m_LocalEulerAnglesHint: {x: -48.589, y: 14.748, z: -11.698}
+--- !u!1 &6926932446400378497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3240435029589378360}
+  m_Layer: 0
+  m_Name: Modify
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3240435029589378360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926932446400378497}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.047037743, y: -0.08663224, z: -0.28456536, w: 0.95357484}
+  m_LocalPosition: {x: 0.00399971, y: 0.034999877, z: -0.0069999695}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6184332315631593028}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8345390659980859331
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,9 +170,10 @@ GameObject:
   - component: {fileID: 3022742234327375417}
   - component: {fileID: 1428485054147343709}
   - component: {fileID: 6237644757128236936}
-  - component: {fileID: 4803763394606977203}
   - component: {fileID: 4517687555344140530}
   - component: {fileID: 8027365882329537317}
+  - component: {fileID: 8607881520190251569}
+  - component: {fileID: 283578511486814562}
   m_Layer: 0
   m_Name: ScarHandler
   m_TagString: Untagged
@@ -167,6 +199,7 @@ Transform:
   - {fileID: 8734866129444855098}
   - {fileID: 4903320189796601101}
   - {fileID: 8477621829632491583}
+  - {fileID: 3240435029589378360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1002322127448274401
@@ -333,18 +366,6 @@ MonoBehaviour:
   reload:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4803763394606977203}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Reload
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 124774614882042725}
         m_TargetAssemblyTypeName: GunAmmo, Assembly-CSharp
         m_MethodName: RefillAmmo
@@ -357,12 +378,72 @@ MonoBehaviour:
           m_StringArgument: Reload
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 283578511486814562}
+        m_TargetAssemblyTypeName: AnimationPlayer, Assembly-CSharp
+        m_MethodName: PlayAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Reload
+          m_BoolArgument: 0
+        m_CallState: 2
   modify:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3022742234327375417}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Modify
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4345125600687365055}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunEnabling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Modify
+          m_BoolArgument: 0
+        m_CallState: 2
   modifyCanceled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3022742234327375417}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4345125600687365055}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunDisabling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
   gunEnabled:
     m_PersistentCalls:
       m_Calls:
@@ -529,6 +610,33 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  - AnimationName: Modify
+    AnimationIndex: 3
+    TargetTransform: {fileID: 3240435029589378360}
+    TimeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.06733586
+        outSlope: 0.06733586
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.085171044
+      - serializedVersion: 3
+        time: 0.25
+        value: 1
+        inSlope: 0.1401928
+        outSlope: 0.1401928
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.092533946
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   instanceTransform: {fileID: 6184332315631593028}
   AnimationEnded:
     m_PersistentCalls:
@@ -657,28 +765,6 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 8a42c1f03bee77543a06f3cf0d7ed233, type: 3}
   Source: {fileID: 1428485054147343709}
---- !u!95 &4803763394606977203
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8345390659980859331}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d010bbb4d788df048aca1215675b3878, type: 2}
-  m_CullingMode: 2
-  m_UpdateMode: 1
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &4517687555344140530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -725,8 +811,37 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1, y: 0.36, z: 1}
-  m_Center: {x: 0, y: 0.026, z: 0.12}
+  m_Size: {x: 0.1, y: 0.36, z: 0.97222817}
+  m_Center: {x: 0, y: 0.025999993, z: 0.13388592}
+--- !u!111 &8607881520190251569
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345390659980859331}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 87d4897eb046b214bacc9bfde036b906, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 87d4897eb046b214bacc9bfde036b906, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!114 &283578511486814562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345390659980859331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a358c55bbab55ac458c298607dc8ff21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4239026256773787003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,6 +850,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6184332315631593028}
     m_Modifications:
+    - target: {fileID: 380665005897939227, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 380665005897939227, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 380665005897939227, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: runtimeGunData
       value: 
@@ -750,6 +877,22 @@ PrefabInstance:
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291100997965219664, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291100997965219664, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291100997965219664, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918877764399586794, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3630743876135832019, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: m_LocalPosition.x
@@ -795,6 +938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AR_C
       objectReference: {fileID: 0}
+    - target: {fileID: 5480607307822303335, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5997436752085639530, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: RuntimeGunData
       value: 
@@ -805,9 +952,13 @@ PrefabInstance:
       objectReference: {fileID: 6237644757128236936}
     m_RemovedComponents:
     - {fileID: 5548876902583293302, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7358788548617943868, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1723769544797409445, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4345125600687365055}
     - targetCorrespondingSourceObject: {fileID: 613444212601763668, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       insertIndex: -1
       addedObject: {fileID: 124774614882042725}
@@ -844,6 +995,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b851f9740dd23fb45b253c2527e96a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3258359482027572702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1723769544797409445, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+  m_PrefabInstance: {fileID: 4239026256773787003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4345125600687365055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3258359482027572702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6ffdaa7ce2d74787e80dc4958fd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: -0.11, y: 0.0261, z: 0.1938}
+  targetPosition: {x: -0.323, y: -0.891, z: 0.032}
+  animTime: 0.2
 --- !u!114 &3460212795317028077 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 779455748050266518, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}

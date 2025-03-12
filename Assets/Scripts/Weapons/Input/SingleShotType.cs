@@ -2,16 +2,12 @@ using UnityEngine;
 
 public class SingleShotType : ShotType
 {
-    [SerializeField] private float fireRatePerMinute;
-
-    private const int MINUTE = 60;
-
     private float durationBetweenShot;
     private float lastShotTime = 0;
 
     private void Start()
     {
-        durationBetweenShot = MINUTE / fireRatePerMinute;
+        durationBetweenShot = Minute / RuntimeGunData.GunAmmo.GunAmmoData.ShotPerMinute;
     }
 
     private void OnEnable()
@@ -22,8 +18,10 @@ public class SingleShotType : ShotType
     public override void OnShotStart()
     {
         if (Time.time - lastShotTime < durationBetweenShot) return;
-        lastShotTime = Time.time;
+        if (!RuntimeGunData.GunAmmo.TryTakeAmmo()) return;
 
         OnShot?.Invoke();
+
+        lastShotTime = Time.time;
     }
 }

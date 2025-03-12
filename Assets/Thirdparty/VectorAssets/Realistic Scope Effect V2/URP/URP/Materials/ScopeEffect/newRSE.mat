@@ -34,7 +34,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Reticle:
-        m_Texture: {fileID: 2800000, guid: 827406c0b8673ac4198d8ca71ea070ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: d00971d3d42a7b4459d7604b8a5cadaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_Array:

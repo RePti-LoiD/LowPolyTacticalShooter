@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1723769544797409445}
   serializedVersion: 2
   m_LocalRotation: {x: -0.20728569, y: 0.22588293, z: 0.95057, w: 0.049257137}
-  m_LocalPosition: {x: -0.11, y: 0.0261, z: 0.1938}
+  m_LocalPosition: {x: -0.11000104, y: 0.026100013, z: 0.19379935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -263,8 +263,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 380665005897939227}
   - {fileID: 943673366811678324}
+  - {fileID: 380665005897939227}
   m_Father: {fileID: 3630743876135832019}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3367809160263679631
@@ -822,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b74e610c59c484c9af4e256e13b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runtimeGunData: {fileID: 0}
   muzzle: {fileID: 8227615634356373972}
   Collided:
     m_PersistentCalls:
