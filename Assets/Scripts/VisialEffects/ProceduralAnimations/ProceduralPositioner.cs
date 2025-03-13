@@ -27,10 +27,8 @@ public class ProceduralPositioner : MonoBehaviour
 
     public AnimationUnit GetAnimation(int index) => animationUnits[currentAnimationIndex];
 
-    public void SetAnimation(string animationName)
-    {
+    public void SetAnimation(string animationName) =>
         SetAnimation(animationUnits.FindIndex((unit) => unit.AnimationName == animationName));
-    }
 
     public void SetAnimation(int index)
     {

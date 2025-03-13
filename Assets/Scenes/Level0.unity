@@ -17192,10 +17192,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7271461956794386624, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
-      propertyPath: 'scopePrefabs.Array.data[0]'
-      value: 
-      objectReference: {fileID: -525260428794729785, guid: 082f53fbb45c11946a30c32f5cbefef7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
