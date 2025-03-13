@@ -33,9 +33,10 @@ public class GunAmmo : MonoBehaviour
         }
     }
 
-
-    private void Start()
+    private void OnEnable()
     {
+        print(gunAmmoData.GetInstanceID());
+
         currentAmmoCount = GunAmmoData.MaxAmmoCount;
         remainAmmoCount = GunAmmoData.MaxRemainAmmoCount;
     }
@@ -55,22 +56,4 @@ public class GunAmmo : MonoBehaviour
         RemainAmmoCount -= Mathf.Abs(GunAmmoData.MaxAmmoCount - currentAmmoCount);
         CurrentAmmoCount = GunAmmoData.MaxAmmoCount;
     }
-}
-
-[CreateAssetMenu(fileName = "gunAmmoData", menuName = "Scriptable Objects/GunParts/gunAmmoData")]
-public class GunAmmoData : ScriptableObject
-{
-    [SerializeField] private int maxAmmoCount;
-    [SerializeField] private int maxRemainAmmoCount;
-    [SerializeField] private int shotPerMinute;
-
-    [Space]
-    [SerializeField] private int bulletDamage;
-    [SerializeField] private int bulletSpeed;
-
-    public int MaxAmmoCount { get => maxAmmoCount; }
-    public int MaxRemainAmmoCount { get => maxRemainAmmoCount; }
-    public int ShotPerMinute { get => shotPerMinute; }
-    public int BulletDamage { get => bulletDamage; }
-    public int BulletSpeed { get => bulletSpeed; }
 }

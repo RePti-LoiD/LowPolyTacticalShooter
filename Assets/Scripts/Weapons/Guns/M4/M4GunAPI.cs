@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class M4GunAPI : BaseGunAPI
 {
-    [SerializeField] private RecoilRotationSender cameraRecoil;
-
     public override void EnableGun(ExternalDataForGun data)
     {
         base.EnableGun(data);

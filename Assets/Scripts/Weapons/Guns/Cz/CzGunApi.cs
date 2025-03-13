@@ -3,7 +3,6 @@ using UnityEngine;
 public class CzGunApi : BaseGunAPI
 {
     [SerializeField] private LinearInterpolationAnim lerpAnim;
-    [SerializeField] private RecoilRotationSender cameraRecoil;
 
     public override void EnableGun(ExternalDataForGun data)
     {

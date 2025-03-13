@@ -7,7 +7,7 @@ public class BaseGunAPI : GunAPI
 
     [SerializeField] public ProceduralPositioner proceduralPositioner;
     [SerializeField] protected TransformCompositor transformCompositor;
-    [SerializeField] private RecoilRotationSender cameraRecoil;
+    [SerializeField] protected RecoilRotationSender cameraRecoil;
 
     [Header("Events")]
     [SerializeField] private UnityEvent shotStart;

@@ -2153,6 +2153,7 @@ MonoBehaviour:
   gunDisabled:
     m_PersistentCalls:
       m_Calls: []
+  projectileThrower: {fileID: 0}
   leftHitRotationSender: {fileID: 3839715567512827371}
   rightHitRotationSender: {fileID: 3458100689501069565}
   lerpAnim: {fileID: 5813005961905185173}
@@ -2229,7 +2230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c102e5d9c5dca43a991cbc345a773d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunAmmoData: {fileID: 11400000, guid: e7e326f9a12c814419b9a492bee1e517, type: 2}
+  gunAmmoData: {fileID: 11400000, guid: 4344e0918c0440e42a3ef74f6e349f72, type: 2}
 --- !u!1 &2432363644803536574
 GameObject:
   m_ObjectHideFlags: 0
@@ -4588,7 +4589,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  gunSwitchDelay: 0.1
+  gunSwitchDelay: 0.05
   movement: {fileID: 2055741305426135043}
   coroutineRunner: {fileID: 371916209878493406}
   audioSource: {fileID: 4873330365065922334}

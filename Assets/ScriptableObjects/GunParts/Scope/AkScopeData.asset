@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: DefaultGunData
-  m_EditorClassIdentifier: Assembly-CSharp::GunAmmoData
-  maxAmmoCount: 0
-  maxRemainAmmoCount: 0
-  shotPerMinute: 0
-  bulletDamage: 0
-  bulletSpeed: 0
+  m_Script: {fileID: 11500000, guid: 6ca33ab3893028349a1a41f6273e2d4f, type: 3}
+  m_Name: AkScopeData
+  m_EditorClassIdentifier: 
+  gunScopeName: Default
+  scopeFov: 60
+  aimPosition: {fileID: 0}
+  muzzlePositionOffset: {x: 0, y: 0, z: 0}

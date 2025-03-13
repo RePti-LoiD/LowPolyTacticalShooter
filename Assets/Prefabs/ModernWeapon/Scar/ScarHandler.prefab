@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c102e5d9c5dca43a991cbc345a773d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunAmmoData: {fileID: 11400000, guid: 9c5a75edb528217449b542247d7918e0, type: 2}
+  gunAmmoData: {fileID: 11400000, guid: 51e83593801c0e14b9054d21eed3200d, type: 2}
 --- !u!4 &4020749124759501583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 943673366811678324, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}

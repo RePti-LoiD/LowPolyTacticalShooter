@@ -33,8 +33,8 @@ MonoBehaviour:
       data:
         m_Development: 0
         m_ConnectProfiler: 0
-        m_BuildWithDeepProfilingSupport: 0
-        m_AllowDebugging: 0
+        m_BuildWithDeepProfilingSupport: 1
+        m_AllowDebugging: 1
         m_WaitForManagedDebugger: 0
         m_ManagedDebuggerFixedPort: 0
         m_ExplicitNullChecks: 0

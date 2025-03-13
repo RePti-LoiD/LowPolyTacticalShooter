@@ -1,0 +1,101 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class ModifierManager : MonoBehaviour
+{
+    [SerializeField] private List<GunScope> scopePrefabs;
+    [SerializeField] private List<GunAmmo> ammoPrefabs;
+    [SerializeField] private List<GunMuzzle> muzzlePrefabs;
+    [SerializeField] private List<GunGrip> gripPrefab;
+
+    [SerializeField] private UnityEvent<GunScope> ScopeSet;
+    [SerializeField] private UnityEvent<GunAmmo> AmmoSet;
+    [SerializeField] private UnityEvent<GunMuzzle> MuzzleSet;
+    [SerializeField] private UnityEvent<GunGrip> GripSet;
+
+    [Space]
+    [SerializeField] private ModifierAnchor scopeAnchor;
+    [SerializeField] private ModifierAnchor ammoAnchor;
+    [SerializeField] private ModifierAnchor muzzleAnchor;
+    [SerializeField] private ModifierAnchor gripAnchor;
+
+    [Space]
+    [SerializeField] private GameObject ModifierUI;
+
+    private GunScope currentScope;
+    private GunAmmo currentAmmo;
+    private GunMuzzle currentMuzzle;
+    private GunGrip currentGrip;
+
+    public GunScope CurrentScope 
+    { 
+        get => currentScope;
+        set 
+        { 
+            scopeAnchor.SpawnModifier(value.gameObject);
+            ScopeSet?.Invoke(value);
+
+            currentScope = value; 
+        }
+    }
+
+    public GunAmmo CurrentAmmo 
+    { 
+        get => currentAmmo; 
+        set 
+        { 
+            ammoAnchor.SpawnModifier(value.gameObject);
+            AmmoSet?.Invoke(value);
+
+            currentAmmo = value; 
+        } 
+    }
+
+    public GunMuzzle CurrentMuzzle 
+    { 
+        get => currentMuzzle; 
+        set 
+        { 
+            muzzleAnchor.SpawnModifier(value.gameObject);
+            MuzzleSet?.Invoke(value);
+
+            currentMuzzle = value; 
+        } 
+    }
+
+    public GunGrip CurrentGrip
+    {
+        get => currentGrip;
+        set
+        {
+            gripAnchor.SpawnModifier(value.gameObject);
+            GripSet?.Invoke(value);
+
+            currentGrip = value;
+        }
+    }
+
+    private void Awake()
+    {
+        if (scopePrefabs.Count > 0)
+            CurrentScope = scopePrefabs.FirstOrDefault();
+        if (ammoPrefabs.Count > 0)
+            CurrentAmmo = ammoPrefabs.FirstOrDefault();
+        if (muzzlePrefabs.Count > 0)
+            CurrentMuzzle = muzzlePrefabs.FirstOrDefault();
+        if (gripPrefab.Count > 0)
+            CurrentGrip = gripPrefab.FirstOrDefault();
+    }
+
+    public void EnableModifierUI()
+    {
+        ModifierUI.SetActive(true);
+    }
+
+    public void DisableModifierUI()
+    {
+        ModifierUI.SetActive(false);
+    }
+}

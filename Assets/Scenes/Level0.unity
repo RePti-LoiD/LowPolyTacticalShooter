@@ -17192,6 +17192,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7271461956794386624, guid: ace6ed9e0c1e9a6479a526b7a9b0d0c0, type: 3}
+      propertyPath: 'scopePrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: -525260428794729785, guid: 082f53fbb45c11946a30c32f5cbefef7, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17491,6 +17495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 332634640}
     m_Modifications:
+    - target: {fileID: 2338831395375345809, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4517687555344140530, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -17538,6 +17546,10 @@ PrefabInstance:
     - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
       propertyPath: m_Name
       value: ScarHandler_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8345390659980859331, guid: 81eb0f2ebeeb46847beaaa6ba0ac14f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17763,13 +17775,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1602750851511280790, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: guns.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602750851511280790, guid: 75139180ca14b3147a5511361862b34b, type: 3}
-      propertyPath: 'guns.Array.data[1]'
+      propertyPath: projectilePool
       value: 
-      objectReference: {fileID: 1995683024546865036}
+      objectReference: {fileID: 1175490136}
     - target: {fileID: 1967211489276419418, guid: 75139180ca14b3147a5511361862b34b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -21612,17 +21620,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b91b6719938f404da0b3710b2c86f9d, type: 3}
---- !u!114 &1995683024546865036 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3913529222181123931, guid: 2b91b6719938f404da0b3710b2c86f9d, type: 3}
-  m_PrefabInstance: {fileID: 1995683024546865035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df1cc5c859c334a83f0c4014a89d88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

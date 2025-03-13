@@ -3,7 +3,6 @@ using UnityEngine;
 public class RevolverAPI : BaseGunAPI
 {
     [SerializeField] private SoundPlayer soundPlayer;
-    [SerializeField] private RecoilRotationSender cameraRecoil;
 
     [SerializeField] private LinearInterpolationAnim lerpAnim;
 

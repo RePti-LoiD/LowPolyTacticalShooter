@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: ScarGunAmmoData
-  m_EditorClassIdentifier: Assembly-CSharp::GunAmmoData
-  maxAmmoCount: 21
-  maxRemainAmmoCount: 84
-  shotPerMinute: 650
-  bulletDamage: 29
-  bulletSpeed: 350
+  m_Script: {fileID: 11500000, guid: b43d755ea0ecc6e478a6b8d8976cb96a, type: 3}
+  m_Name: MagnumAmmoData
+  m_EditorClassIdentifier: 
+  maxAmmoCount: 7
+  maxRemainAmmoCount: 28
+  shotPerMinute: 200
+  bulletDamage: 60
+  bulletSpeed: 300
