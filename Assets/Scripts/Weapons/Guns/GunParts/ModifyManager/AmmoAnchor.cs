@@ -4,9 +4,9 @@ public class AmmoAnchor : ModifierAnchor
 {
     private GunAmmo currentGunAmmo;
 
-    public override void SpawnModifier(GameObject modifier)
+    public override void EnableModifier(GameObject modifier)
     {
-        base.SpawnModifier(modifier);
+        base.EnableModifier(modifier);
 
         currentGunAmmo = modifier.GetComponent<GunAmmo>();
     }

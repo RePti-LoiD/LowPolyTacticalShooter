@@ -10,8 +10,15 @@ public class ModifierAnchor : MonoBehaviour
             DestroyModifier();
 
         currentModifier = Instantiate(modifier, transform, false);
+
         currentModifier.transform.localPosition = Vector3.zero;
         currentModifier.transform.localRotation = Quaternion.identity;
+        currentModifier.transform.SetAllChildrenLayer(gameObject.layer);
+    }
+
+    public virtual void EnableModifier(GameObject modifier)
+    {
+        currentModifier.SetActive(true);
     }
 
     public virtual void DestroyModifier()

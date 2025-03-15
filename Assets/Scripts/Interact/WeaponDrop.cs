@@ -17,8 +17,6 @@ public class WeaponDrop : MonoBehaviour
 
         if (removedGun.TryGetComponent(out Rigidbody rb))
         {
-            print("ASSS");
-
             removedGun.Disabled += (x) =>
             {
                 rb.position = (Vector3.forward * 2);
@@ -27,8 +25,6 @@ public class WeaponDrop : MonoBehaviour
 
                 removedGun.Disabled = null;
             };
-
-            
         }
     }
 
@@ -40,7 +36,6 @@ public class WeaponDrop : MonoBehaviour
 
     private IEnumerator Wait(GunAPI removedGun, Rigidbody rb, float time)
     {
-        print("Я пидорас");
         yield return new WaitForFixedUpdate();
         moveThisShit = true;
 

@@ -35,8 +35,6 @@ public class GunAmmo : MonoBehaviour
 
     private void OnEnable()
     {
-        print(gunAmmoData.GetInstanceID());
-
         currentAmmoCount = GunAmmoData.MaxAmmoCount;
         remainAmmoCount = GunAmmoData.MaxRemainAmmoCount;
     }

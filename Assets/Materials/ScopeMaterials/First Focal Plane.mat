@@ -30,7 +30,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - RenderTexture:
-        m_Texture: {fileID: 8400000, guid: 82eff30f04851dc4ba9ab5906ffba39f, type: 2}
+        m_Texture: {fileID: 8400000, guid: 5ae1bad93a5e01149ad5237b6608d8d1, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Reticle:

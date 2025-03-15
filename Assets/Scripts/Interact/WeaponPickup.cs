@@ -24,8 +24,6 @@ public class WeaponPickup : MonoBehaviour
     {
         if (raycastOrigin == null)
             raycastOrigin = Camera.main.transform;
-
-        print((targetLayer, targetLayer.value));
     }
 
     public void OnInteraction()

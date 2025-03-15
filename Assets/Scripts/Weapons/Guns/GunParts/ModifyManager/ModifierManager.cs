@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class ModifierManager : MonoBehaviour
 {
-    [SerializeField] private List<GunScope> scopePrefabs;
-    [SerializeField] private List<GunAmmo> ammoPrefabs;
-    [SerializeField] private List<GunMuzzle> muzzlePrefabs;
-    [SerializeField] private List<GunGrip> gripPrefab;
+    [SerializeField] private List<GameObject> scopePrefabs;
+    [SerializeField] private List<GameObject> ammoPrefabs;
+    [SerializeField] private List<GameObject> muzzlePrefabs;
+    [SerializeField] private List<GameObject> gripPrefabs;
 
     [SerializeField] private UnityEvent<GunScope> ScopeSet;
     [SerializeField] private UnityEvent<GunAmmo> AmmoSet;
@@ -50,7 +50,7 @@ public class ModifierManager : MonoBehaviour
             AmmoSet?.Invoke(value);
 
             currentAmmo = value; 
-        } 
+        }
     }
 
     public GunMuzzle CurrentMuzzle 
@@ -80,13 +80,21 @@ public class ModifierManager : MonoBehaviour
     private void Awake()
     {
         if (scopePrefabs.Count > 0)
-            CurrentScope = scopePrefabs.FirstOrDefault();
+            CurrentScope = scopePrefabs.FirstOrDefault().GetComponent<GunScope>();
         if (ammoPrefabs.Count > 0)
-            CurrentAmmo = ammoPrefabs.FirstOrDefault();
+            CurrentAmmo = ammoPrefabs.FirstOrDefault().GetComponent<GunAmmo>();
         if (muzzlePrefabs.Count > 0)
-            CurrentMuzzle = muzzlePrefabs.FirstOrDefault();
-        if (gripPrefab.Count > 0)
-            CurrentGrip = gripPrefab.FirstOrDefault();
+            CurrentMuzzle = muzzlePrefabs.FirstOrDefault().GetComponent<GunMuzzle>();
+        if (gripPrefabs.Count > 0)
+            CurrentGrip = gripPrefabs.FirstOrDefault().GetComponent<GunGrip>();
+    }
+
+    private int currentScopeIndex = 0;
+    public void NextScope()
+    {
+        currentScopeIndex = (currentScopeIndex + 1) % scopePrefabs.Count;
+
+        CurrentScope = scopePrefabs[currentScopeIndex].GetComponent<GunScope>();
     }
 
     public void EnableModifierUI()
