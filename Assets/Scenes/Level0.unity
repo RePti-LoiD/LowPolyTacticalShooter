@@ -19993,6 +19993,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   instanceTransform: {fileID: 344851131}
+  executeOnObject: 0
+  setFirstPositionAsDefault: 0
   AnimationEnded:
     m_PersistentCalls:
       m_Calls: []

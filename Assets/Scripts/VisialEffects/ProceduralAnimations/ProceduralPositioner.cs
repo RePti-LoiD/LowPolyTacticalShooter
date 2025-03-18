@@ -5,10 +5,14 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.Events;
 
-public class ProceduralPositioner : MonoBehaviour
+public class ProceduralPositioner : TransformComposable
 {
     [SerializeField] private List<AnimationUnit> animationUnits = new List<AnimationUnit>();
     [SerializeField] public Transform instanceTransform;
+    
+    [Space]
+    [SerializeField] private bool executeOnObject = true;
+    [SerializeField] private bool setFirstPositionAsDefault = false;
 
     public UnityEvent<AnimationUnit> AnimationEnded;
 
@@ -17,10 +21,22 @@ public class ProceduralPositioner : MonoBehaviour
     private AnimationUnit currentUnit;
     private IEnumerator currentAnim;
 
+    private Vector3 currentPosition;
+    private Quaternion currentRotation;
+
     private void Awake()
     {
+        currentPosition = Vector3.zero;
+        currentRotation = Quaternion.identity;
+
         if (instanceTransform == null)
             instanceTransform = transform;
+    }
+
+    private void Start()
+    {
+        if (setFirstPositionAsDefault)
+            SetAnimation(0);
     }
 
     public AnimationUnit GetAnimation(string name) => animationUnits.Find(x => x.AnimationName == name);
@@ -56,17 +72,23 @@ public class ProceduralPositioner : MonoBehaviour
         {
             currentTime += Time.deltaTime;
 
-            transform.localPosition = Vector3.LerpUnclamped (
+            currentPosition = Vector3.LerpUnclamped (
                 startPosition,
                 unit.TargetTransform.localPosition,
                 unit.TimeCurve.Evaluate(currentTime)
             );
 
-            transform.localRotation = Quaternion.SlerpUnclamped (
+            currentRotation = Quaternion.SlerpUnclamped (
                 startRotation,
                 unit.TargetTransform.localRotation,
                 unit.TimeCurve.Evaluate(currentTime)
             );
+
+            if (executeOnObject)
+            {
+                transform.localPosition = currentPosition;
+                transform.localRotation = currentRotation;
+            }
 
             yield return null;
         }
@@ -75,4 +97,10 @@ public class ProceduralPositioner : MonoBehaviour
         currentAnim = null;
         currentUnit = null;
     }
+
+    public override Vector3 GetPosition(Vector3 prevPosition) =>
+        currentPosition;
+
+    public override Quaternion GetRotation(Quaternion prevRotation) =>
+        currentRotation;
 }

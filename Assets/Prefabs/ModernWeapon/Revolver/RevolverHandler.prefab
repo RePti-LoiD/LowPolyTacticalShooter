@@ -436,7 +436,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8022143527177158497}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2deec910d2bc03d4ea8b2a52f2217786, type: 3}
   m_Name: 
@@ -578,6 +578,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   instanceTransform: {fileID: 7032342367856862561}
+  executeOnObject: 1
   AnimationEnded:
     m_PersistentCalls:
       m_Calls:
@@ -904,6 +905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6994eb96e2838bc41a8c3f48169debfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  muzzleData: {fileID: 0}
+  audioSource: {fileID: 0}
+  shotParticle: {fileID: 0}
 --- !u!1001 &3845549953169102609
 PrefabInstance:
   m_ObjectHideFlags: 0

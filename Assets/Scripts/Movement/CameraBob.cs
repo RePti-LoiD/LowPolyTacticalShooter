@@ -14,6 +14,10 @@ public class CameraBob : TransformComposable
 
     [SerializeField] private Transform stabilizationTracker;
 
+    private float currentSpeed;
+
+    public void OnMovementSpeedChange(float speed) =>
+        currentSpeed = speed;
 
     private float Cos(float time) => Mathf.Cos(time);
     private float Sin(float time) => Mathf.Sin(time);
@@ -28,7 +32,7 @@ public class CameraBob : TransformComposable
                 Cos(Time.time * bobFrequency) - (bobAmount / 2),
                 Mathf.Abs(Sin(Time.time * bobFrequency)) - (bobAmount / 2)
             ) * bobAmount : Vector3.zero, 
-            Time.deltaTime * returnSpeed
+            Time.deltaTime * returnSpeed * currentSpeed
         );
     }
 

@@ -1,5 +1,5 @@
 ﻿public class DashEventArgs
 {
-    public int CurrentDashCount;
+    public float CurrentSprintTime;
     public float TimeToRefill;
 }

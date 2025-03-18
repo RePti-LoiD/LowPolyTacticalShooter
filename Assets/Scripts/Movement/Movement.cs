@@ -8,6 +8,10 @@ public class Movement : MovementControllable
     [SerializeField] private UnityEvent OnMovementUpdate;
     [SerializeField] private Vector3Event OnLinearVelocityChanged;
     [SerializeField] private DashEvent OnDashParametrized;
+    [SerializeField] private UnityEvent Sprint;
+    [SerializeField] private UnityEvent SprintStop;
+    [SerializeField] private UnityEvent<bool> IsSprintChanged;
+    [SerializeField] private UnityEvent<float> AbsoluteSpeedChanged;
     [Space]
 
     [Header("Links")]
@@ -22,9 +26,53 @@ public class Movement : MovementControllable
     [SerializeField] private float additionalImpulsFading;
     [SerializeField] private float additionalLinearVelocityFading;
 
-    private int currentDashCount;
+    private bool sprintKey;
 
     private bool isSprint;
+    public bool IsSprint
+    {
+        get => isSprint;
+        set
+        {
+            if (isSprint != value)
+            {
+                if (value)
+                    Sprint?.Invoke();
+                else
+                    SprintStop?.Invoke();
+
+                IsSprintChanged?.Invoke(IsSprint);
+            }
+
+            isSprint = value;
+        }
+    }
+
+    private float currentSprintTime;
+    public float SprintTime
+    {
+        get => currentSprintTime; set
+        {
+            currentSprintTime = value;
+
+            OnDashParametrized?.Invoke(new DashEventArgs
+            {
+                CurrentSprintTime = SprintTime,
+                TimeToRefill = movementSettings.TimeToRefillSprint
+            });
+        }
+    }
+
+    private float absoluteSpeed;
+    public float AbsoluteSpeed
+    {
+        get => absoluteSpeed; 
+        private set
+        {
+            absoluteSpeed = value;
+            AbsoluteSpeedChanged?.Invoke(absoluteSpeed);
+        }
+    }
 
     private float additionalHorizontalImpuls;
     private Vector3 additionalLinearVelocity;
@@ -34,21 +82,8 @@ public class Movement : MovementControllable
     private Vector3 moveVector;
     private float currentLerpValue;
 
-    public int CurrentDashCount
-    {
-        get => currentDashCount; set
-        {
-            currentDashCount = value;
-
-            OnDashParametrized?.Invoke(new DashEventArgs
-            {
-                CurrentDashCount = currentDashCount,
-                TimeToRefill = movementSettings.TimeToRefillSprint
-            });
-        }
-    }
-
-    public bool IsRun { get => isSprint; set => isSprint = value; }
+    private IEnumerator sprintCoroutine;
+    private Vector3 prevPosition;
 
     public void ZeroMoveVector()
     {
@@ -89,7 +124,7 @@ public class Movement : MovementControllable
 
     private void Start()
     {
-        CurrentDashCount = movementSettings.SprintTime;
+        SprintTime = movementSettings.SprintTime;
     }
 
     protected override void Update()
@@ -98,6 +133,8 @@ public class Movement : MovementControllable
 
         AdditionalImpulseFading();
         AdditionalLinearVelocityFading();
+        RefillSprint();
+        CalculateAbsoluteSpeed();
 
         CurrentSpeed = movementSettings.DefaultSpeed;
         
@@ -110,6 +147,13 @@ public class Movement : MovementControllable
 
     protected override float HorizontalSpeedCalculate() =>
         Mathf.Sqrt(Mathf.Pow(playerRb.linearVelocity.x, 2) + Mathf.Pow(playerRb.linearVelocity.z, 2));
+
+    private void CalculateAbsoluteSpeed()
+    {
+        AbsoluteSpeed = Mathf.Abs((transform.position - prevPosition).magnitude / Time.deltaTime);
+
+        prevPosition = transform.position;
+    }
 
     private void AdditionalImpulseFading() =>
         additionalHorizontalImpuls = Mathf.Lerp(additionalHorizontalImpuls, 1, additionalImpulsFading * Time.deltaTime);
@@ -143,10 +187,16 @@ public class Movement : MovementControllable
     public override void OnMove(Vector2 inputs)
     {
         var transformedInput = transform.TransformDirection(new Vector3(inputs.x, 0, inputs.y).normalized) * CurrentSpeed;
-        
+
+        if (AbsoluteSpeed < movementSettings.SprintSpeedTreshold)
+            IsSprint = false;
+
+        else if (sprintKey)
+            IsSprint = true;
+
         if (movementSettings.KeyboardLerpEnabled)
             moveVector = Vector3.Lerp(moveVector, transformedInput, Time.deltaTime * currentLerpValue);
-        else 
+        else
             moveVector = transformedInput;
 
         playerRb.linearVelocity = new Vector3(moveVector.x * additionalHorizontalImpuls, playerRb.linearVelocity.y, moveVector.z * additionalHorizontalImpuls) + additionalLinearVelocity;
@@ -155,20 +205,51 @@ public class Movement : MovementControllable
 
     public override void OnDash()
     {
-        if (CurrentDashCount <= 0) return;       
-        CurrentDashCount--;
+        if (SprintTime < movementSettings.SprintTimeTreshold) return;
+        if (sprintCoroutine != null) return;
 
-        additionalHorizontalImpuls = additionalHorizontalImpuls * movementSettings.DashSpeed;
+        sprintKey = true;
+        IsSprint = true;
 
-        CoroutineQueue.AddCoroutineToQueue(RefillDash());
+        sprintCoroutine = SprintCoroutine(SprintTime);
+        StartCoroutine(sprintCoroutine);
     }
 
-    private IEnumerator RefillDash()
+    public override void OnDashStop()
     {
-        yield return new WaitForSeconds(movementSettings.TimeToRefillSprint);
+        sprintKey = false;
 
-        if (CurrentDashCount < movementSettings.SprintTime)
-            CurrentDashCount += 1;
+        if (sprintCoroutine == null) return;
+        IsSprint = false;
+            
+        StopCoroutine(sprintCoroutine);
+        sprintCoroutine = null;
+    }
+
+    private void RefillSprint()
+    {
+        if (IsSprint) return;
+        if (SprintTime >= movementSettings.SprintTime) return;
+
+        SprintTime += Time.deltaTime * (movementSettings.SprintTime / movementSettings.TimeToRefillSprint);
+    }
+
+    private IEnumerator SprintCoroutine(float sprintTime)
+    {
+        float currentTime = 0f;
+
+        while (currentTime < sprintTime)
+        {
+            currentTime += Time.deltaTime;
+            SprintTime -= Time.deltaTime;
+
+            additionalHorizontalImpuls = movementSettings.DashSpeed;
+            
+            yield return null;
+        }
+
+        OnDashStop();
+        sprintCoroutine = null;
     }
 
     public override void OnCrouch()

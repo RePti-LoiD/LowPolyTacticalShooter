@@ -31,7 +31,7 @@ public class DashView : MonoBehaviour
     public void OnDash(DashEventArgs e)
     {
         lastDataReceiveTime = Time.time;
-        targetFillAmount = segmentSizeValue * e.CurrentDashCount;
+        targetFillAmount = segmentSizeValue * e.CurrentSprintTime;
 
         dashImage.CrossFadeAlpha(1, alphaFadingTime, false);
     }

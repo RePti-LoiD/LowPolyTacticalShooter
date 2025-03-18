@@ -142,6 +142,37 @@ MonoBehaviour:
   clampVector: {x: 50, y: 50}
   speed: 10
   ShiftVelocityDivider: -0.5
+--- !u!1 &176975754962345760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5542624033754174796}
+  m_Layer: 6
+  m_Name: DefaultPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5542624033754174796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176975754962345760}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7846919573122421415}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239830424057518607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1429,7 @@ GameObject:
   - component: {fileID: 3013916942443967427}
   - component: {fileID: 8403268220996707386}
   - component: {fileID: 7020841304889045632}
+  - component: {fileID: 5516930074184782548}
   m_Layer: 6
   m_Name: WeaponPlace
   m_TagString: Untagged
@@ -1449,11 +1481,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantTransform: {fileID: 5219996327813869091}
   composablesData:
-  - Composable: {fileID: 7020841304889045632}
+  - Composable: {fileID: 8403268220996707386}
     Weight: 1
     ComposePosition: 1
     ComposeRotation: 1
-  - Composable: {fileID: 8403268220996707386}
+  - Composable: {fileID: 5516930074184782548}
+    Weight: 1
+    ComposePosition: 1
+    ComposeRotation: 1
+  - Composable: {fileID: 7020841304889045632}
     Weight: 1
     ComposePosition: 1
     ComposeRotation: 1
@@ -1499,6 +1535,79 @@ MonoBehaviour:
   AxisX: 1
   AxisY: 1
   AxisZ: 1
+--- !u!114 &5516930074184782548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613792170691054156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2deec910d2bc03d4ea8b2a52f2217786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationUnits:
+  - AnimationName: Default
+    AnimationIndex: 0
+    TargetTransform: {fileID: 5542624033754174796}
+    TimeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 6.6666665
+        outSlope: 6.6666665
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.15
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.105802014
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - AnimationName: Sprint
+    AnimationIndex: 1
+    TargetTransform: {fileID: 2811221382582426218}
+    TimeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 6.6666665
+        outSlope: 6.6666665
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.15
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.105802014
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  instanceTransform: {fileID: 1897585132323682893}
+  executeOnObject: 0
+  setFirstPositionAsDefault: 0
+  AnimationEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1882556227246062517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3881,7 +3990,19 @@ MonoBehaviour:
         m_CallState: 2
   DashStop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2055741305426135043}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnDashStop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouch:
     m_PersistentCalls:
       m_Calls:
@@ -4087,6 +4208,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: WeaponBehaviour.WeaponSway, Assembly-CSharp
         m_MethodName: SetGlobalSwayAmount
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0.7
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2055741305426135043}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnDashStop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4412,43 +4545,7 @@ MonoBehaviour:
         m_CallState: 2
   OnHorizonalSpeedChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraFovSpeedController, Assembly-CSharp
-        m_MethodName: HorizontalSpeedChagedHandler
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8403268220996707386}
-        m_TargetAssemblyTypeName: WeaponBobV2, Assembly-CSharp
-        m_MethodName: OnMovementSpeedChange
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4157658953092581282}
-        m_TargetAssemblyTypeName: CrosshairRenderer, Assembly-CSharp
-        m_MethodName: OnVelocityChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnCurrentDirectionChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4476,6 +4573,78 @@ MonoBehaviour:
       - m_Target: {fileID: 8577008178370614027}
         m_TargetAssemblyTypeName: DashView, Assembly-CSharp
         m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Sprint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5516930074184782548}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Sprint
+          m_BoolArgument: 0
+        m_CallState: 2
+  SprintStop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5516930074184782548}
+        m_TargetAssemblyTypeName: ProceduralPositioner, Assembly-CSharp
+        m_MethodName: SetAnimation
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
+  IsSprintChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  AbsoluteSpeedChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8403268220996707386}
+        m_TargetAssemblyTypeName: WeaponBobV2, Assembly-CSharp
+        m_MethodName: OnMovementSpeedChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4157658953092581282}
+        m_TargetAssemblyTypeName: CrosshairRenderer, Assembly-CSharp
+        m_MethodName: OnVelocityChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8796147711084740743}
+        m_TargetAssemblyTypeName: CameraBob, Assembly-CSharp
+        m_MethodName: OnMovementSpeedChange
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5498,6 +5667,8 @@ Transform:
   m_Children:
   - {fileID: 1897585132323682893}
   - {fileID: 113760976042978848}
+  - {fileID: 2811221382582426218}
+  - {fileID: 5542624033754174796}
   m_Father: {fileID: 3671200135135015897}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1957322713689237274
@@ -6357,6 +6528,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7201968177419654200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2811221382582426218}
+  m_Layer: 6
+  m_Name: SprintPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2811221382582426218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201968177419654200}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.103871666, y: -0.4100446, z: 0.059275575, w: 0.9041906}
+  m_LocalPosition: {x: 0.195, y: 0.016, z: 0.024}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7846919573122421415}
+  m_LocalEulerAnglesHint: {x: 13.677, y: -48.632, z: 1.298}
 --- !u!1 &7225773347367279492
 GameObject:
   m_ObjectHideFlags: 0
