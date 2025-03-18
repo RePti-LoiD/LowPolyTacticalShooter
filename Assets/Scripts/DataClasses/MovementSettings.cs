@@ -19,8 +19,8 @@ class MovementSettings : ScriptableObject
     [SerializeField] private float jumpForce;
     [SerializeField] private Vector2 additionalJumpImpuls;
     [SerializeField] private int jumpCount;
-    [SerializeField] private int dashCount;
-    [SerializeField] private int dashTimeToRefill;
+    [SerializeField] private int sprintTime;
+    [SerializeField] private int timeToRefillSprint;
 
     [Header("Crouch")]
     [SerializeField] private float crouchSpeed;
@@ -49,8 +49,8 @@ class MovementSettings : ScriptableObject
     public float JumpForce { get => jumpForce; set => jumpForce = value; }
     public Vector2 AdditionalJumpImpuls { get => additionalJumpImpuls; set => additionalJumpImpuls = value; }
     public int JumpCount { get => jumpCount; set => jumpCount = value; }
-    public int DashCount { get => dashCount; set => dashCount = value; }
-    public int DashTimeToRefill { get => dashTimeToRefill; set => dashTimeToRefill = value; }
+    public int SprintTime { get => sprintTime; set => sprintTime = value; }
+    public int TimeToRefillSprint { get => timeToRefillSprint; set => timeToRefillSprint = value; }
 
 
     public float OnFlyCrouchVelocitySpeed { get => onFlyCrouchVelocitySpeed; set => onFlyCrouchVelocitySpeed = value; }

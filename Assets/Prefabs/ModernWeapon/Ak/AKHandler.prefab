@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 80584676924976062}
   - component: {fileID: 275859423213919461}
   - component: {fileID: 1424792823007350782}
-  - component: {fileID: 3840995431239353155}
-  - component: {fileID: 8757752097678063174}
   - component: {fileID: 4223967196982144411}
   - component: {fileID: 7292740124752638719}
   - component: {fileID: 7271461956794386624}
@@ -293,6 +291,18 @@ MonoBehaviour:
           m_StringArgument: Modify
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8030217966764584447}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunEnabling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Modify
+          m_BoolArgument: 0
+        m_CallState: 2
   modifyCanceled:
     m_PersistentCalls:
       m_Calls:
@@ -311,6 +321,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7271461956794386624}
         m_TargetAssemblyTypeName: ModifierManager, Assembly-CSharp
         m_MethodName: DisableModifierUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Default
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8030217966764584447}
+        m_TargetAssemblyTypeName: LinearInterpolationAnim, Assembly-CSharp
+        m_MethodName: AnimateGunDisabling
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -529,117 +551,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeftHandTargetTransform: {fileID: 6184587192551186100}
   RightHandTargetTransform: {fileID: 115128819995583301}
---- !u!82 &3840995431239353155
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474643492571905088}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &8757752097678063174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 474643492571905088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d338d09dc39f8e47b7208389844fb91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips: []
-  Source: {fileID: 3840995431239353155}
 --- !u!54 &4223967196982144411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -701,12 +612,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scopePrefabs:
+  - {fileID: 3061949183227946430, guid: cf32fe16148362041bc9fe3c4cb69787, type: 3}
   - {fileID: 5935288589097324456, guid: dfb2915d477e29a4abea160a075b0db8, type: 3}
   - {fileID: 5854160464916036016, guid: 082f53fbb45c11946a30c32f5cbefef7, type: 3}
   - {fileID: 6366097457074274178, guid: b98f6b77964a0c54794a6bf1719f636a, type: 3}
   - {fileID: 5736020418752474235, guid: bccd8b9dc98f8f140a4b3ce44364bfb5, type: 3}
   ammoPrefabs: []
-  muzzlePrefabs: []
+  muzzlePrefabs:
+  - {fileID: 8307335511463936318, guid: 8936ed90b02f2934289788d4d2ca63ef, type: 3}
+  - {fileID: 1749238696795804696, guid: 73d4c1db8130a864680b8741f20df13f, type: 3}
   gripPrefabs: []
   ScopeSet:
     m_PersistentCalls:
@@ -770,7 +684,7 @@ MonoBehaviour:
         m_CallState: 2
   scopeAnchor: {fileID: 7915093004658962293}
   ammoAnchor: {fileID: 4431283933506482926}
-  muzzleAnchor: {fileID: 2192094333773352601}
+  muzzleAnchor: {fileID: 6190506432052396230}
   gripAnchor: {fileID: 9120332737189062574}
   ModifierUI: {fileID: 523649484707226043}
 --- !u!1 &523649484707226043
@@ -1042,7 +956,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4078504809734829317}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7271461956794386624}
+        m_TargetAssemblyTypeName: ModifierManager, Assembly-CSharp
+        m_MethodName: NextMuzzle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3468149753768530831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,7 +987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3305962961552486049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1203,6 +1129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184587192551186100}
+  - component: {fileID: 8030217966764584447}
   m_Layer: 0
   m_Name: TempTargetL
   m_TagString: Untagged
@@ -1225,6 +1152,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3683120728158869125}
   m_LocalEulerAnglesHint: {x: -70.772, y: 7.056, z: 138.562}
+--- !u!114 &8030217966764584447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3704187237754954391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa6ffdaa7ce2d74787e80dc4958fd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: -0.1028, y: -0.039, z: -0.1551}
+  targetPosition: {x: -0.323, y: -0.891, z: 0.032}
+  animTime: 0.2
 --- !u!1 &5314998726727885622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1192,7 @@ Transform:
   m_GameObject: {fileID: 5314998726727885622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.000000014901161, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.048000008, z: -0.09399986}
+  m_LocalPosition: {x: -0.1, y: 0.048, z: -0.094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1475,7 +1417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5823560009052039114}
-  - component: {fileID: 2192094333773352601}
+  - component: {fileID: 6190506432052396230}
   m_Layer: 0
   m_Name: GunMuzzleAnchor
   m_TagString: Untagged
@@ -1498,7 +1440,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3980082505530589120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2192094333773352601
+--- !u!114 &6190506432052396230
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1507,9 +1449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982757409377044843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31aedf517982a0458edb2d1181571a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 65902a1ff8f996245a3d4f361499c7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotType: {fileID: 5690712975123422232}
 --- !u!1 &7169592700289142947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &497935002313475988
 RectTransform:
   m_ObjectHideFlags: 0

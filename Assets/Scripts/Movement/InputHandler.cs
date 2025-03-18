@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
     [Header("Movement")]
     [SerializeField] public UnityEvent OnJump;
     [SerializeField] public UnityEvent OnDash;
+    [SerializeField] public UnityEvent DashStop;
     [SerializeField] public UnityEvent OnCrouch;
 
     [Header("Mouse")]
@@ -49,6 +50,7 @@ public class InputHandler : MonoBehaviour
         inputs.Enable();
         inputs.PlayerMap.Jump.performed += JumpHandler;
         inputs.PlayerMap.Dash.performed += DashHandler;
+        inputs.PlayerMap.Dash.canceled += DashCanceledHandler;
         inputs.PlayerMap.Crouch.performed += CrouchHandler;
 
         inputs.PlayerMap.Shot.started += ShotStartHandler;
@@ -79,6 +81,7 @@ public class InputHandler : MonoBehaviour
         inputs.Disable();
         inputs.PlayerMap.Jump.performed -= JumpHandler;
         inputs.PlayerMap.Dash.performed -= DashHandler;
+        inputs.PlayerMap.Dash.canceled -= DashCanceledHandler;
         inputs.PlayerMap.Crouch.performed -= CrouchHandler;
 
         inputs.PlayerMap.Shot.started -= ShotStartHandler;
@@ -113,7 +116,10 @@ public class InputHandler : MonoBehaviour
     
     private void DashHandler(InputAction.CallbackContext obj) =>
         OnDash.Invoke();
-    
+
+    private void DashCanceledHandler(InputAction.CallbackContext obj) =>
+        DashStop?.Invoke();
+
     private void CrouchHandler(InputAction.CallbackContext obj) =>
         OnCrouch.Invoke();
     #endregion

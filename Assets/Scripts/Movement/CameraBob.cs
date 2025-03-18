@@ -4,11 +4,16 @@ public class CameraBob : TransformComposable
 {
     [SerializeField] private float bobAmount;
     [SerializeField] private float bobFrequency;
-    [SerializeField] private bool stabilize;
+    [Space]
+    [SerializeField] private bool stabilize = true;
+    [SerializeField] private bool executeInUpdate = false;
+
+    [Space]
     [SerializeField] private float stabilizeAmount;
     [SerializeField] private float returnSpeed;
 
     [SerializeField] private Transform stabilizationTracker;
+
 
     private float Cos(float time) => Mathf.Cos(time);
     private float Sin(float time) => Mathf.Sin(time);
@@ -29,10 +34,12 @@ public class CameraBob : TransformComposable
 
     private void Update()
     {
-        if (stabilize)
-        { 
-            transform.localRotation = Quaternion.LookRotation(stabilizationTracker.forward * stabilizeAmount);
-            Debug.DrawRay(transform.position, stabilizationTracker.forward * stabilizeAmount, Color.red);
+        if (executeInUpdate)
+        {
+            if (stabilize)
+                transform.LookAt(stabilizationTracker.position);
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, GetPosition(transform.localPosition), Time.deltaTime * returnSpeed);
         }
     }
 
@@ -42,7 +49,7 @@ public class CameraBob : TransformComposable
     public override Quaternion GetRotation(Quaternion prevRotation)
     {
         if (stabilize)
-            return Quaternion.LookRotation(stabilizationTracker.forward * stabilizeAmount);
+            return Quaternion.LookRotation(stabilizationTracker.position);
         else
             return Quaternion.identity;
     }

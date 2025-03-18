@@ -65,7 +65,6 @@ public class WallRun : MonoBehaviour
         playerRb.linearVelocity = new Vector3(playerRb.linearVelocity.x, 0, playerRb.linearVelocity.z);
         movement.CurrentDirection *= movementSettings.WallRunSpeed;
 
-        movement.SetCurrentJumpCount(0);
         movement.AddCurrentSpeed(movementSettings.WallRunSpeed);
     }
 

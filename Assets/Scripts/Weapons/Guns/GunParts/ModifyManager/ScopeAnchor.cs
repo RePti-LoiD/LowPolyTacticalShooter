@@ -18,5 +18,4 @@ class ScopeAnchor : ModifierAnchor
 
     public Vector3 CalcRelativePosition(Transform parentTransform) =>
         aimGlobalOffset - parentTransform.worldToLocalMatrix.MultiplyPoint(transform.position) - currentGunScope.TargetCameraPosition.position;
-
 }

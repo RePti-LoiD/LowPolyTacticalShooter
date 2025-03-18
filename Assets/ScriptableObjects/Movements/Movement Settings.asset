@@ -17,12 +17,12 @@ MonoBehaviour:
   sensitivity: 0.05
   zTiltCenterSpeed: 50
   maxZTilt: 15
-  defaultSpeed: 8
+  defaultSpeed: 5
   jumpForce: 5
   additionalJumpImpuls: {x: 0, y: 0}
   jumpCount: 1
-  dashCount: 3
-  dashTimeToRefill: 2
+  dashTime: 5
+  dashTimeToRefill: 4
   crouchSpeed: 2
   onFlyCrouchVelocitySpeed: 35
   wallRunSpeed: 20

@@ -10,8 +10,6 @@ public class RecoilRotationReceiver : TransformComposable
 
     public void RotateObject(Vector3 vector)
     {
-        print($"Rotate target: {vector}");
-
         target += vector;
     }
 

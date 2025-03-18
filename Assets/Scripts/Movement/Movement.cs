@@ -22,10 +22,9 @@ public class Movement : MovementControllable
     [SerializeField] private float additionalImpulsFading;
     [SerializeField] private float additionalLinearVelocityFading;
 
-    private int currentJumpCount;
     private int currentDashCount;
 
-    private bool canJump = true;
+    private bool isSprint;
 
     private float additionalHorizontalImpuls;
     private Vector3 additionalLinearVelocity;
@@ -44,10 +43,12 @@ public class Movement : MovementControllable
             OnDashParametrized?.Invoke(new DashEventArgs
             {
                 CurrentDashCount = currentDashCount,
-                TimeToRefill = movementSettings.DashTimeToRefill
+                TimeToRefill = movementSettings.TimeToRefillSprint
             });
         }
     }
+
+    public bool IsRun { get => isSprint; set => isSprint = value; }
 
     public void ZeroMoveVector()
     {
@@ -78,13 +79,6 @@ public class Movement : MovementControllable
         CurrentSpeed += additionalSpeed;
     }
 
-    public void SetCurrentJumpCount(int newJumpCount)
-    {
-        if (newJumpCount < 0) return;
-
-        currentJumpCount = newJumpCount;
-    }
-
     public void SetAdditionalHorizonalImpulse(float newHorizonalImpluls) =>
         additionalHorizontalImpuls = newHorizonalImpluls;
 
@@ -95,7 +89,7 @@ public class Movement : MovementControllable
 
     private void Start()
     {
-        CurrentDashCount = movementSettings.DashCount;
+        CurrentDashCount = movementSettings.SprintTime;
     }
 
     protected override void Update()
@@ -123,15 +117,6 @@ public class Movement : MovementControllable
     private void AdditionalLinearVelocityFading() =>
         additionalLinearVelocity = Vector3.Lerp(additionalLinearVelocity, Vector3.zero, additionalLinearVelocityFading * Time.deltaTime);
 
-    private void HandleGroundCheck()
-    {
-        if (IsGrounded) currentJumpCount = 0;
-        else currentJumpCount++;
-
-        if (currentJumpCount < movementSettings.JumpCount) canJump = true;
-        else canJump = false;
-    }
-
     public void IsGroundedChanged(bool isGrounded)
     {
         if (isGrounded)
@@ -142,9 +127,7 @@ public class Movement : MovementControllable
 
     public override void OnJump()
     {
-        HandleGroundCheck();
-
-        if (!canJump) return;
+        if (!IsGrounded) return;
 
         SetJumpVelocity(movementSettings.JumpForce);
         CurrentDirection = new Vector3(CurrentDirection.x, movementSettings.JumpForce, CurrentDirection.z);
@@ -182,9 +165,9 @@ public class Movement : MovementControllable
 
     private IEnumerator RefillDash()
     {
-        yield return new WaitForSeconds(movementSettings.DashTimeToRefill);
+        yield return new WaitForSeconds(movementSettings.TimeToRefillSprint);
 
-        if (CurrentDashCount < movementSettings.DashCount)
+        if (CurrentDashCount < movementSettings.SprintTime)
             CurrentDashCount += 1;
     }
 

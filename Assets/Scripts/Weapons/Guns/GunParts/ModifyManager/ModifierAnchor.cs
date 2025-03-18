@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ModifierAnchor : MonoBehaviour
 {
-    private GameObject currentModifier;
+    protected GameObject currentModifier;
 
     public virtual void SpawnModifier(GameObject modifier)
     {
+        print($"modificator: {modifier}");
+
         if (currentModifier != null)
             DestroyModifier();
 

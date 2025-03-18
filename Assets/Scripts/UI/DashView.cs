@@ -17,7 +17,7 @@ public class DashView : MonoBehaviour
 
     private void Awake()
     {
-        segmentSizeValue = 1 / (float) movementSettings.DashCount;
+        segmentSizeValue = 1 / (float) movementSettings.SprintTime;
     }
 
     private void Update()
