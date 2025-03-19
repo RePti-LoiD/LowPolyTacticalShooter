@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MovementControllable
@@ -8,15 +8,17 @@ public class Movement : MovementControllable
     [SerializeField] private UnityEvent OnMovementUpdate;
     [SerializeField] private Vector3Event OnLinearVelocityChanged;
     [SerializeField] private DashEvent OnDashParametrized;
+
+    [Space]
     [SerializeField] private UnityEvent Sprint;
     [SerializeField] private UnityEvent SprintStop;
+
+    [Space]
     [SerializeField] private UnityEvent<bool> IsSprintChanged;
     [SerializeField] private UnityEvent<float> AbsoluteSpeedChanged;
-    [Space]
 
     [Header("Links")]
     [SerializeField] private MovementSettings movementSettings;
-    [SerializeField] private CoroutineQueue CoroutineQueue;
     private Rigidbody playerRb;
 
     [Header("Ground check")]
@@ -34,15 +36,14 @@ public class Movement : MovementControllable
         get => isSprint;
         set
         {
-            if (isSprint != value)
-            {
-                if (value)
-                    Sprint?.Invoke();
-                else
-                    SprintStop?.Invoke();
+            if (isSprint == value) return;
 
-                IsSprintChanged?.Invoke(IsSprint);
-            }
+            if (value)
+                Sprint?.Invoke();
+            else
+                SprintStop?.Invoke();
+
+            IsSprintChanged?.Invoke(IsSprint);
 
             isSprint = value;
         }

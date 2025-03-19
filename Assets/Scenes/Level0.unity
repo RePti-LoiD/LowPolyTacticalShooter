@@ -2818,7 +2818,10 @@ MonoBehaviour:
   DashStop:
     m_PersistentCalls:
       m_Calls: []
-  OnCrouch:
+  Crouch:
+    m_PersistentCalls:
+      m_Calls: []
+  CrouchStop:
     m_PersistentCalls:
       m_Calls: []
   OnMouseMove:

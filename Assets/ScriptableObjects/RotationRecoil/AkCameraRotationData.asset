@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bc201a849489e469c84845b78bed78, type: 3}
   m_Name: AkCameraRotationData
   m_EditorClassIdentifier: 
-  rotation: {x: -5, y: -2, z: -1}
-  targetRotation: {x: -9, y: 2, z: 1}
+  rotation: {x: -3, y: 2, z: -10}
+  targetRotation: {x: -4, y: 1, z: 2}
   returnTime: 0
   snappines: 0

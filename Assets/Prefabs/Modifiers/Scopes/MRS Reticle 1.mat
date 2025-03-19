@@ -64,9 +64,9 @@ Material:
     m_Floats:
     - Depth: 70
     - Override_Colour: 1
-    - Reticle_Brightness: 64
+    - Reticle_Brightness: 27
     - Reticle_Rotation: 0
-    - Reticle_Size: 95
+    - Reticle_Size: 90
     - Reticle_X_Offset: 0
     - Reticle_Y_Offset: 0
     - _AddPrecomputedVelocity: 0
