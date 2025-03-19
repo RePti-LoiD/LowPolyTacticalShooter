@@ -52,8 +52,8 @@ public class InputHandler : MonoBehaviour
         inputs.PlayerMap.Jump.performed += JumpHandler;
         inputs.PlayerMap.Dash.performed += DashHandler;
         inputs.PlayerMap.Dash.canceled += DashCanceledHandler;
-        inputs.PlayerMap.Crouch.performed += CrouchHandler;
-        inputs.PlayerMap.Crouch.canceled += OnCrouchStop;
+        inputs.PlayerMap.Crouch.performed += OnCrouchHandler;
+        inputs.PlayerMap.Crouch.canceled += OnCrouchStopHandler;
 
         inputs.PlayerMap.Shot.started += ShotStartHandler;
         inputs.PlayerMap.Shot.canceled += ShotStopHandler;
@@ -82,8 +82,8 @@ public class InputHandler : MonoBehaviour
         inputs.PlayerMap.Jump.performed -= JumpHandler;
         inputs.PlayerMap.Dash.performed -= DashHandler;
         inputs.PlayerMap.Dash.canceled -= DashCanceledHandler;
-        inputs.PlayerMap.Crouch.performed -= CrouchHandler;
-        inputs.PlayerMap.Crouch.canceled -= OnCrouchStop;
+        inputs.PlayerMap.Crouch.performed -= OnCrouchHandler;
+        inputs.PlayerMap.Crouch.canceled -= OnCrouchStopHandler;
 
         inputs.PlayerMap.Shot.started -= ShotStartHandler;
         inputs.PlayerMap.Shot.canceled -= ShotStopHandler;
@@ -121,10 +121,10 @@ public class InputHandler : MonoBehaviour
     private void DashCanceledHandler(InputAction.CallbackContext obj) =>
         DashStop?.Invoke();
 
-    private void CrouchHandler(InputAction.CallbackContext obj) =>
-        CrouchStop?.Invoke();
+    private void OnCrouchHandler(InputAction.CallbackContext obj) =>
+        Crouch?.Invoke();
 
-    private void OnCrouchStop(InputAction.CallbackContext obj) =>
+    private void OnCrouchStopHandler(InputAction.CallbackContext obj) =>
         CrouchStop?.Invoke();
     #endregion
 

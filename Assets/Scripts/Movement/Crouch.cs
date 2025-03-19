@@ -14,6 +14,7 @@ public class Crouch : MonoBehaviour
 
     public void OnCrouch()
     {
+        print("Gay");
         playerCollider.height = crouchColliderHeight;
     }
 
