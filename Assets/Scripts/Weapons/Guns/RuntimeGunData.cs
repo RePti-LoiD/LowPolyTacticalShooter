@@ -24,32 +24,24 @@ public class RuntimeGunData : MonoBehaviour
 
     public void OnScopeSet(GunScope gunScope)
     {
-        print($"{name}: {gunScope}");
-
         this.gunScope = gunScope;
         GunDataChanged?.Invoke(this);
     }
 
     public void OnGunAmmoSet(GunAmmo gunAmmo)
     {
-        print($"{name}: {gunAmmo}");
-
         this.gunAmmo = gunAmmo;
         GunDataChanged?.Invoke(this);
     }
 
     public void OnMuzzleSet(GunMuzzle gunMuzzle)
     {
-        print($"{name}: {gunMuzzle}");
-
         this.gunMuzzle = gunMuzzle;
         GunDataChanged?.Invoke(this);
     }
 
     public void OnGripSet(GunGrip gunGrip)
     {
-        print($"{name}: {gunGrip}");
-
         this.gunGrip = gunGrip;
         GunDataChanged?.Invoke(this);
     }

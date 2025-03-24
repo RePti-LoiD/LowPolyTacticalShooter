@@ -14,9 +14,6 @@ public class Projectile : MonoBehaviour
     private ObjectPool<Projectile> pool;
     public ProjectileData CurrentProjectileData;
 
-    private Vector3 lastPosition;
-    private Vector3 currentPosition;
-
     public void SetObjectPool(ObjectPool<Projectile> pool) =>
         this.pool = pool;
 
@@ -36,10 +33,6 @@ public class Projectile : MonoBehaviour
         var currentTime = 0f;
         var lastEvaluate = 0f;
 
-
-        currentPosition = transform.position;
-        lastPosition = currentPosition;
-
         while (currentTime < maxTime)
         {
             currentTime += Time.deltaTime;
@@ -57,8 +50,6 @@ public class Projectile : MonoBehaviour
 
     public void OnProjectileCollide(Projectile projectile, RaycastHit hitInfo)
     {
-        print(hitInfo.collider.gameObject);
-
         CurrentProjectileData.ProjectileThrower.OnProjectileHit(this, hitInfo);
         ReleaseProjectileToPool();
     }

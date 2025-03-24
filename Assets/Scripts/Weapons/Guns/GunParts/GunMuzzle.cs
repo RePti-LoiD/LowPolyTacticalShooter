@@ -8,7 +8,6 @@ public class GunMuzzle : MonoBehaviour
 
     public void OnShot()
     {
-        print($"gay club: {name}");
         shotParticle.Play();
         audioSource.PlayOneShot(muzzleData.ShotSound[Random.Range(0, muzzleData.ShotSound.Length)]);
     }

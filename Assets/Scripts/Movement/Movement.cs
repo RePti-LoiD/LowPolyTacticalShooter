@@ -162,12 +162,21 @@ public class Movement : MovementControllable
     private void AdditionalLinearVelocityFading() =>
         additionalLinearVelocity = Vector3.Lerp(additionalLinearVelocity, Vector3.zero, additionalLinearVelocityFading * Time.deltaTime);
 
-    public void IsGroundedChanged(bool isGrounded)
+    protected override void Jump()
     {
-        if (isGrounded)
-            currentLerpValue = movementSettings.GroundKeyboardLerpValue;
-        else
-            currentLerpValue = movementSettings.AirKeyboardLerpValue;
+        base.Jump();
+
+        currentLerpValue = movementSettings.AirKeyboardLerpValue;
+    }
+
+    protected override void Land()
+    {
+        base.Land();
+
+        currentLerpValue = movementSettings.GroundKeyboardLerpValue;
+
+        if (sprintKey)
+            Sprint?.Invoke();
     }
 
     public override void OnJump()

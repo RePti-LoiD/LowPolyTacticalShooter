@@ -47,10 +47,7 @@ public class BaseGunAPI : GunAPI
         if (cameraRecoil != null)
         {
             cameraRecoil.OnRecoil.RemoveListener(LastData.CameraRecoilRotationReceiver.RotateObject);
-            print($"Removed: {name}");
         }
-
-        print($"Disabled: {name}");
     }
 
     public override void EnableGun(ExternalDataForGun data)
@@ -87,10 +84,7 @@ public class BaseGunAPI : GunAPI
     public virtual void OnAnimationEnded(AnimationUnit animationUnit)
     {
         if (animationUnit.AnimationName == "HoldDown")
-        {
-            print($"Animation end on {name}");
             Disabled?.Invoke(this);
-        }
     }
 
     public override void ShotStart() =>

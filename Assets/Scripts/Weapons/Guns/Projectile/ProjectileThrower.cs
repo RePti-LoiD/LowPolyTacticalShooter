@@ -31,9 +31,7 @@ public class ProjectileThrower : MonoBehaviour
             YCurve = projectileData.YCurve
         });
         
-        projectile.transform.position = muzzle.transform.position;
-        projectile.transform.rotation = muzzle.rotation;
-
+        projectile.transform.SetPositionAndRotation(muzzle.transform.position, muzzle.rotation);
         projectile.LaunchProjectile();
     }
 

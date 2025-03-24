@@ -522,6 +522,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   instanceTransform: {fileID: 1571303642210068066}
+  executeOnObject: 1
+  setFirstPositionAsDefault: 0
   AnimationEnded:
     m_PersistentCalls:
       m_Calls:
@@ -1789,6 +1791,34 @@ PrefabInstance:
       propertyPath: projectileData.GunAPI
       value: 
       objectReference: {fileID: 80584676924976062}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 80584676924976062}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InvokeProjectileHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GunAPI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733397892398679514, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4763886309791749290, guid: 68587b2d9c60944489560cf05cdd1aaf, type: 3}
       propertyPath: gunAmmoData
       value: 

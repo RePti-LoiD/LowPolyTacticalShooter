@@ -579,6 +579,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   instanceTransform: {fileID: 7032342367856862561}
   executeOnObject: 1
+  setFirstPositionAsDefault: 0
   AnimationEnded:
     m_PersistentCalls:
       m_Calls:
@@ -1233,7 +1234,19 @@ MonoBehaviour:
   muzzle: {fileID: 3521996905861291820}
   Collided:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3913529222181123931}
+        m_TargetAssemblyTypeName: GunAPI, Assembly-CSharp
+        m_MethodName: InvokeProjectileHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   projectileData:
     Damage: 0
     Speed: 0

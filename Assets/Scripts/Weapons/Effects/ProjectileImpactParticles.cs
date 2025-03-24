@@ -9,8 +9,6 @@ public class ProjectileImpactParticles : MonoBehaviour
 
     public void OnProjectileHit(Projectile projectile, RaycastHit hitInfo)
     {
-        print(hitInfo.collider.name);
-
         var particles = Instantiate (
             particleSystemsPrefabs[Random.Range(0, particleSystemsPrefabs.Length)], 
             hitInfo.point, 

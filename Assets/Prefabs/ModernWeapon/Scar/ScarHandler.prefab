@@ -638,6 +638,8 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   instanceTransform: {fileID: 6184332315631593028}
+  executeOnObject: 1
+  setFirstPositionAsDefault: 0
   AnimationEnded:
     m_PersistentCalls:
       m_Calls:
@@ -872,11 +874,23 @@ PrefabInstance:
       objectReference: {fileID: 7438601303271351090}
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: Collided.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 7438601303271351090}
+    - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InvokeProjectileHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 453331000422401831, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
+      propertyPath: Collided.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GunAPI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1291100997965219664, guid: c4f491c97d54d4e4cb265fef412b2165, type: 3}
       propertyPath: m_LocalScale.x

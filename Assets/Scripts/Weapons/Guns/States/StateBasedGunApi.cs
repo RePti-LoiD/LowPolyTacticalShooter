@@ -48,7 +48,6 @@ public class StateBasedGunApi : BaseGunAPI
     {
         if (currentState == GunState.Modifying || currentState == GunState.Inspecting) return;
        
-        print($"AAAAAASs: {currentState}");
         base.AdditionalAction();
         SetState(GunState.Aiming);
     }
@@ -118,6 +117,5 @@ public class StateBasedGunApi : BaseGunAPI
 
             _ => currentState
         };
-        print($"Current state: {currentState}");
     }
 }

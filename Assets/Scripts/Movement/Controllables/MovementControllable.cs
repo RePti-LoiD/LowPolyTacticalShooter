@@ -21,10 +21,10 @@ public abstract class MovementControllable : MonoBehaviour
             if (isGrounded == value) return;
 
             if (value)
-                Landed?.Invoke();
+                Land();
             else
-                Jumped?.Invoke();
-
+                Jump();
+            
             OnIsGroundedChanged.Invoke(value);
 
             isGrounded = value;
@@ -57,6 +57,17 @@ public abstract class MovementControllable : MonoBehaviour
     {
         IsGrounded = GroundCheck();
         HorizontalSpeed = HorizontalSpeedCalculate();
+    }
+
+    protected virtual void Land()
+    {
+        Landed?.Invoke();
+    }
+
+    protected virtual void Jump()
+    {
+        Jumped?.Invoke();
+
     }
 
     public abstract void OnMove(Vector2 direction);

@@ -15,8 +15,6 @@ public class RecoilRotationSender : MonoBehaviour
 
     public void SendRotation()
     {
-        print($"{name} sent rotation");
-
         OnRecoil?.Invoke (
             new Vector3 (
                 Random.Range(recoilRotationData.rotation.x, recoilRotationData.targetRotation.x),

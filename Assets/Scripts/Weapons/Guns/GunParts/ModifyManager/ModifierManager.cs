@@ -84,10 +84,7 @@ public class ModifierManager : MonoBehaviour
         if (ammoPrefabs.Count > 0)
             CurrentAmmo = ammoPrefabs.FirstOrDefault().GetComponent<GunAmmo>();
         if (muzzlePrefabs.Count > 0)
-        {
-            print("Wait for muzzle");
             CurrentMuzzle = muzzlePrefabs.FirstOrDefault().GetComponent<GunMuzzle>();
-        }
         if (gripPrefabs.Count > 0)
             CurrentGrip = gripPrefabs.FirstOrDefault().GetComponent<GunGrip>();
     }

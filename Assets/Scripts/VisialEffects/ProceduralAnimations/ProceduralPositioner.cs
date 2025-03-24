@@ -24,6 +24,8 @@ public class ProceduralPositioner : TransformComposable
     private Vector3 currentPosition;
     private Quaternion currentRotation;
 
+    private float weight = 1f;
+
     private void Awake()
     {
         currentPosition = Vector3.zero;
@@ -38,6 +40,8 @@ public class ProceduralPositioner : TransformComposable
         if (setFirstPositionAsDefault)
             SetAnimation(0);
     }
+
+    public void SetWeight(float weight) => this.weight = Mathf.Clamp(weight, 0, 1f);
 
     public AnimationUnit GetAnimation(string name) => animationUnits.Find(x => x.AnimationName == name);
 
@@ -99,8 +103,8 @@ public class ProceduralPositioner : TransformComposable
     }
 
     public override Vector3 GetPosition(Vector3 prevPosition) =>
-        currentPosition;
+        Vector3.Slerp(Vector3.zero, currentPosition, weight);
 
     public override Quaternion GetRotation(Quaternion prevRotation) =>
-        currentRotation;
+        Quaternion.Slerp(Quaternion.identity, currentRotation, weight);
 }

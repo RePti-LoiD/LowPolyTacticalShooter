@@ -6,8 +6,6 @@ public class ModifierAnchor : MonoBehaviour
 
     public virtual void SpawnModifier(GameObject modifier)
     {
-        print($"modificator: {modifier}");
-
         if (currentModifier != null)
             DestroyModifier();
 

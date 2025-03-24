@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,8 +13,6 @@ public class ProjectileCollisionDetection : MonoBehaviour
     {
         currentPosition = transform.position;
         lastPosition = currentPosition;
-
-        print((transform.position, currentPosition, lastPosition));
     }
 
     public void Update()
@@ -29,8 +26,6 @@ public class ProjectileCollisionDetection : MonoBehaviour
 
         if (Physics.Raycast(lastPosition, direction, out RaycastHit hit, direction.magnitude))
         {
-            print(hit.collider.gameObject);
-            
             Collided?.Invoke(projectile, hit);            
         }
     }

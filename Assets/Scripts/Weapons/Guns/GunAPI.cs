@@ -9,6 +9,8 @@ public abstract class GunAPI : MonoBehaviour
     public Action<RuntimeGunData> GunDataChanged;
     public Action<GunAPI> Disabled;
 
+    public Action<Projectile, GunAPI, GameObject> ProjectileHit;
+
     public abstract void ShotStart();
     public abstract void ShotStop();
     public abstract void Reload();
@@ -29,5 +31,10 @@ public abstract class GunAPI : MonoBehaviour
     public void OnGunDataChanged(RuntimeGunData gunData)
     {
         GunDataChanged?.Invoke(gunData);
+    }
+
+    public void InvokeProjectileHit(Projectile projectile, RaycastHit hit)
+    {
+        ProjectileHit?.Invoke(projectile, this, hit.collider.gameObject);
     }
 }
