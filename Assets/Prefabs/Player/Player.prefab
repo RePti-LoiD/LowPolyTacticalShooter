@@ -5781,7 +5781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.746573, y: 7.746573}
+  m_AnchoredPosition: {x: 8, y: 8}
   m_SizeDelta: {x: 3, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5082497965335605925
@@ -5993,7 +5993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.746573, y: -7.746573}
+  m_AnchoredPosition: {x: 8, y: -8}
   m_SizeDelta: {x: 3, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2545020555861539039
@@ -6257,7 +6257,7 @@ MonoBehaviour:
   - {fileID: 5034869633301355598}
   - {fileID: 2038585421473209096}
   startHitColor: {r: 1, g: 1, b: 1, a: 1}
-  finalHitColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  finalHitColor: {r: 1, g: 1, b: 1, a: 0.23529412}
   startFatalHitColor: {r: 0, g: 0, b: 0, a: 0}
   finalFatalHitColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6107483895264268243
@@ -7244,7 +7244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.746573, y: -7.7466416}
+  m_AnchoredPosition: {x: -8, y: -8}
   m_SizeDelta: {x: 3, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2007165556546754548
@@ -7414,7 +7414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.746573, y: 7.746573}
+  m_AnchoredPosition: {x: -8, y: 8}
   m_SizeDelta: {x: 3, y: 25}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8421055407696811594

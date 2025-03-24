@@ -36,12 +36,12 @@ public class Hitmarker : MonoBehaviour
         {
             HitmarkerParts = hitmarkerParts,
             StartOffset = 10,
-            FinalOffset = 25,
+            FinalOffset = 45,
             StartColor = startHitColor,
             FinishColor = finalHitColor,
             StartHeight = 25,
-            FinalHeight = 50,
-            Time = 0.15f
+            FinalHeight = 35,
+            Time = 0.1f
         });
     }
 
@@ -81,7 +81,7 @@ public class Hitmarker : MonoBehaviour
                 float angle = hitmarkerPart.rectTransform.localRotation.z * Mathf.Deg2Rad;
 
                 var currentColor = Color.Lerp(animationData.StartColor, animationData.FinishColor, currentTime);
-                var currentPosition = CalcOffset(angle) * Mathf.Lerp(animationData.StartOffset, animationData.FinalOffset, currentTime);
+                var currentPosition = hitmarkerPart.rectTransform.localPosition.normalized * Mathf.Lerp(animationData.StartOffset, animationData.FinalOffset, currentTime);
                 var currentSize = new Vector2(hitmarkerPart.rectTransform.rect.width, Mathf.Lerp(animationData.StartHeight, animationData.FinalHeight, currentTime));
 
                 hitmarkerPart.rectTransform.sizeDelta = currentSize;
